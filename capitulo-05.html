@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capítulo 5 — Sono Noturno e Mamadas | Sonhos Doces</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FDF8F3;
+            --soft-peach: #FFEEE4;
+            --blush: #F5D5C8;
+            --lavender: #E8E0F0;
+            --soft-blue: #D4E5F7;
+            --sage: #D5E5D8;
+            --warm-gray: #9B8E8A;
+            --deep-plum: #4A3F55;
+            --moon-gold: #E8C87D;
+            --night-blue: #2C3E50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--deep-plum);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--moon-gold);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, var(--cream) 0%, transparent 100%);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--deep-plum);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--blush), var(--lavender), var(--soft-blue));
+            width: 0%;
+            z-index: 101;
+            transition: width 0.3s ease;
+        }
+
+        nav { display: flex; gap: 2rem; }
+
+        nav a {
+            text-decoration: none;
+            color: var(--warm-gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        nav a:hover { color: var(--deep-plum); }
+
+        .lesson-container {
+            background: linear-gradient(135deg, var(--soft-peach) 0%, var(--lavender) 50%, var(--soft-blue) 100%);
+            min-height: 100vh;
+            padding: 6rem 2rem;
+        }
+
+        .lesson-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            padding: 3rem;
+            box-shadow: 0 30px 60px rgba(74, 63, 85, 0.15);
+        }
+
+        .lesson-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--soft-peach);
+        }
+
+        .lesson-module-label {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--lavender);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .lesson-progress {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--warm-gray);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .lesson-progress-bar {
+            width: 150px;
+            height: 4px;
+            background: var(--soft-peach);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .lesson-progress-fill {
+            height: 100%;
+            background: var(--deep-plum);
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+
+        .lesson-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .lesson-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin: 2.5rem 0 1rem;
+            color: var(--deep-plum);
+        }
+
+        .lesson-content p {
+            margin-bottom: 1.5rem;
+            color: #5a4a5a;
+        }
+
+        .info-card {
+            background: var(--cream);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--moon-gold);
+        }
+
+        .info-card.tip {
+            border-left-color: var(--sage);
+            background: linear-gradient(135deg, #f0f7f1 0%, var(--cream) 100%);
+        }
+
+        .info-card.warning {
+            border-left-color: var(--blush);
+            background: linear-gradient(135deg, #fef5f2 0%, var(--cream) 100%);
+        }
+
+        .info-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .info-card p { margin: 0; font-size: 0.95rem; }
+
+        .sleep-chart {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .sleep-chart h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .chart-row {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .chart-label { font-size: 0.9rem; font-weight: 500; }
+
+        .chart-bar-container {
+            background: white;
+            border-radius: 8px;
+            height: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-bar {
+            height: 100%;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 1rem;
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: width 1s ease;
+        }
+
+        .chart-bar.night { background: linear-gradient(90deg, var(--night-blue), #4a6fa5); }
+        .chart-bar.day { background: linear-gradient(90deg, var(--moon-gold), #f0d78c); color: var(--deep-plum); }
+
+        .age-selector {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+
+        .age-btn {
+            padding: 0.6rem 1.2rem;
+            border: 2px solid var(--soft-peach);
+            background: white;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .age-btn:hover { border-color: var(--blush); }
+        .age-btn.active {
+            background: var(--deep-plum);
+            border-color: var(--deep-plum);
+            color: white;
+        }
+
+        .age-specific-content { display: none; animation: fadeInUp 0.4s ease; }
+        .age-specific-content.active { display: block; }
+
+        .sleep-needs-display {
+            background: linear-gradient(135deg, var(--soft-blue) 0%, var(--lavender) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .sleep-hours {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 600;
+            color: var(--deep-plum);
+        }
+
+        .sleep-hours span { font-size: 1.5rem; font-weight: 400; }
+
+        .sleep-breakdown {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .sleep-breakdown-item { text-align: center; }
+        .sleep-breakdown-value { font-weight: 600; font-size: 1.2rem; }
+        .sleep-breakdown-label { font-size: 0.85rem; color: var(--warm-gray); }
+
+        .quiz-section {
+            background: linear-gradient(135deg, var(--lavender) 0%, var(--soft-blue) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .quiz-section h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-question { font-weight: 500; margin-bottom: 1rem; }
+
+        .quiz-options { display: flex; flex-direction: column; gap: 0.75rem; }
+
+        .quiz-option {
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .quiz-option:hover { border-color: var(--deep-plum); }
+        .quiz-option.selected { border-color: var(--deep-plum); background: var(--cream); }
+        .quiz-option.correct { border-color: #4caf50; background: #e8f5e9; }
+        .quiz-option.incorrect { border-color: #f44336; background: #ffebee; }
+
+        .quiz-option-marker {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid var(--warm-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .quiz-option.selected .quiz-option-marker {
+            border-color: var(--deep-plum);
+            background: var(--deep-plum);
+            color: white;
+        }
+
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 12px;
+            display: none;
+        }
+
+        .quiz-feedback.show { display: block; animation: fadeInUp 0.3s ease; }
+        .quiz-feedback.correct { background: #e8f5e9; color: #2e7d32; }
+        .quiz-feedback.incorrect { background: #ffebee; color: #c62828; }
+
+        .check-answer-btn {
+            margin-top: 1rem;
+            padding: 0.75rem 2rem;
+            background: var(--deep-plum);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .check-answer-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 63, 85, 0.3);
+        }
+
+        .check-answer-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+        .accordion { margin: 2rem 0; }
+
+        .accordion-item {
+            background: var(--cream);
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover { background: var(--soft-peach); }
+
+        .accordion-icon { transition: transform 0.3s ease; }
+        .accordion-item.open .accordion-icon { transform: rotate(180deg); }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 1.5rem;
+        }
+
+        .accordion-item.open .accordion-content {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .chapter-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--soft-peach);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--cream);
+            border: none;
+            border-radius: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--deep-plum);
+            text-decoration: none;
+        }
+
+        .nav-btn:hover { background: var(--soft-peach); }
+        .nav-btn.primary { background: var(--deep-plum); color: white; }
+        .nav-btn.primary:hover { background: #3a3045; }
+
+        footer {
+            background: var(--deep-plum);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        footer .logo { color: white; justify-content: center; margin-bottom: 1.5rem; }
+        footer p { opacity: 0.7; font-size: 0.9rem; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Dica Prática - Elemento diferenciado */
+        .dica-pratica {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 50%, #f5f0ff 100%);
+            border-radius: 20px;
+            padding: 1.75rem;
+            margin: 2rem 0;
+            border: 2px dashed var(--moon-gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dica-pratica::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(232, 200, 125, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .dica-pratica-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .dica-pratica-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--moon-gold), #f0d78c);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .dica-pratica-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--deep-plum);
+        }
+
+        .dica-pratica-content {
+            color: #5a4a5a;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .dica-pratica-content p { margin-bottom: 0.75rem; }
+        .dica-pratica-content p:last-child { margin-bottom: 0; }
+        .dica-pratica-content ol, .dica-pratica-content ul { margin-left: 1.5rem; margin-bottom: 0.75rem; }
+        .dica-pratica-content li { margin-bottom: 0.5rem; }
+        .dica-pratica-content strong { color: var(--deep-plum); }
+
+        @media (max-width: 768px) {
+            header { padding: 1rem 1.5rem; }
+            nav { display: none; }
+            .lesson-wrapper { padding: 1.5rem; border-radius: 24px; }
+            .chart-row { grid-template-columns: 1fr; gap: 0.5rem; }
+            .chapter-nav { flex-direction: column; gap: 1rem; }
+            .nav-btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="stars-container" id="stars"></div>
+
+    <header>
+        <div class="logo">
+            <span>🌙</span>
+            Sonhos Doces
+        </div>
+        <nav>
+            <a href="index.html">Capítulos</a>
+            <a href="index.html">Início</a>
+        </nav>
+    </header>
+
+    <div class="lesson-container">
+        <div class="lesson-wrapper">
+            <div class="lesson-header">
+                <div class="lesson-module-label">Capítulo 5</div>
+                <h2>Sono Noturno e Mamadas</h2>
+                <div class="lesson-progress">
+                    <span>Progresso:</span>
+                    <div class="lesson-progress-bar">
+                        <div class="lesson-progress-fill" style="width: 55.5%;"></div>
+                    </div>
+                    <span>5/9</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+
+                <h3>Quantas Horas de Sono Noturno?</h3>
+                <p>Bebês precisam de 10-12 horas de sono noturno. Veja abaixo como isso varia por idade:</p>
+
+                <div class="age-selector">
+                    <button class="age-btn active" onclick="selectAge(this, '0-2')">0-2 meses</button>
+                    <button class="age-btn" onclick="selectAge(this, '2-4')">2-4 meses</button>
+                    <button class="age-btn" onclick="selectAge(this, '5-6')">5-6 meses</button>
+                    <button class="age-btn" onclick="selectAge(this, '6-12')">6-12 meses</button>
+                    <button class="age-btn" onclick="selectAge(this, '12plus')">12+ meses</button>
+                </div>
+
+                <div id="age-0-2" class="age-specific-content active">
+                    <div class="sleep-needs-display">
+                        <div class="sleep-hours">6-9<span>h</span></div>
+                        <div class="sleep-breakdown">
+                            <div class="sleep-breakdown-item">
+                                <div class="sleep-breakdown-value">Sono fragmentado</div>
+                                <div class="sleep-breakdown-label">Acordas a cada 3-4h para mamar</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="age-2-4" class="age-specific-content">
+                    <div class="sleep-needs-display">
+                        <div class="sleep-hours">4-6<span>h</span></div>
+                        <div class="sleep-breakdown">
+                            <div class="sleep-breakdown-item">
+                                <div class="sleep-breakdown-value">Períodos sem mamada</div>
+                                <div class="sleep-breakdown-label">Possibilidade de dormir mais entre refeições</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="age-5-6" class="age-specific-content">
+                    <div class="sleep-needs-display">
+                        <div class="sleep-hours">5-7<span>h</span></div>
+                        <div class="sleep-breakdown">
+                            <div class="sleep-breakdown-item">
+                                <div class="sleep-breakdown-value">Sono ininterrupto</div>
+                                <div class="sleep-breakdown-label">Bebê consegue dormir períodos contínuos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="age-6-12" class="age-specific-content">
+                    <div class="sleep-needs-display">
+                        <div class="sleep-hours">7-10<span>h</span></div>
+                        <div class="sleep-breakdown">
+                            <div class="sleep-breakdown-item">
+                                <div class="sleep-breakdown-value">Algumas noites completas</div>
+                                <div class="sleep-breakdown-label">Alguns bebês dormem a noite inteira</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="age-12plus" class="age-specific-content">
+                    <div class="sleep-needs-display">
+                        <div class="sleep-hours">10-12<span>h</span></div>
+                        <div class="sleep-breakdown">
+                            <div class="sleep-breakdown-item">
+                                <div class="sleep-breakdown-value">Sem mamadas noturnas</div>
+                                <div class="sleep-breakdown-label">O bebê não precisa mais de alimentação noturna</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Mamadas Noturnas por Idade</h3>
+                <div class="info-card">
+                    <div class="info-card-header">💡 Dica importante</div>
+                    <p>Mamadas noturnas são aquelas até às 5h. A mamada das 5h-6h já é considerada a primeira do dia.</p>
+                </div>
+
+                <div class="sleep-chart">
+                    <h4>Número Esperado de Mamadas Noturnas</h4>
+                    <div class="chart-row">
+                        <div class="chart-label">0-2 meses</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar night" style="width: 100%;">A cada 3h</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">2-3 meses</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar night" style="width: 75%;">2-3 mamadas</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">4-5 meses</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar night" style="width: 50%;">1-2 mamadas</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">6-8 meses</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar night" style="width: 25%;">0-1 mamada</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">9-12 meses</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar night" style="width: 10%;">Nenhuma</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">12+ meses</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar night" style="width: 5%;">Nenhuma</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Qualidade vs Quantidade</h3>
+                <p>Dormir 12 horas de 23h às 11h <strong>não é a mesma qualidade</strong> de sono que dormir 12 horas de 19h às 7h da manhã. A qualidade depende do <strong>horário</strong> em que o sono ocorre.</p>
+
+                <div class="info-card">
+                    <div class="info-card-header">🧠 Hormônios e Sono</div>
+                    <p>O hormônio do crescimento (GH) tem seu pico entre 22h-23h, mas <strong>apenas durante sono profundo</strong>. O bebê precisa estar dormindo há algum tempo antes disso para que o corpo entre em sono profundo!</p>
+                </div>
+
+                <p><strong>Benefícios de um sono de qualidade:</strong></p>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    <li>Melhor composição corporal</li>
+                    <li>Regulação de hormônios (TSH, T4, Leptina)</li>
+                    <li>Desenvolvimento cognitivo superior e QI mais alto</li>
+                </ul>
+
+                <h3>Horário Ideal para Dormir e Acordar</h3>
+                <p>O tempo de dormir é fundamental para a qualidade do sono. Veja os limites recomendados por idade:</p>
+
+                <div class="sleep-chart">
+                    <h4>Horário Máximo para Dormir</h4>
+                    <div class="chart-row">
+                        <div class="chart-label">0-1 mês</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar day" style="width: 90%;">até 22h</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">1-2 meses</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar day" style="width: 85%;">até 21h</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">2-3 meses</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar day" style="width: 82%;">até 20h30</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">3-4 meses</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar day" style="width: 80%;">até 20h</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">4+ meses</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar day" style="width: 75%;">entre 19h-20h (ideal antes das 20h)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card tip">
+                    <div class="info-card-header">⏰ Dica de Ouro</div>
+                    <p>Quanto mais cedo o bebê dorme, mais tarde ele acorda. Quanto mais tarde e cansado for dormir, maior o risco de madrugar! Durma cedo para que o bebê durma bem durante a noite.</p>
+                </div>
+
+                <p><strong>Hora de acordar:</strong> O ideal é entre 6h-7h. Se estiver dormindo ainda, acorde o bebê.</p>
+
+                <div class="dica-pratica">
+                    <div class="dica-pratica-header">
+                        <div class="dica-pratica-icon">🌙</div>
+                        <div class="dica-pratica-label">Dica Prática: Ritual do "Bom Dia"</div>
+                    </div>
+                    <div class="dica-pratica-content">
+                        <p>Tão importante quanto o ritual de dormir é o <strong>ritual de acordar</strong>. Ele ensina o bebê que existe um horário correto para começar o dia:</p>
+                        <ol>
+                            <li><strong>Defina um horário mínimo</strong> (ex: 6h da manhã). Antes disso, trate como noite.</li>
+                            <li><strong>Quando for hora de acordar:</strong> Abra as cortinas, acenda a luz, fale em tom alegre: "Bom dia!"</li>
+                            <li><strong>Se o bebê acordar muito cedo</strong> (antes das 5h30): Não acenda luzes, não converse, tente que volte a dormir</li>
+                            <li><strong>Consistência é tudo:</strong> Mesmo nos fins de semana, mantenha o mesmo horário de despertar (+/- 30 minutos)</li>
+                        </ol>
+                        <p>O ritual de bom dia reforça o ritmo circadiano e ajuda a regular todo o ciclo de sono do bebê.</p>
+                    </div>
+                </div>
+
+                <h3>Ritual do Bom Dia</h3>
+                <div class="checklist" style="background: var(--cream); border-radius: 20px; padding: 2rem; margin: 2rem 0;">
+                    <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; margin-bottom: 1.5rem;">Rotina Matinal Recomendada</h4>
+                    <div class="checklist-item" onclick="toggleChecklist(this)" style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(155, 142, 138, 0.2); cursor: pointer;">
+                        <div class="checklist-checkbox" style="width: 24px; height: 24px; border-radius: 6px; border: 2px solid var(--warm-gray); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s ease; color: transparent;">✓</div>
+                        <div class="checklist-text">Dar bom dia de forma alegre</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)" style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(155, 142, 138, 0.2); cursor: pointer;">
+                        <div class="checklist-checkbox" style="width: 24px; height: 24px; border-radius: 6px; border: 2px solid var(--warm-gray); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s ease; color: transparent;">✓</div>
+                        <div class="checklist-text">Desligar o ruído branco</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)" style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(155, 142, 138, 0.2); cursor: pointer;">
+                        <div class="checklist-checkbox" style="width: 24px; height: 24px; border-radius: 6px; border: 2px solid var(--warm-gray); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s ease; color: transparent;">✓</div>
+                        <div class="checklist-text">Abrir cortinas e janela (luz natural)</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)" style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(155, 142, 138, 0.2); cursor: pointer;">
+                        <div class="checklist-checkbox" style="width: 24px; height: 24px; border-radius: 6px; border: 2px solid var(--warm-gray); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s ease; color: transparent;">✓</div>
+                        <div class="checklist-text">Amamentar</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)" style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(155, 142, 138, 0.2); cursor: pointer;">
+                        <div class="checklist-checkbox" style="width: 24px; height: 24px; border-radius: 6px; border: 2px solid var(--warm-gray); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s ease; color: transparent;">✓</div>
+                        <div class="checklist-text">Trocar fralda e roupa (trocar pijama!)</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)" style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem 0; border-bottom: none; cursor: pointer;">
+                        <div class="checklist-checkbox" style="width: 24px; height: 24px; border-radius: 6px; border: 2px solid var(--warm-gray); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s ease; color: transparent;">✓</div>
+                        <div class="checklist-text">Sair do quarto e iniciar atividades</div>
+                    </div>
+                </div>
+
+                <h3>Causas dos Despertares às 5h</h3>
+                <p>Se o bebê desperta frequentemente às 5h da manhã, há várias causas possíveis. Clique para explorar cada uma:</p>
+
+                <div class="accordion">
+                    <div class="accordion-item" style="background: var(--cream); border-radius: 12px; margin-bottom: 0.75rem; overflow: hidden;">
+                        <div class="accordion-header" onclick="toggleAccordion(this)" style="padding: 1.25rem 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 500; transition: background 0.3s ease;">
+                            <span>Entrada de luz</span>
+                            <span class="accordion-icon" style="transition: transform 0.3s ease;">▼</span>
+                        </div>
+                        <div class="accordion-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; padding: 0 1.5rem;">
+                            <p>É necessário <strong>100% de escurecimento</strong> no quarto do bebê. Verifique se há luz entrando pelas cortinas ou se há luzes de dispositivos (relógios, monitores) visíveis. Cubra qualquer luz que possa estar despertando o bebê.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" style="background: var(--cream); border-radius: 12px; margin-bottom: 0.75rem; overflow: hidden;">
+                        <div class="accordion-header" onclick="toggleAccordion(this)" style="padding: 1.25rem 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 500; transition: background 0.3s ease;">
+                            <span>Sono noturno tardio</span>
+                            <span class="accordion-icon" style="transition: transform 0.3s ease;">▼</span>
+                        </div>
+                        <div class="accordion-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; padding: 0 1.5rem;">
+                            <p>Se o bebê dorme muito tarde, ele acorda mais cedo. Ajuste gradualmente o horário de sono, movendo 20 minutos mais cedo a cada 3 dias. Isso ajuda a regularizar o despertamento.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" style="background: var(--cream); border-radius: 12px; margin-bottom: 0.75rem; overflow: hidden;">
+                        <div class="accordion-header" onclick="toggleAccordion(this)" style="padding: 1.25rem 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 500; transition: background 0.3s ease;">
+                            <span>Sonecas desajustadas</span>
+                            <span class="accordion-icon" style="transition: transform 0.3s ease;">▼</span>
+                        </div>
+                        <div class="accordion-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; padding: 0 1.5rem;">
+                            <p>O acúmulo de cortisol durante o dia (por sonecas mal feitas) afeta o sono noturno. Certifique-se de que o bebê está dormindo bem durante o dia, em ambiente escuro e propício.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" style="background: var(--cream); border-radius: 12px; margin-bottom: 0.75rem; overflow: hidden;">
+                        <div class="accordion-header" onclick="toggleAccordion(this)" style="padding: 1.25rem 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 500; transition: background 0.3s ease;">
+                            <span>Fome</span>
+                            <span class="accordion-icon" style="transition: transform 0.3s ease;">▼</span>
+                        </div>
+                        <div class="accordion-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; padding: 0 1.5rem;">
+                            <p>Fome é normal até os 12 meses. Se o bebê acordar neste horário, mantenha o quarto escuro, sem estimulação, e não inicie o dia ainda. Alimentar sem "acordar" o bebê ajuda a estabelecer que aquela hora não é para acordar.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Quiz</h3>
+                <div class="quiz-section">
+                    <h4>Teste seu conhecimento</h4>
+                    <div class="quiz-question">A partir de que idade o bebê não precisa mais de mamadas noturnas?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectQuizOption(this, 1)">
+                            <div class="quiz-option-marker">A</div>
+                            <span>6 meses</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 2)">
+                            <div class="quiz-option-marker">B</div>
+                            <span>9 meses</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 3)">
+                            <div class="quiz-option-marker">C</div>
+                            <span>12 meses</span>
+                        </div>
+                    </div>
+                    <button class="check-answer-btn" onclick="checkAnswer('01', 3)" disabled>Verificar Resposta</button>
+                    <div id="quiz-feedback-01" class="quiz-feedback"></div>
+                </div>
+
+            </div>
+
+            <div class="chapter-nav">
+                <a href="capitulo-04.html" class="nav-btn">← Capítulo Anterior</a>
+                <a href="capitulo-06.html" class="nav-btn primary">Próximo Capítulo →</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="logo">
+            <span>🌙</span>
+            Sonhos Doces
+        </div>
+        <p>&copy; 2024 Curso Sonhos Doces. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Create floating stars
+        function createStars() {
+            const container = document.getElementById('stars');
+            if (!container) return;
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.width = (Math.random() * 3 + 2) + 'px';
+                star.style.height = star.style.width;
+                container.appendChild(star);
+            }
+        }
+        createStars();
+
+        // Progress bar
+        window.addEventListener('scroll', () => {
+            const progressBar = document.getElementById('progressBar');
+            if (!progressBar) return;
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            progressBar.style.width = scrollPercent + '%';
+        });
+
+        // Age selector
+        function selectAge(btn, ageId) {
+            if (!btn || !btn.parentElement) return;
+            btn.parentElement.querySelectorAll('.age-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.age-specific-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            const ageContent = document.getElementById('age-' + ageId);
+            if (ageContent) ageContent.classList.add('active');
+        }
+
+        // Accordion
+        function toggleAccordion(header) {
+            if (!header || !header.parentElement) return;
+            const item = header.parentElement;
+            const wasOpen = item.classList.contains('open');
+            const parent = item.parentElement;
+            if (parent) {
+                parent.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('open');
+                });
+            }
+            if (!wasOpen) {
+                item.classList.add('open');
+            }
+        }
+
+        // Checklist
+        function toggleChecklist(item) {
+            if (!item) return;
+            item.classList.toggle('checked');
+        }
+
+        // Quiz functionality
+        let selectedAnswers = {};
+
+        function selectQuizOption(option, value) {
+            if (!option) return;
+            const quizSection = option.closest('.quiz-section');
+            if (!quizSection) return;
+            const options = quizSection.querySelectorAll('.quiz-option');
+            const checkBtn = quizSection.querySelector('.check-answer-btn');
+
+            options.forEach(opt => opt.classList.remove('selected', 'correct', 'incorrect'));
+            option.classList.add('selected');
+
+            const feedback = quizSection.querySelector('.quiz-feedback');
+            if (feedback) {
+                const quizId = feedback.id.split('-')[2];
+                selectedAnswers[quizId] = value;
+            }
+            if (checkBtn) checkBtn.disabled = false;
+            if (feedback) feedback.classList.remove('show');
+        }
+
+        function checkAnswer(quizId, correctAnswer) {
+            const feedback = document.getElementById('quiz-feedback-' + quizId);
+            if (!feedback) return;
+            const quizSection = feedback.closest('.quiz-section');
+            if (!quizSection) return;
+            const options = quizSection.querySelectorAll('.quiz-option');
+            const selectedValue = selectedAnswers[quizId];
+
+            options.forEach((opt, index) => {
+                if (index + 1 === selectedValue) {
+                    if (selectedValue === correctAnswer) {
+                        opt.classList.add('correct');
+                    } else {
+                        opt.classList.add('incorrect');
+                    }
+                }
+                if (index + 1 === correctAnswer) {
+                    opt.classList.add('correct');
+                }
+            });
+
+            if (selectedValue === correctAnswer) {
+                feedback.className = 'quiz-feedback show correct';
+                feedback.innerHTML = '✅ Correto! Parabéns!';
+            } else {
+                feedback.className = 'quiz-feedback show incorrect';
+                feedback.innerHTML = '❌ Não é bem isso. A resposta correta está destacada acima.';
+            }
+
+            const checkBtn = quizSection.querySelector('.check-answer-btn');
+            if (checkBtn) checkBtn.disabled = true;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createStars();
+        });
+    </script>
+</body>
+</html>

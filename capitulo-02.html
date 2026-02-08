@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capítulo 2 — Janela do Sono e Sinais | Sonhos Doces</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FDF8F3;
+            --soft-peach: #FFEEE4;
+            --blush: #F5D5C8;
+            --lavender: #E8E0F0;
+            --soft-blue: #D4E5F7;
+            --sage: #D5E5D8;
+            --warm-gray: #9B8E8A;
+            --deep-plum: #4A3F55;
+            --moon-gold: #E8C87D;
+            --night-blue: #2C3E50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--deep-plum);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--moon-gold);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, var(--cream) 0%, transparent 100%);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--deep-plum);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--blush), var(--lavender), var(--soft-blue));
+            width: 0%;
+            z-index: 101;
+            transition: width 0.3s ease;
+        }
+
+        nav { display: flex; gap: 2rem; }
+
+        nav a {
+            text-decoration: none;
+            color: var(--warm-gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        nav a:hover { color: var(--deep-plum); }
+
+        .lesson-container {
+            background: linear-gradient(135deg, var(--soft-peach) 0%, var(--lavender) 50%, var(--soft-blue) 100%);
+            min-height: 100vh;
+            padding: 6rem 2rem;
+        }
+
+        .lesson-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            padding: 3rem;
+            box-shadow: 0 30px 60px rgba(74, 63, 85, 0.15);
+        }
+
+        .lesson-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--soft-peach);
+        }
+
+        .lesson-module-label {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--lavender);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .lesson-progress {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--warm-gray);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .lesson-progress-bar {
+            width: 150px;
+            height: 4px;
+            background: var(--soft-peach);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .lesson-progress-fill {
+            height: 100%;
+            background: var(--deep-plum);
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+
+        .lesson-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .lesson-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin: 2.5rem 0 1rem;
+            color: var(--deep-plum);
+        }
+
+        .lesson-content p {
+            margin-bottom: 1.5rem;
+            color: #5a4a5a;
+        }
+
+        .lesson-content ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .lesson-content li {
+            margin-bottom: 0.75rem;
+            color: #5a4a5a;
+        }
+
+        .lesson-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-card {
+            background: var(--cream);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--moon-gold);
+        }
+
+        .info-card.tip {
+            border-left-color: var(--sage);
+            background: linear-gradient(135deg, #f0f7f1 0%, var(--cream) 100%);
+        }
+
+        .info-card.warning {
+            border-left-color: var(--blush);
+            background: linear-gradient(135deg, #fef5f2 0%, var(--cream) 100%);
+        }
+
+        .info-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .info-card p { margin: 0; font-size: 0.95rem; }
+
+        .sleep-chart {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .sleep-chart h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .chart-row {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .chart-label { font-size: 0.9rem; font-weight: 500; }
+
+        .chart-bar-container {
+            background: white;
+            border-radius: 8px;
+            height: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-bar {
+            height: 100%;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 1rem;
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: width 1s ease;
+        }
+
+        .chart-bar.night { background: linear-gradient(90deg, var(--night-blue), #4a6fa5); }
+        .chart-bar.day { background: linear-gradient(90deg, var(--moon-gold), #f0d78c); color: var(--deep-plum); }
+
+        .tabs-container { margin: 2rem 0; }
+
+        .tabs-header {
+            display: flex;
+            gap: 0.5rem;
+            border-bottom: 2px solid var(--soft-peach);
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--warm-gray);
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--deep-plum);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .tab-btn.active { color: var(--deep-plum); }
+        .tab-btn.active::after { transform: scaleX(1); }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeInUp 0.4s ease; }
+
+        .accordion { margin: 2rem 0; }
+
+        .accordion-item {
+            background: var(--cream);
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover { background: var(--soft-peach); }
+
+        .accordion-icon { transition: transform 0.3s ease; }
+        .accordion-item.open .accordion-icon { transform: rotate(180deg); }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 1.5rem;
+        }
+
+        .accordion-item.open .accordion-content {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .accordion-content p {
+            color: #5a4a5a;
+            margin-bottom: 0.75rem;
+        }
+
+        .checklist {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .checklist h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(155, 142, 138, 0.2);
+            cursor: pointer;
+        }
+
+        .checklist-item:last-child { border-bottom: none; }
+
+        .checklist-checkbox {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            border: 2px solid var(--warm-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            color: transparent;
+        }
+
+        .checklist-item.checked .checklist-checkbox {
+            background: var(--sage);
+            border-color: var(--sage);
+            color: white;
+        }
+
+        .checklist-item.checked .checklist-text {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, var(--lavender) 0%, var(--soft-blue) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .quiz-section h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-question { font-weight: 500; margin-bottom: 1rem; }
+
+        .quiz-options { display: flex; flex-direction: column; gap: 0.75rem; }
+
+        .quiz-option {
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .quiz-option:hover { border-color: var(--deep-plum); }
+        .quiz-option.selected { border-color: var(--deep-plum); background: var(--cream); }
+        .quiz-option.correct { border-color: #4caf50; background: #e8f5e9; }
+        .quiz-option.incorrect { border-color: #f44336; background: #ffebee; }
+
+        .quiz-option-marker {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid var(--warm-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .quiz-option.selected .quiz-option-marker {
+            border-color: var(--deep-plum);
+            background: var(--deep-plum);
+            color: white;
+        }
+
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 12px;
+            display: none;
+        }
+
+        .quiz-feedback.show { display: block; animation: fadeInUp 0.3s ease; }
+        .quiz-feedback.correct { background: #e8f5e9; color: #2e7d32; }
+        .quiz-feedback.incorrect { background: #ffebee; color: #c62828; }
+
+        .check-answer-btn {
+            margin-top: 1rem;
+            padding: 0.75rem 2rem;
+            background: var(--deep-plum);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .check-answer-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 63, 85, 0.3);
+        }
+
+        .check-answer-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+        .chapter-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--soft-peach);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--cream);
+            border: none;
+            border-radius: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--deep-plum);
+            text-decoration: none;
+        }
+
+        .nav-btn:hover { background: var(--soft-peach); }
+        .nav-btn.primary { background: var(--deep-plum); color: white; }
+        .nav-btn.primary:hover { background: #3a3045; }
+
+        .chapter-nav-center {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .chapter-nav-center a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--lavender);
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--deep-plum);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .chapter-nav-center a:hover {
+            background: var(--blush);
+            transform: translateY(-2px);
+        }
+
+        .signal-tabs .tab-content ul li {
+            padding: 0.5rem 0;
+        }
+
+        .signal-tabs .tab-content strong {
+            color: var(--deep-plum);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Dica Prática - Elemento diferenciado */
+        .dica-pratica {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 50%, #f5f0ff 100%);
+            border-radius: 20px;
+            padding: 1.75rem;
+            margin: 2rem 0;
+            border: 2px dashed var(--moon-gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dica-pratica::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(232, 200, 125, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .dica-pratica-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .dica-pratica-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--moon-gold), #f0d78c);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .dica-pratica-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--deep-plum);
+        }
+
+        .dica-pratica-content {
+            color: #5a4a5a;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .dica-pratica-content p { margin-bottom: 0.75rem; }
+        .dica-pratica-content p:last-child { margin-bottom: 0; }
+        .dica-pratica-content ol, .dica-pratica-content ul { margin-left: 1.5rem; margin-bottom: 0.75rem; }
+        .dica-pratica-content li { margin-bottom: 0.5rem; }
+        .dica-pratica-content strong { color: var(--deep-plum); }
+
+        @media (max-width: 768px) {
+            header { padding: 1rem 1.5rem; }
+            nav { display: none; }
+            .lesson-wrapper { padding: 1.5rem; border-radius: 24px; }
+            .chart-row { grid-template-columns: 1fr; gap: 0.5rem; }
+            .chapter-nav { flex-direction: column; gap: 1rem; }
+            .nav-btn { width: 100%; justify-content: center; }
+            .chapter-nav-center { width: 100%; }
+            .chapter-nav-center a { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="stars-container" id="stars"></div>
+
+    <header>
+        <div class="logo">
+            <span>🌙</span>
+            Sonhos Doces
+        </div>
+        <nav>
+            <a href="index.html">Capítulos</a>
+            <a href="index.html">Início</a>
+        </nav>
+    </header>
+
+    <div class="lesson-container">
+        <div class="lesson-wrapper">
+            <div class="lesson-header">
+                <div class="lesson-module-label">Capítulo 2</div>
+                <h2>Janela do Sono e Sinais de Sono</h2>
+                <div class="lesson-progress">
+                    <span>Progresso:</span>
+                    <div class="lesson-progress-bar">
+                        <div class="lesson-progress-fill" style="width: 22.2%;"></div>
+                    </div>
+                    <span>2/9</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <!-- O Que é a Janela do Sono -->
+                <h3>O Que é a Janela do Sono?</h3>
+                <p>A janela do sono é o tempo ideal que o bebê pode ficar acordado antes de precisar dormir novamente. Cada bebê tem sua própria janela, que varia de acordo com a idade e temperamento. Respeitar a janela do sono reduz a resistência ao sono e melhora a qualidade das sonecas.</p>
+                <p><strong>Por que importa:</strong> Quando o bebê ultrapassa sua janela de sono, o cortisol aumenta, dificultando o adormecer. Um bebê "overtired" (cansado demais) pode parecer hiperativo, mas na verdade está muito cansado. Isso cria um ciclo difícil de quebrar.</p>
+
+                <!-- Tabela: Janela do Sono -->
+                <h3>Tabela: Janela do Sono por Idade</h3>
+                <p>Use esta tabela como referência. Lembre-se: cada bebê é único, então sua janela pode variar alguns minutos.</p>
+
+                <div class="sleep-chart">
+                    <div class="chart-row">
+                        <div class="chart-label">0-1 mês</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar day" style="width: 20%;">40 min</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">1-2 meses</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar day" style="width: 25%;">40-60 min</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">2-3 meses</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar day" style="width: 30%;">60-80 min</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">3-4 meses</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar day" style="width: 35%;">60-90 min</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">4-6 meses</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar day" style="width: 45%;">1h15-1h45</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">6-8 meses</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar day" style="width: 60%;">2h00-2h30</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">9-12 meses</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar day" style="width: 75%;">2h30-4h00</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">13-18 meses</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar day" style="width: 80%;">3h30-4h00</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">18+ meses</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar day" style="width: 90%;">5h00-6h00</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sinais de Sono -->
+                <h3>Sinais de Sono</h3>
+                <p>Observar os sinais corretos é fundamental. Existem sinais iniciais (melhores momentos para colocar para dormir) e sinais tardios (o momento ideal já passou).</p>
+
+                <div class="tabs-container signal-tabs">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" onclick="switchTab(event, 'tab-initial')">Sinais Iniciais</button>
+                        <button class="tab-btn" onclick="switchTab(event, 'tab-late')">Sinais Tardios</button>
+                        <button class="tab-btn" onclick="switchTab(event, 'tab-extreme')">Cansaço Extremo</button>
+                    </div>
+
+                    <div id="tab-initial" class="tab-content active">
+                        <p><strong>Sinais Iniciais (Verde - Melhor Momento!)</strong></p>
+                        <p>Se você vir esses sinais, é hora de iniciar a rotina de dormir:</p>
+                        <ul>
+                            <li>Olhar vago ou fixo (parece distraído)</li>
+                            <li>Movimentos mais lentos que o normal</li>
+                            <li>Perda de interesse nas pessoas/brinquedos</li>
+                            <li>Primeiro bocejo (geralmente o mais confiável)</li>
+                            <li>Sobrancelhas avermelhadas ou puídas</li>
+                        </ul>
+                        <p><strong>Ação:</strong> Este é o melhor momento para iniciar a rotina de sono!</p>
+                    </div>
+
+                    <div id="tab-late" class="tab-content">
+                        <p><strong>Sinais Tardios (Amarelo - Cuidado!)</strong></p>
+                        <p>O momento ideal já está passando. Agora é mais difícil o bebê adormecer:</p>
+                        <ul>
+                            <li>Esfregando os olhos com as mãos</li>
+                            <li>Puxando as orelhas</li>
+                            <li>Irritabilidade ou fussiness</li>
+                            <li>Múltiplos bocejos seguidos</li>
+                            <li>Esfregando o rosto na mãe</li>
+                        </ul>
+                        <p><strong>Ação:</strong> Comece a rotina rapidamente, mas saiba que pode ser mais desafiador.</p>
+                    </div>
+
+                    <div id="tab-extreme" class="tab-content">
+                        <p><strong>Cansaço Extremo (Vermelho - Muito Tarde!)</strong></p>
+                        <p>O bebê passou da janela de sono. Agora cortisol está alto e adormecer é muito difícil:</p>
+                        <ul>
+                            <li>Choro inconsolável</li>
+                            <li>Arqueamento das costas (recusa em serem segurados)</li>
+                            <li>Hipervigilância ("second wind" - parecem acordados demais)</li>
+                            <li>Resistência ao sono mesmo cansado</li>
+                            <li>Comportamento agressivo ou muito agitado</li>
+                        </ul>
+                        <p><strong>Ação:</strong> Tente acalmar, conforte e espere pela próxima janela de sono.</p>
+                    </div>
+                </div>
+
+                <div class="dica-pratica">
+                    <div class="dica-pratica-header">
+                        <div class="dica-pratica-icon">👀</div>
+                        <div class="dica-pratica-label">Dica Prática: O Teste do Olhar</div>
+                    </div>
+                    <div class="dica-pratica-content">
+                        <p>Quando não tem certeza se seu bebê está cansado, faça o <strong>"teste do olhar"</strong>:</p>
+                        <ol>
+                            <li>Olhe nos olhos do bebê e sorria</li>
+                            <li>Se ele <strong>retribui o sorriso</strong> e mantém contato visual → ainda está alerto, pode esperar mais</li>
+                            <li>Se ele <strong>desvia o olhar</strong>, olha para longe ou não reage → o sono está chegando!</li>
+                            <li>Se ele <strong>esfrega os olhos ou fica irritado</strong> → já passou do ponto ideal, aja rápido</li>
+                        </ol>
+                        <p>Este teste funciona melhor entre 2-8 meses de idade. Combine com os sinais listados acima para maior precisão.</p>
+                    </div>
+                </div>
+
+                <div class="info-card warning">
+                    <div class="info-card-header">
+                        <span>⚠️</span>
+                        <span>Aviso Importante</span>
+                    </div>
+                    <p><strong>Irritação e choro são sinais TARDIOS!</strong> Se o bebê já está irritado e chorando, o momento ideal de dormir já passou. Comece a observar os sinais iniciais para evitar que chegue a esse ponto.</p>
+                </div>
+
+                <!-- Como Descobrir a Janela -->
+                <h3>Como Descobrir a Janela do Seu Bebê</h3>
+                <p>Cada bebê é único. Para descobrir a janela exata do seu bebê, recomendamos fazer um registro por 3-7 dias:</p>
+
+                <div class="checklist">
+                    <h4>Checklist de Observação</h4>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Hora que iniciou o ritual da soneca</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Hora exata que o bebê adormeceu</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Hora que o bebê acordou da soneca</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Hora que apresentou primeiro sinal de sono</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Número de despertares na madrugada</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Hora que acordou de manhã</div>
+                    </div>
+                </div>
+
+                <p>Com esses dados, você conseguirá identificar um padrão. Por exemplo: "meu bebê sempre mostra sinais de sono 90 minutos após acordar". Essa é sua janela!</p>
+
+                <!-- Fatores que Alteram a Janela -->
+                <h3>Fatores que Alteram a Janela</h3>
+
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Doenças e Infecções</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Quando o bebê está doente, fica mais sonolento e pode precisar dormir com mais frequência. A janela de sono diminui porque o corpo precisa de repouso para combater a infecção.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Mudanças na Rotina e Passeios</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Sair de casa, visitas, mudanças de ambiente - tudo isso causa estimulação extra. Bebês podem ficar mais cansados com essas atividades, tornando a janela de sono menor.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Sonecas Muito Curtas</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Se o bebê dormiu apenas 20 minutos, ele pode não estar totalmente descansado. A próxima janela de sono pode ser mais curta do que o normal porque ainda há cansaço.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Noites Mal Dormidas</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Se o bebê passou por uma noite de muitos despertares, pode estar muito cansado no dia seguinte. Espere por mais sinais de sono durante o dia e deixe-o dormir quando precisar.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Saltos de Desenvolvimento (Leaps)</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Durante períodos de desenvolvimento acelerado, bebês podem resistir à soneca e despertarem mais à noite. Sua janela de sono pode encurtar temporariamente. Isso geralmente passa em 1-2 semanas.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Gasto Energético Insuficiente</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Bebês que não se exercem o suficiente (falta de brincar, tummy time ou atividade) podem ter mais dificuldade para adormecer. Tempo ao ar livre e atividades físicas ajudam.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quiz -->
+                <h3>Teste seus Conhecimentos</h3>
+
+                <div class="quiz-section">
+                    <h4>Quiz</h4>
+                    <div class="quiz-question">O que acontece quando o bebê ultrapassa sua janela de sono?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectQuizOption(this, 1)">
+                            <span class="quiz-option-marker">A</span>
+                            <span>Ele fica mais calmo e dorme facilmente</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 2)">
+                            <span class="quiz-option-marker">B</span>
+                            <span>Os níveis de cortisol aumentam, dificultando o sono</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 3)">
+                            <span class="quiz-option-marker">C</span>
+                            <span>Não faz diferença</span>
+                        </div>
+                    </div>
+                    <button class="check-answer-btn" disabled onclick="checkAnswer(1, 2)">Verificar Resposta</button>
+                    <div id="quiz-feedback-1" class="quiz-feedback"></div>
+                </div>
+
+            </div>
+
+            <!-- Navigation -->
+            <div class="chapter-nav">
+                <a href="capitulo-01.html" class="nav-btn">← Capítulo Anterior</a>
+                <a href="capitulo-03.html" class="nav-btn primary">Próximo Capítulo →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating stars
+        function createStars() {
+            const container = document.getElementById('stars');
+            if (!container) return;
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.width = (Math.random() * 3 + 2) + 'px';
+                star.style.height = star.style.width;
+                container.appendChild(star);
+            }
+        }
+        createStars();
+
+        // Progress bar
+        window.addEventListener('scroll', () => {
+            const progressBar = document.getElementById('progressBar');
+            if (!progressBar) return;
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            progressBar.style.width = scrollPercent + '%';
+        });
+
+        // Tab switching
+        function switchTab(event, tabId) {
+            const container = event.target.closest('.tabs-container');
+            if (!container) return;
+            container.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            container.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            event.target.classList.add('active');
+            const tab = container.querySelector('#' + tabId);
+            if (tab) tab.classList.add('active');
+        }
+
+        // Accordion
+        function toggleAccordion(header) {
+            if (!header || !header.parentElement) return;
+            const item = header.parentElement;
+            const wasOpen = item.classList.contains('open');
+            const parent = item.parentElement;
+            if (parent) {
+                parent.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('open');
+                });
+            }
+            if (!wasOpen) {
+                item.classList.add('open');
+            }
+        }
+
+        // Checklist
+        function toggleChecklist(item) {
+            if (!item) return;
+            item.classList.toggle('checked');
+        }
+
+        // Quiz functionality
+        let selectedAnswers = {};
+
+        function selectQuizOption(option, value) {
+            if (!option) return;
+            const quizSection = option.closest('.quiz-section');
+            if (!quizSection) return;
+            const options = quizSection.querySelectorAll('.quiz-option');
+            const checkBtn = quizSection.querySelector('.check-answer-btn');
+
+            options.forEach(opt => opt.classList.remove('selected', 'correct', 'incorrect'));
+            option.classList.add('selected');
+
+            const feedback = quizSection.querySelector('.quiz-feedback');
+            if (feedback) {
+                const quizId = feedback.id.split('-')[2];
+                selectedAnswers[quizId] = value;
+            }
+            if (checkBtn) checkBtn.disabled = false;
+            if (feedback) feedback.classList.remove('show');
+        }
+
+        function checkAnswer(quizId, correctAnswer) {
+            const feedback = document.getElementById('quiz-feedback-' + quizId);
+            if (!feedback) return;
+            const quizSection = feedback.closest('.quiz-section');
+            if (!quizSection) return;
+            const options = quizSection.querySelectorAll('.quiz-option');
+            const selectedValue = selectedAnswers[quizId];
+
+            options.forEach((opt, index) => {
+                if (index + 1 === selectedValue) {
+                    if (selectedValue === correctAnswer) {
+                        opt.classList.add('correct');
+                    } else {
+                        opt.classList.add('incorrect');
+                    }
+                }
+                if (index + 1 === correctAnswer) {
+                    opt.classList.add('correct');
+                }
+            });
+
+            if (selectedValue === correctAnswer) {
+                feedback.className = 'quiz-feedback show correct';
+                feedback.innerHTML = '✅ Correto! Parabéns!';
+            } else {
+                feedback.className = 'quiz-feedback show incorrect';
+                feedback.innerHTML = '❌ Não é bem isso. A resposta correta está destacada acima.';
+            }
+
+            const checkBtn = quizSection.querySelector('.check-answer-btn');
+            if (checkBtn) checkBtn.disabled = true;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createStars();
+        });
+    </script>
+</body>
+</html>

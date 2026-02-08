@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capítulo 3 — Rituais e Higiene do Sono | Sonhos Doces</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FDF8F3;
+            --soft-peach: #FFEEE4;
+            --blush: #F5D5C8;
+            --lavender: #E8E0F0;
+            --soft-blue: #D4E5F7;
+            --sage: #D5E5D8;
+            --warm-gray: #9B8E8A;
+            --deep-plum: #4A3F55;
+            --moon-gold: #E8C87D;
+            --night-blue: #2C3E50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--deep-plum);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--moon-gold);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, var(--cream) 0%, transparent 100%);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--deep-plum);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--blush), var(--lavender), var(--soft-blue));
+            width: 0%;
+            z-index: 101;
+            transition: width 0.3s ease;
+        }
+
+        nav { display: flex; gap: 2rem; }
+
+        nav a {
+            text-decoration: none;
+            color: var(--warm-gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        nav a:hover { color: var(--deep-plum); }
+
+        .lesson-container {
+            background: linear-gradient(135deg, var(--soft-peach) 0%, var(--lavender) 50%, var(--soft-blue) 100%);
+            min-height: 100vh;
+            padding: 6rem 2rem 2rem;
+        }
+
+        .lesson-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            padding: 3rem;
+            box-shadow: 0 30px 60px rgba(74, 63, 85, 0.15);
+        }
+
+        .lesson-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--soft-peach);
+        }
+
+        .lesson-module-label {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--lavender);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .lesson-progress {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--warm-gray);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .lesson-progress-bar {
+            width: 150px;
+            height: 4px;
+            background: var(--soft-peach);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .lesson-progress-fill {
+            height: 100%;
+            background: var(--deep-plum);
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+
+        .lesson-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .lesson-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin: 2.5rem 0 1rem;
+            color: var(--deep-plum);
+        }
+
+        .lesson-content p {
+            margin-bottom: 1.5rem;
+            color: #5a4a5a;
+        }
+
+        .info-card {
+            background: var(--cream);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--moon-gold);
+        }
+
+        .info-card.tip {
+            border-left-color: var(--sage);
+            background: linear-gradient(135deg, #f0f7f1 0%, var(--cream) 100%);
+        }
+
+        .info-card.warning {
+            border-left-color: var(--blush);
+            background: linear-gradient(135deg, #fef5f2 0%, var(--cream) 100%);
+        }
+
+        .info-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .info-card p { margin: 0; font-size: 0.95rem; }
+
+        .checklist {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .checklist h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(155, 142, 138, 0.2);
+            cursor: pointer;
+        }
+
+        .checklist-item:last-child { border-bottom: none; }
+
+        .checklist-checkbox {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            border: 2px solid var(--warm-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            color: transparent;
+        }
+
+        .checklist-item.checked .checklist-checkbox {
+            background: var(--sage);
+            border-color: var(--sage);
+            color: white;
+        }
+
+        .checklist-item.checked .checklist-text {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        .accordion { margin: 2rem 0; }
+
+        .accordion-item {
+            background: var(--cream);
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover { background: var(--soft-peach); }
+
+        .accordion-icon { transition: transform 0.3s ease; }
+        .accordion-item.open .accordion-icon { transform: rotate(180deg); }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 1.5rem;
+        }
+
+        .accordion-item.open .accordion-content {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .sleep-chart {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .sleep-chart h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .chart-row {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .chart-label { font-size: 0.9rem; font-weight: 500; }
+
+        .chart-bar-container {
+            background: white;
+            border-radius: 8px;
+            height: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-bar {
+            height: 100%;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 1rem;
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: width 1s ease;
+        }
+
+        .chart-bar.night { background: linear-gradient(90deg, var(--night-blue), #4a6fa5); }
+        .chart-bar.day { background: linear-gradient(90deg, var(--moon-gold), #f0d78c); color: var(--deep-plum); }
+
+        .quiz-section {
+            background: linear-gradient(135deg, var(--lavender) 0%, var(--soft-blue) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .quiz-section h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-question { font-weight: 500; margin-bottom: 1rem; }
+
+        .quiz-options { display: flex; flex-direction: column; gap: 0.75rem; }
+
+        .quiz-option {
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .quiz-option:hover { border-color: var(--deep-plum); }
+        .quiz-option.selected { border-color: var(--deep-plum); background: var(--cream); }
+        .quiz-option.correct { border-color: #4caf50; background: #e8f5e9; }
+        .quiz-option.incorrect { border-color: #f44336; background: #ffebee; }
+
+        .quiz-option-marker {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid var(--warm-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .quiz-option.selected .quiz-option-marker {
+            border-color: var(--deep-plum);
+            background: var(--deep-plum);
+            color: white;
+        }
+
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 12px;
+            display: none;
+        }
+
+        .quiz-feedback.show { display: block; animation: fadeInUp 0.3s ease; }
+        .quiz-feedback.correct { background: #e8f5e9; color: #2e7d32; }
+        .quiz-feedback.incorrect { background: #ffebee; color: #c62828; }
+
+        .check-answer-btn {
+            margin-top: 1rem;
+            padding: 0.75rem 2rem;
+            background: var(--deep-plum);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .check-answer-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 63, 85, 0.3);
+        }
+
+        .check-answer-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+        .chapter-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--soft-peach);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--cream);
+            border: none;
+            border-radius: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--deep-plum);
+            text-decoration: none;
+        }
+
+        .nav-btn:hover { background: var(--soft-peach); }
+        .nav-btn.primary { background: var(--deep-plum); color: white; }
+        .nav-btn.primary:hover { background: #3a3045; }
+
+        .chapter-nav-center {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .chapter-nav-center a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--lavender);
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--deep-plum);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .chapter-nav-center a:hover {
+            background: var(--blush);
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Dica Prática - Elemento diferenciado */
+        .dica-pratica {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 50%, #f5f0ff 100%);
+            border-radius: 20px;
+            padding: 1.75rem;
+            margin: 2rem 0;
+            border: 2px dashed var(--moon-gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dica-pratica::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(232, 200, 125, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .dica-pratica-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .dica-pratica-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--moon-gold), #f0d78c);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .dica-pratica-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--deep-plum);
+        }
+
+        .dica-pratica-content {
+            color: #5a4a5a;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .dica-pratica-content p { margin-bottom: 0.75rem; }
+        .dica-pratica-content p:last-child { margin-bottom: 0; }
+        .dica-pratica-content ol, .dica-pratica-content ul { margin-left: 1.5rem; margin-bottom: 0.75rem; }
+        .dica-pratica-content li { margin-bottom: 0.5rem; }
+        .dica-pratica-content strong { color: var(--deep-plum); }
+
+        @media (max-width: 768px) {
+            header { padding: 1rem 1.5rem; }
+            nav { display: none; }
+            .lesson-wrapper { padding: 1.5rem; border-radius: 24px; }
+            .chart-row { grid-template-columns: 1fr; gap: 0.5rem; }
+            .chapter-nav { flex-direction: column; gap: 1rem; }
+            .nav-btn { width: 100%; justify-content: center; }
+            .chapter-nav-center { width: 100%; }
+            .chapter-nav-center a { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="stars-container" id="stars"></div>
+
+    <header>
+        <div class="logo">
+            <span>🌙</span>
+            Sonhos Doces
+        </div>
+        <nav>
+            <a href="index.html">Capítulos</a>
+            <a href="index.html">Início</a>
+        </nav>
+    </header>
+
+    <div class="lesson-container">
+        <div class="lesson-wrapper">
+            <div class="lesson-header">
+                <span class="lesson-module-label">Capítulo 3</span>
+                <h2>Rituais e Higiene do Sono</h2>
+                <div class="lesson-progress">
+                    <span>Progresso:</span>
+                    <div class="lesson-progress-bar">
+                        <div class="lesson-progress-fill" style="width: 33.3%"></div>
+                    </div>
+                    <span>3/9</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Higiene do Sono</h3>
+                <p>A higiene do sono é a preparação para o repouso — uma transição importante do dia ativo e agitado para um ritmo calmo e tranquilo. Essa mudança é essencial para bebês, crianças e adultos. Quando estabelecemos uma boa higiene do sono, sinalizamos ao corpo que é hora de relaxar e se preparar para dormir.</p>
+
+                <div class="checklist">
+                    <h4>Para Fazer a Higiene do Sono, Evite:</h4>
+                    <div class="checklist-item">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Receber visitas após as 18h</div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Brinquedos que emitam sons e luzes</div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Aparelhos eletrônicos (celular, tablet, TV) — interromper 3 horas antes de dormir</div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Luzes brancas ou azuis (bloqueiam melatonina)</div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Brincadeiras agitadas</div>
+                    </div>
+                </div>
+
+                <div class="info-card tip">
+                    <div class="info-card-header">
+                        <span>💡</span>
+                        <strong>Dica importante</strong>
+                    </div>
+                    <p>A higiene do sono é a mudança de ritmo da casa, mostrando ao seu filho que a noite é um momento tranquilo e calmo.</p>
+                </div>
+
+                <h3>O Ritual Noturno</h3>
+                <p>Um ritual noturno é uma sequência de atividades realizadas todos os dias, sempre na mesma ordem e no mesmo horário. Essa consistência ajuda o bebê a associar essas ações ao horário de dormir. Quanto mais consistente for o ritual, mais rápido o bebê se adapta e reconhece que é hora de preparar o corpo para o sono.</p>
+
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <span>✨</span>
+                        <strong>Conexão afetiva</strong>
+                    </div>
+                    <p>O ritual noturno é uma excelente oportunidade para fortalecer a conexão afetiva entre pais e filhos.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <span>🎯</span>
+                        <strong>Reflexão importante</strong>
+                    </div>
+                    <p>Imagine seu filho prestes a fechar os olhos. Qual expressão você quer que ele guarde na memória? Uma fisionomia amorosa ou uma expressão impaciente?</p>
+                </div>
+
+                <h3>Exemplos de Atividades do Ritual</h3>
+
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Banho Relaxante</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>O banho é altamente recomendado e marca a transição importante do dia para a noite. Um banho morno e relaxante com movimentos suaves acalma o sistema nervoso do bebê e o prepara para o sono. A temperatura da água deve ser agradável, em torno de 37°C.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Massagem</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>A massagem reduz o estresse e fortalece o vínculo entre pais e filhos. Movimentos suaves e circulares podem ser muito relaxantes. O óleo de lavanda (diluído em óleo de coco) é especialmente recomendado por suas propriedades calmantes. Use sempre óleos seguros para bebês.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Envolver o Bebê (Swaddling)</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Para bebês de 0 a 4 meses, o envolvimento (swaddle) ou saco de dormir é altamente seguro e reconfortante. Oferece uma sensação semelhante à do útero. Para bebês maiores, um saco de dormir é mais seguro do que mantas soltas, que podem ser um risco para a segurança.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Amamentação</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>A amamentação antes da janela de sono é eficaz e reconfortante. Realize em um ambiente calmo, com luz reduzida e atmosfera tranquila. Isso combina nutrição com conforto emocional, sinalizando ao bebê que é hora de dormir.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Leitura ou Música</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Leia ou cante com uma voz suave e calmante. Use a mesma música ou história toda noite para criar uma associação com o sono. Evite livros estimulantes ou animados que possam despertar o interesse do bebê. Opte por histórias tranquilas e previsíveis.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Ruído Branco</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Sons ambientes mascaram ruídos externos inesperados e ajudam o bebê a adormecer. Pesquisas recentes indicam que <strong>sons da natureza</strong> (chuva, rio, ondas do mar, vento nas folhas) são mais seguros e igualmente eficazes que o ruído branco puro.</p>
+                            <p style="margin-top: 0.75rem;"><strong>Por que sons da natureza?</strong> Estudos mostram que ruído branco puro em volume alto pode prejudicar a audição em desenvolvimento do bebê. Sons naturais são mais suaves, variados e seguros para uso prolongado.</p>
+                            <p style="margin-top: 0.75rem;"><strong>Regras de segurança:</strong> Manter a 2+ metros de distância do bebê. Volume máximo: 50 decibéis (nível de conversa tranquila). Desligar ou reduzir volume após o bebê adormecer.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dica-pratica">
+                    <div class="dica-pratica-header">
+                        <div class="dica-pratica-icon">🎵</div>
+                        <div class="dica-pratica-label">Dica Prática: Sons para o Sono</div>
+                    </div>
+                    <div class="dica-pratica-content">
+                        <p><strong>Melhores sons da natureza para bebês:</strong></p>
+                        <ol>
+                            <li><strong>Chuva suave</strong> — som constante e reconfortante, ótimo para recém-nascidos</li>
+                            <li><strong>Ondas do mar</strong> — ritmo natural que imita a respiração, excelente para todas as idades</li>
+                            <li><strong>Rio ou córrego</strong> — fluxo contínuo sem variações bruscas</li>
+                            <li><strong>Vento suave nas folhas</strong> — delicado e calmante</li>
+                        </ol>
+                        <p><strong>Evite:</strong> Sons com variações bruscas (trovões, pássaros com cantos altos), músicas com letras, e ruído branco puro em volume alto por períodos prolongados.</p>
+                    </div>
+                </div>
+
+                <div class="dica-pratica">
+                    <div class="dica-pratica-header">
+                        <div class="dica-pratica-icon">📋</div>
+                        <div class="dica-pratica-label">Dica Prática: Montando seu Ritual em 5 Passos</div>
+                    </div>
+                    <div class="dica-pratica-content">
+                        <ol>
+                            <li><strong>Escolha 3-4 atividades</strong> que se encaixem na sua rotina (ex: banho → massagem → amamentação → canção)</li>
+                            <li><strong>Defina um horário fixo</strong> para iniciar (30-45 min antes da hora de dormir)</li>
+                            <li><strong>Reduza estímulos progressivamente</strong> — comece no banheiro (luz normal), vá para o quarto (luz baixa), termine no berço (escuro)</li>
+                            <li><strong>Use as mesmas palavras</strong> todas as noites: "Hora de dormir, boa noite" — essa frase se torna um gatilho para o sono</li>
+                            <li><strong>Seja consistente por pelo menos 2 semanas</strong> antes de avaliar se o ritual está funcionando</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <h3>Onde e Quando Fazer o Ritual</h3>
+                <p>O ritual pode começar em qualquer cômodo da casa, mas deve TERMINAR sempre no quarto onde o bebê vai dormir. Isso sinaliza que estamos chegando ao final e que o sono está próximo. A consistência é fundamental, mas você pode adicionar novas atividades conforme o bebê cresce e se desenvolve.</p>
+
+                <div class="sleep-chart">
+                    <h4>Horário para Iniciar o Ritual</h4>
+                    <div class="chart-row">
+                        <div class="chart-label">0-2 meses</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar night" style="width: 95%">~20h</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">2-3 meses</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar night" style="width: 93%">~19h30</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">4+ meses</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar night" style="width: 90%">~19h</div>
+                        </div>
+                    </div>
+                    <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--warm-gray);">Os horários variam conforme a idade. Bebês mais novos dormem mais horas e precisam de rituais mais cedo. O importante é manter a consistência diariamente.</p>
+                </div>
+
+                <h3>Previsibilidade e Rotina</h3>
+                <p>A repetição traz segurança. Bebês não gostam de surpresas — eles preferem previsibilidade. Quando uma sequência é sempre a mesma, o corpo do bebê começa a antecipar o que vem a seguir e se prepara naturalmente para o sono. Mantenha a mesma sequência de atividades todos os dias. Essa consistência é mais importante do que o tipo específico de atividade que você escolhe.</p>
+
+                <div class="quiz-section">
+                    <h4>Teste seus Conhecimentos</h4>
+                    <div class="quiz-question">Qual é o objetivo principal do ritual noturno?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectQuizOption(this, 1)">
+                            <span class="quiz-option-marker">A</span>
+                            <span>Cansar o bebê para que durma mais rápido</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 2)">
+                            <span class="quiz-option-marker">B</span>
+                            <span>Preparar gradualmente o bebê para o sono, trazendo previsibilidade e segurança</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 3)">
+                            <span class="quiz-option-marker">C</span>
+                            <span>Dar banho no bebê</span>
+                        </div>
+                    </div>
+                    <button class="check-answer-btn" onclick="checkAnswer(1, 2)" disabled>Verificar Resposta</button>
+                    <div class="quiz-feedback" id="quiz-feedback-1"></div>
+                </div>
+            </div>
+
+            <div class="chapter-nav">
+                <a href="capitulo-02.html" class="nav-btn">← Capítulo Anterior</a>
+                <div class="chapter-nav-center">
+                    <a href="index.html">Capítulos</a>
+                    <a href="index.html">Início</a>
+                </div>
+                <a href="capitulo-04.html" class="nav-btn primary">Próximo Capítulo →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating stars
+        function createStars() {
+            const container = document.getElementById('stars');
+            if (!container) return;
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.width = (Math.random() * 3 + 2) + 'px';
+                star.style.height = star.style.width;
+                container.appendChild(star);
+            }
+        }
+        createStars();
+
+        // Progress bar
+        window.addEventListener('scroll', () => {
+            const progressBar = document.getElementById('progressBar');
+            if (!progressBar) return;
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            progressBar.style.width = scrollPercent + '%';
+        });
+
+        // Accordion
+        function toggleAccordion(header) {
+            if (!header || !header.parentElement) return;
+            const item = header.parentElement;
+            const wasOpen = item.classList.contains('open');
+            const parent = item.parentElement;
+            if (parent) {
+                parent.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('open');
+                });
+            }
+            if (!wasOpen) {
+                item.classList.add('open');
+            }
+        }
+
+        // Checklist
+        function toggleChecklist(item) {
+            if (!item) return;
+            item.classList.toggle('checked');
+        }
+
+        // Quiz functionality
+        let selectedAnswers = {};
+
+        function selectQuizOption(option, value) {
+            if (!option) return;
+            const quizSection = option.closest('.quiz-section');
+            if (!quizSection) return;
+            const options = quizSection.querySelectorAll('.quiz-option');
+            const checkBtn = quizSection.querySelector('.check-answer-btn');
+
+            options.forEach(opt => opt.classList.remove('selected', 'correct', 'incorrect'));
+            option.classList.add('selected');
+
+            const feedback = quizSection.querySelector('.quiz-feedback');
+            if (feedback) {
+                const quizId = feedback.id.split('-')[2];
+                selectedAnswers[quizId] = value;
+            }
+            if (checkBtn) checkBtn.disabled = false;
+            if (feedback) feedback.classList.remove('show');
+        }
+
+        function checkAnswer(quizId, correctAnswer) {
+            const feedback = document.getElementById('quiz-feedback-' + quizId);
+            if (!feedback) return;
+            const quizSection = feedback.closest('.quiz-section');
+            if (!quizSection) return;
+            const options = quizSection.querySelectorAll('.quiz-option');
+            const selectedValue = selectedAnswers[quizId];
+
+            options.forEach((opt, index) => {
+                if (index + 1 === selectedValue) {
+                    if (selectedValue === correctAnswer) {
+                        opt.classList.add('correct');
+                    } else {
+                        opt.classList.add('incorrect');
+                    }
+                }
+                if (index + 1 === correctAnswer) {
+                    opt.classList.add('correct');
+                }
+            });
+
+            if (selectedValue === correctAnswer) {
+                feedback.className = 'quiz-feedback show correct';
+                feedback.innerHTML = '✅ Correto! Parabéns!';
+            } else {
+                feedback.className = 'quiz-feedback show incorrect';
+                feedback.innerHTML = '❌ Não é bem isso. A resposta correta está destacada acima.';
+            }
+
+            const checkBtn = quizSection.querySelector('.check-answer-btn');
+            if (checkBtn) checkBtn.disabled = true;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createStars();
+        });
+    </script>
+</body>
+</html>

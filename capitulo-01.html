@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capítulo 1 — Fundamentos do Sono | Sonhos Doces</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FDF8F3;
+            --soft-peach: #FFEEE4;
+            --blush: #F5D5C8;
+            --lavender: #E8E0F0;
+            --soft-blue: #D4E5F7;
+            --sage: #D5E5D8;
+            --warm-gray: #9B8E8A;
+            --deep-plum: #4A3F55;
+            --moon-gold: #E8C87D;
+            --night-blue: #2C3E50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--deep-plum);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--moon-gold);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, var(--cream) 0%, transparent 100%);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--deep-plum);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--blush), var(--lavender), var(--soft-blue));
+            width: 0%;
+            z-index: 101;
+            transition: width 0.3s ease;
+        }
+
+        nav { display: flex; gap: 2rem; }
+
+        nav a {
+            text-decoration: none;
+            color: var(--warm-gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        nav a:hover { color: var(--deep-plum); }
+
+        .lesson-container {
+            background: linear-gradient(135deg, var(--soft-peach) 0%, var(--lavender) 50%, var(--soft-blue) 100%);
+            min-height: 100vh;
+            padding: 6rem 2rem;
+        }
+
+        .lesson-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            padding: 3rem;
+            box-shadow: 0 30px 60px rgba(74, 63, 85, 0.15);
+        }
+
+        .lesson-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--soft-peach);
+        }
+
+        .lesson-module-label {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--lavender);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .lesson-progress {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--warm-gray);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .lesson-progress-bar {
+            width: 150px;
+            height: 4px;
+            background: var(--soft-peach);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .lesson-progress-fill {
+            height: 100%;
+            background: var(--deep-plum);
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+
+        .lesson-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .lesson-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin: 2.5rem 0 1rem;
+            color: var(--deep-plum);
+        }
+
+        .lesson-content p {
+            margin-bottom: 1.5rem;
+            color: #5a4a5a;
+        }
+
+        .lesson-content ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .lesson-content li {
+            margin-bottom: 0.75rem;
+            color: #5a4a5a;
+        }
+
+        .lesson-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-card {
+            background: var(--cream);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--moon-gold);
+        }
+
+        .info-card.tip {
+            border-left-color: var(--sage);
+            background: linear-gradient(135deg, #f0f7f1 0%, var(--cream) 100%);
+        }
+
+        .info-card.warning {
+            border-left-color: var(--blush);
+            background: linear-gradient(135deg, #fef5f2 0%, var(--cream) 100%);
+        }
+
+        .info-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .info-card p { margin: 0; font-size: 0.95rem; }
+
+        .tabs-container { margin: 2rem 0; }
+
+        .tabs-header {
+            display: flex;
+            gap: 0.5rem;
+            border-bottom: 2px solid var(--soft-peach);
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--warm-gray);
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--deep-plum);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .tab-btn.active { color: var(--deep-plum); }
+        .tab-btn.active::after { transform: scaleX(1); }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeInUp 0.4s ease; }
+
+        .accordion { margin: 2rem 0; }
+
+        .accordion-item {
+            background: var(--cream);
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover { background: var(--soft-peach); }
+
+        .accordion-icon { transition: transform 0.3s ease; }
+        .accordion-item.open .accordion-icon { transform: rotate(180deg); }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 1.5rem;
+        }
+
+        .accordion-item.open .accordion-content {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .accordion-content p {
+            color: #5a4a5a;
+            margin-bottom: 0.75rem;
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, var(--lavender) 0%, var(--soft-blue) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .quiz-section h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-question { font-weight: 500; margin-bottom: 1rem; }
+
+        .quiz-options { display: flex; flex-direction: column; gap: 0.75rem; }
+
+        .quiz-option {
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .quiz-option:hover { border-color: var(--deep-plum); }
+        .quiz-option.selected { border-color: var(--deep-plum); background: var(--cream); }
+        .quiz-option.correct { border-color: #4caf50; background: #e8f5e9; }
+        .quiz-option.incorrect { border-color: #f44336; background: #ffebee; }
+
+        .quiz-option-marker {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid var(--warm-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .quiz-option.selected .quiz-option-marker {
+            border-color: var(--deep-plum);
+            background: var(--deep-plum);
+            color: white;
+        }
+
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 12px;
+            display: none;
+        }
+
+        .quiz-feedback.show { display: block; animation: fadeInUp 0.3s ease; }
+        .quiz-feedback.correct { background: #e8f5e9; color: #2e7d32; }
+        .quiz-feedback.incorrect { background: #ffebee; color: #c62828; }
+
+        .check-answer-btn {
+            margin-top: 1rem;
+            padding: 0.75rem 2rem;
+            background: var(--deep-plum);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .check-answer-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 63, 85, 0.3);
+        }
+
+        .check-answer-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+        .chapter-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--soft-peach);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--cream);
+            border: none;
+            border-radius: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--deep-plum);
+            text-decoration: none;
+        }
+
+        .nav-btn:hover { background: var(--soft-peach); }
+        .nav-btn.primary { background: var(--deep-plum); color: white; }
+        .nav-btn.primary:hover { background: #3a3045; }
+
+        .chapter-nav-center {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .chapter-nav-center a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--lavender);
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--deep-plum);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .chapter-nav-center a:hover {
+            background: var(--blush);
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Dica Prática - Elemento diferenciado */
+        .dica-pratica {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 50%, #f5f0ff 100%);
+            border-radius: 20px;
+            padding: 1.75rem;
+            margin: 2rem 0;
+            border: 2px dashed var(--moon-gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dica-pratica::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(232, 200, 125, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .dica-pratica-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .dica-pratica-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--moon-gold), #f0d78c);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .dica-pratica-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--deep-plum);
+        }
+
+        .dica-pratica-content {
+            color: #5a4a5a;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .dica-pratica-content p { margin-bottom: 0.75rem; }
+        .dica-pratica-content p:last-child { margin-bottom: 0; }
+        .dica-pratica-content ol, .dica-pratica-content ul { margin-left: 1.5rem; margin-bottom: 0.75rem; }
+        .dica-pratica-content li { margin-bottom: 0.5rem; }
+        .dica-pratica-content strong { color: var(--deep-plum); }
+
+        @media (max-width: 768px) {
+            header { padding: 1rem 1.5rem; }
+            nav { display: none; }
+            .lesson-wrapper { padding: 1.5rem; border-radius: 24px; }
+            .chapter-nav { flex-direction: column; gap: 1rem; }
+            .nav-btn { width: 100%; justify-content: center; }
+            .chapter-nav-center { width: 100%; }
+            .chapter-nav-center a { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="stars-container" id="stars"></div>
+
+    <header>
+        <div class="logo">
+            <span>🌙</span>
+            Sonhos Doces
+        </div>
+        <nav>
+            <a href="index.html">Capítulos</a>
+            <a href="index.html">Início</a>
+        </nav>
+    </header>
+
+    <div class="lesson-container">
+        <div class="lesson-wrapper">
+            <div class="lesson-header">
+                <div class="lesson-module-label">Capítulo 1</div>
+                <h2>Fundamentos do Sono</h2>
+                <div class="lesson-progress">
+                    <span>Progresso:</span>
+                    <div class="lesson-progress-bar">
+                        <div class="lesson-progress-fill" style="width: 11.1%;"></div>
+                    </div>
+                    <span>1/9</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <!-- O Que é o Sono -->
+                <h3>O Que é o Sono?</h3>
+                <p>O sono é uma necessidade fundamental, assim como comer e beber. É um estado comportamental reversível que pode ser modificado através de mudanças de hábito. Nossa rotina impacta diretamente a qualidade do sono, e o mesmo se aplica aos bebês: uma rotina adequada resulta em sono melhor.</p>
+
+                <ul>
+                    <li>O sono é tão essencial quanto alimentação e hidratação</li>
+                    <li>É um estado reversível que pode ser modificado através de hábitos</li>
+                    <li>Nossa rotina impacta diretamente a qualidade do sono</li>
+                    <li>Bebês também beneficiam de uma rotina adequada para dormir melhor</li>
+                </ul>
+
+                <!-- Fases do Sono -->
+                <h3>Fases do Sono: REM e Não-REM</h3>
+
+                <div class="tabs-container">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" onclick="switchTab(event, 'tab-rem')">Sono REM</button>
+                        <button class="tab-btn" onclick="switchTab(event, 'tab-nrem')">Sono Não-REM</button>
+                    </div>
+
+                    <div id="tab-rem" class="tab-content active">
+                        <p><strong>Sono REM (Rapid Eye Movement)</strong></p>
+                        <ul>
+                            <li>Os olhos se movem rapidamente</li>
+                            <li>Atividade cerebral intensa</li>
+                            <li>Fase em que ocorrem os sonhos</li>
+                            <li>Respiração irregular</li>
+                            <li>O bebê pode sorrir, fazer sons ou parecer agitado</li>
+                        </ul>
+                        <div class="info-card warning">
+                            <div class="info-card-header">
+                                <span>⚠️</span>
+                                <span>Importante</span>
+                            </div>
+                            <p>Os bebês fazem sons e movimentos durante o sono REM - isso não significa que estão acordados! Aguarde choro real antes de intervir.</p>
+                        </div>
+                    </div>
+
+                    <div id="tab-nrem" class="tab-content">
+                        <p><strong>Sono Não-REM (NREM)</strong></p>
+                        <ul>
+                            <li>Fase do repouso mais profundo</li>
+                            <li>Atividade cerebral reduzida</li>
+                            <li>Respiração regular e previsível</li>
+                            <li>Recuperação física e cognitiva</li>
+                            <li>O bebê permanece calmo e relaxado</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ciclo de Sono do Bebê -->
+                <h3>Ciclo de Sono do Bebê</h3>
+
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <span>📊</span>
+                        <span>Os 5 Estágios do Ciclo</span>
+                    </div>
+                    <p><strong>Estágio 1:</strong> Transição entre estar acordado e dormindo. O bebê está começando a dormir.</p>
+                    <p><strong>Estágio 2:</strong> O sono profundo começa. O bebê está cada vez mais adormecido.</p>
+                    <p><strong>Estágio 3:</strong> Sono profundo. Este é o repouso mais reparador.</p>
+                    <p><strong>Estágio 4:</strong> Sono REM/leve. O bebê pode se mover e fazer sons.</p>
+                    <p><strong>Estágio 5:</strong> Despertar parcial. O bebê está entre o sono e acordar, fácil de despertar.</p>
+                </div>
+
+                <p><strong>Por que isso importa:</strong> Os bebês frequentemente acordam quando são colocados no berço porque estão no estágio errado do ciclo de sono! A solução é esperar 10-20 minutos até atingir o estágio 2 (sono profundo) antes de transferir o bebê.</p>
+
+                <div class="info-card warning">
+                    <div class="info-card-header">
+                        <span>💡</span>
+                        <span>Diferença Importante</span>
+                    </div>
+                    <p><strong>Bebês:</strong> 50% em NREM e 50% em REM | <strong>Adultos:</strong> 75% em NREM e 25% em REM</p>
+                    <p>Não compare o sono do bebê com o sono do adulto! Os bebês têm muito mais sono REM, o que é completamente normal e necessário para o desenvolvimento.</p>
+                </div>
+
+                <!-- Por Que Dormimos -->
+                <h3>Por Que Dormimos?</h3>
+
+                <p>O sono não é apenas descanso - é quando o corpo realiza funções cruciais para desenvolvimento e saúde:</p>
+
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>1. Desenvolvimento e Maturação do Cérebro</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Durante o sono, especialmente o sono REM, o cérebro do bebê se desenvolve e amadurece. Conexões neurais são fortalecidas e organizadas. Sono inadequado pode prejudicar o desenvolvimento cognitivo e emocional.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>2. Modulação da Defesa Imunológica</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>O sono é quando o sistema imunológico se fortalece. Durante o repouso, o corpo produz citocinas que combatem infecções. Bebês que dormem bem têm imunidade mais forte.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>3. Consolidação da Memória e Atenção</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Memórias aprendidas durante o dia são consolidadas durante o sono. O bebê processa tudo que experimentou e armazena como aprendizado. Sem sono adequado, essa consolidação não ocorre eficientemente.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>4. Conservação de Energia</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>O metabolismo diminui durante o sono, economizando energia. O corpo redireciona recursos para crescimento e reparação de tecidos em vez de consumir energia com atividade.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>5. Desintoxicação</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Durante o sono profundo, o cérebro ativa o sistema glinfático, que remove resíduos metabólicos e toxinas. Esse processo é essencial para saúde cerebral de longo prazo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hormônios do Sono -->
+                <h3>Hormônios que Influenciam o Sono</h3>
+
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Melatonina — "O Hormônio do Sono"</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>A melatonina sinaliza ao corpo que é hora de dormir. É produzida com a escuridão. Por isso, é fundamental evitar luzes (telefones, telas, luzes acesas) enquanto o bebê dorme. Até luzes noturnas podem interferir na produção de melatonina.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Cortisol — "O Despertador do Corpo"</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>O cortisol nos acorda e nos mantém alertos. Aumenta com telas antes de dormir e em bebês overtired (cansados demais). Quando o bebê está extremamente cansado, o cortisol aumenta, tornando mais difícil dormir - um ciclo vicioso que precisamos evitar.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>GH (Hormônio do Crescimento)</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>90% do hormônio do crescimento é liberado durante o sono na infância. É essencial para crescimento físico e desenvolvimento cognitivo. Sono inadequado prejudica não apenas o crescimento físico, mas também desenvolvimento intelectual.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Leptina — "O Hormônio da Saciedade"</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>A leptina controla a fome e a saciedade. Sono ruim = menos leptina = mais fome. Essa é uma razão pela qual bebês que dormem pouco podem parecer sempre famintos e têm risco aumentado de obesidade.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ritmo Circadiano -->
+                <h3>O Ritmo Circadiano do Bebê</h3>
+                <p>O ritmo circadiano é o "relógio biológico" interno que regula os ciclos de sono e vigília em um período de aproximadamente 24 horas. Nos bebês, esse relógio ainda está em desenvolvimento, e entender essa evolução é fundamental para ajudar seu filho a dormir melhor.</p>
+
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <span>🕐</span>
+                        <span>Timeline do Desenvolvimento Circadiano</span>
+                    </div>
+                    <p><strong>~8 semanas:</strong> O ritmo do cortisol começa a se desenvolver</p>
+                    <p><strong>~9 semanas:</strong> Início da produção de melatonina pelo bebê</p>
+                    <p><strong>~11 semanas:</strong> O ritmo de temperatura corporal se estabelece</p>
+                    <p><strong>~16 semanas (4 meses):</strong> O ciclo sono-vigília sincroniza com o ritmo de 24 horas</p>
+                    <p><strong>18-24 meses:</strong> Relógio circadiano quase completamente maduro</p>
+                </div>
+
+                <div class="info-card warning">
+                    <div class="info-card-header">
+                        <span>⚠️</span>
+                        <span>Antes dos 3 meses</span>
+                    </div>
+                    <p>Bebês NÃO produzem melatonina antes dos 3 meses! Eles dependem da melatonina presente no leite materno. Pesquisas mostram que o leite da noite contém significativamente mais melatonina que o leite da manhã — por isso, amamentar à noite ajuda o bebê a diferenciar dia e noite.</p>
+                </div>
+
+                <div class="dica-pratica">
+                    <div class="dica-pratica-header">
+                        <div class="dica-pratica-icon">🌅</div>
+                        <div class="dica-pratica-label">Dica Prática: Ajudando o Relógio Biológico</div>
+                    </div>
+                    <div class="dica-pratica-content">
+                        <p><strong>De manhã (6h-8h):</strong> Abra cortinas, exponha o bebê à luz natural por 15-30 minutos. A luz da manhã é o sinal mais potente para calibrar o ritmo circadiano.</p>
+                        <p><strong>Durante o dia:</strong> Mantenha o ambiente iluminado e com sons normais da casa. Passeios ao ar livre são excelentes.</p>
+                        <p><strong>Fim da tarde (após 18h):</strong> Comece a reduzir luzes. Troque lâmpadas brancas por luzes quentes/amareladas. Evite telas.</p>
+                        <p><strong>À noite:</strong> Escuridão total no quarto do bebê. Use blackout se necessário. Qualquer luz, mesmo fraca, pode suprimir a produção de melatonina.</p>
+                    </div>
+                </div>
+
+                <!-- Associações de Sono -->
+                <h3>O Que São Associações de Sono?</h3>
+
+                <p>Associações de sono são os elementos ou condições que o bebê associa com o início do sono. Podem ser positivas ou negativas:</p>
+
+                <div class="tabs-container">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" onclick="switchTab(event, 'tab-neg')">Associações Negativas</button>
+                        <button class="tab-btn" onclick="switchTab(event, 'tab-pos')">Associações Positivas</button>
+                    </div>
+
+                    <div id="tab-neg" class="tab-content active">
+                        <p><strong>Associações Negativas</strong> - Precisam de sua presença contínua:</p>
+                        <ul>
+                            <li>Balanço ou movimento dos pais</li>
+                            <li>Ser alimentado para dormir</li>
+                            <li>Ser segurado nos braços</li>
+                            <li>Compartilhamento de cama com presença dos pais</li>
+                            <li>Qualquer coisa que exija sua intervenção para adormecer</li>
+                        </ul>
+                        <p>Problema: Quando o bebê acorda durante a noite (o que é normal), ele não consegue voltar a dormir sem a mesma associação. Isso causa múltiplos despertares.</p>
+                    </div>
+
+                    <div id="tab-pos" class="tab-content">
+                        <p><strong>Associações Positivas</strong> - O bebê pode manter sozinho:</p>
+                        <ul>
+                            <li>Ruído branco ou rosa</li>
+                            <li>Ursinho de pelúcia ou cobertor específico (lovey)</li>
+                            <li>Chupeta (quando bem usada)</li>
+                            <li>Posição confortável</li>
+                            <li>Qualquer coisa que o bebê possa acessar sozinho durante a noite</li>
+                        </ul>
+                        <p>Vantagem: O bebê consegue replicar essas associações quando acorda, permitindo voltar a dormir independentemente.</p>
+                    </div>
+                </div>
+
+                <div class="info-card tip">
+                    <div class="info-card-header">
+                        <span>🍼</span>
+                        <span>Sobre Chupetas</span>
+                    </div>
+                    <p>Chupetas podem ser positivas ou negativas, dependendo de como são usadas. Se você precisa colocar a chupeta de volta mais de 2 vezes por noite, ela está atrapalhando o sono. A chupeta deve ser oferecida apenas para iniciar o sono, não para mantê-lo.</p>
+                </div>
+
+                <!-- Quiz -->
+                <h3>Teste seus Conhecimentos</h3>
+
+                <div class="quiz-section">
+                    <h4>Quiz</h4>
+                    <div class="quiz-question">Quanto tempo de sono um recém-nascido passa em fase REM?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectQuizOption(this, 1)">
+                            <span class="quiz-option-marker">A</span>
+                            <span>20% (como adultos)</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 2)">
+                            <span class="quiz-option-marker">B</span>
+                            <span>50%</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 3)">
+                            <span class="quiz-option-marker">C</span>
+                            <span>75%</span>
+                        </div>
+                    </div>
+                    <button class="check-answer-btn" disabled onclick="checkAnswer(1, 2)">Verificar Resposta</button>
+                    <div id="quiz-feedback-1" class="quiz-feedback"></div>
+                </div>
+
+            </div>
+
+            <!-- Navigation -->
+            <div class="chapter-nav">
+                <a href="index.html" class="nav-btn">← Voltar aos Capítulos</a>
+                <a href="capitulo-02.html" class="nav-btn primary">Próximo Capítulo →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating stars
+        function createStars() {
+            const container = document.getElementById('stars');
+            if (!container) return;
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.width = (Math.random() * 3 + 2) + 'px';
+                star.style.height = star.style.width;
+                container.appendChild(star);
+            }
+        }
+        createStars();
+
+        // Progress bar
+        window.addEventListener('scroll', () => {
+            const progressBar = document.getElementById('progressBar');
+            if (!progressBar) return;
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            progressBar.style.width = scrollPercent + '%';
+        });
+
+        // Tab switching
+        function switchTab(event, tabId) {
+            const container = event.target.closest('.tabs-container');
+            if (!container) return;
+            container.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            container.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            event.target.classList.add('active');
+            const tab = container.querySelector('#' + tabId);
+            if (tab) tab.classList.add('active');
+        }
+
+        // Accordion
+        function toggleAccordion(header) {
+            if (!header || !header.parentElement) return;
+            const item = header.parentElement;
+            const wasOpen = item.classList.contains('open');
+            const parent = item.parentElement;
+            if (parent) {
+                parent.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('open');
+                });
+            }
+            if (!wasOpen) {
+                item.classList.add('open');
+            }
+        }
+
+        // Quiz functionality
+        let selectedAnswers = {};
+
+        function selectQuizOption(option, value) {
+            if (!option) return;
+            const quizSection = option.closest('.quiz-section');
+            if (!quizSection) return;
+            const options = quizSection.querySelectorAll('.quiz-option');
+            const checkBtn = quizSection.querySelector('.check-answer-btn');
+
+            options.forEach(opt => opt.classList.remove('selected', 'correct', 'incorrect'));
+            option.classList.add('selected');
+
+            const feedback = quizSection.querySelector('.quiz-feedback');
+            if (feedback) {
+                const quizId = feedback.id.split('-')[2];
+                selectedAnswers[quizId] = value;
+            }
+            if (checkBtn) checkBtn.disabled = false;
+            if (feedback) feedback.classList.remove('show');
+        }
+
+        function checkAnswer(quizId, correctAnswer) {
+            const feedback = document.getElementById('quiz-feedback-' + quizId);
+            if (!feedback) return;
+            const quizSection = feedback.closest('.quiz-section');
+            if (!quizSection) return;
+            const options = quizSection.querySelectorAll('.quiz-option');
+            const selectedValue = selectedAnswers[quizId];
+
+            options.forEach((opt, index) => {
+                if (index + 1 === selectedValue) {
+                    if (selectedValue === correctAnswer) {
+                        opt.classList.add('correct');
+                    } else {
+                        opt.classList.add('incorrect');
+                    }
+                }
+                if (index + 1 === correctAnswer) {
+                    opt.classList.add('correct');
+                }
+            });
+
+            if (selectedValue === correctAnswer) {
+                feedback.className = 'quiz-feedback show correct';
+                feedback.innerHTML = '✅ Correto! Parabéns!';
+            } else {
+                feedback.className = 'quiz-feedback show incorrect';
+                feedback.innerHTML = '❌ Não é bem isso. A resposta correta está destacada acima.';
+            }
+
+            const checkBtn = quizSection.querySelector('.check-answer-btn');
+            if (checkBtn) checkBtn.disabled = true;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createStars();
+        });
+    </script>
+</body>
+</html>

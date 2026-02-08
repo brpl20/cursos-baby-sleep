@@ -1,0 +1,1951 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capítulo 9 — Sleep Training: Métodos e Práticas | Sonhos Doces</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FDF8F3;
+            --soft-peach: #FFEEE4;
+            --blush: #F5D5C8;
+            --lavender: #E8E0F0;
+            --soft-blue: #D4E5F7;
+            --sage: #D5E5D8;
+            --warm-gray: #9B8E8A;
+            --deep-plum: #4A3F55;
+            --moon-gold: #E8C87D;
+            --night-blue: #2C3E50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--deep-plum);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--moon-gold);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, var(--cream) 0%, transparent 100%);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--deep-plum);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--blush), var(--lavender), var(--soft-blue));
+            width: 0%;
+            z-index: 101;
+            transition: width 0.3s ease;
+        }
+
+        nav { display: flex; gap: 2rem; }
+
+        nav a {
+            text-decoration: none;
+            color: var(--warm-gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        nav a:hover { color: var(--deep-plum); }
+
+        .lesson-container {
+            background: linear-gradient(135deg, var(--soft-peach) 0%, var(--lavender) 50%, var(--soft-blue) 100%);
+            min-height: 100vh;
+            padding: 6rem 2rem;
+        }
+
+        .lesson-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            padding: 3rem;
+            box-shadow: 0 30px 60px rgba(74, 63, 85, 0.15);
+        }
+
+        .lesson-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--soft-peach);
+        }
+
+        .lesson-module-label {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--lavender);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .lesson-progress {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--warm-gray);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .lesson-progress-bar {
+            width: 150px;
+            height: 4px;
+            background: var(--soft-peach);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .lesson-progress-fill {
+            height: 100%;
+            background: var(--deep-plum);
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+
+        .lesson-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .lesson-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin: 2.5rem 0 1rem;
+            color: var(--deep-plum);
+        }
+
+        .lesson-content p {
+            margin-bottom: 1.5rem;
+            color: #5a4a5a;
+        }
+
+        .lesson-content ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .lesson-content li {
+            margin-bottom: 0.5rem;
+            color: #5a4a5a;
+        }
+
+        .info-card {
+            background: var(--cream);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--moon-gold);
+        }
+
+        .info-card.tip {
+            border-left-color: var(--sage);
+            background: linear-gradient(135deg, #f0f7f1 0%, var(--cream) 100%);
+        }
+
+        .info-card.warning {
+            border-left-color: var(--blush);
+            background: linear-gradient(135deg, #fef5f2 0%, var(--cream) 100%);
+        }
+
+        .info-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .info-card p { margin: 0; font-size: 0.95rem; }
+
+        .dica-pratica {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 50%, #f5f0ff 100%);
+            border-radius: 20px;
+            padding: 1.75rem;
+            margin: 2rem 0;
+            border: 2px dashed var(--moon-gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dica-pratica::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(232, 200, 125, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .dica-pratica-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .dica-pratica-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--moon-gold), #f0d78c);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .dica-pratica-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--deep-plum);
+        }
+
+        .dica-pratica-content {
+            color: #5a4a5a;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .dica-pratica-content p { margin-bottom: 0.75rem; }
+        .dica-pratica-content p:last-child { margin-bottom: 0; }
+
+        .dica-pratica-content ol,
+        .dica-pratica-content ul {
+            margin-left: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .dica-pratica-content li { margin-bottom: 0.5rem; }
+
+        .dica-pratica-content strong { color: var(--deep-plum); }
+
+        .step-by-step {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            counter-reset: step-counter;
+        }
+
+        .step-by-step h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(155, 142, 138, 0.15);
+            align-items: flex-start;
+        }
+
+        .step-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .step-number {
+            counter-increment: step-counter;
+            min-width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--deep-plum), #5a4f65);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--deep-plum);
+        }
+
+        .step-content p {
+            color: #5a4a5a;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        .method-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(74, 63, 85, 0.08);
+            border-top: 4px solid var(--lavender);
+        }
+
+        .method-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--deep-plum);
+        }
+
+        .method-card .method-subtitle {
+            font-size: 0.9rem;
+            color: var(--warm-gray);
+            margin-bottom: 1.25rem;
+            font-style: italic;
+        }
+
+        .method-card .method-age {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--soft-peach);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--deep-plum);
+            margin-bottom: 1rem;
+        }
+
+        .method-card .method-difficulty {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .method-card .difficulty-gentle {
+            background: var(--sage);
+            color: #2e5a3a;
+        }
+
+        .method-card .difficulty-moderate {
+            background: var(--moon-gold);
+            color: var(--deep-plum);
+        }
+
+        .method-card .difficulty-firm {
+            background: var(--blush);
+            color: #8b4a3a;
+        }
+
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .pros, .cons {
+            background: var(--cream);
+            border-radius: 12px;
+            padding: 1rem;
+        }
+
+        .pros h5, .cons h5 {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .pros h5 { color: #2e7d32; }
+        .cons h5 { color: #c62828; }
+
+        .pros ul, .cons ul {
+            margin-left: 1.25rem;
+            font-size: 0.85rem;
+        }
+
+        .pros li, .cons li {
+            margin-bottom: 0.25rem;
+            color: #5a4a5a;
+        }
+
+        .checklist {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .checklist h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(155, 142, 138, 0.2);
+            cursor: pointer;
+        }
+
+        .checklist-item:last-child { border-bottom: none; }
+
+        .checklist-checkbox {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            border: 2px solid var(--warm-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            color: transparent;
+        }
+
+        .checklist-item.checked .checklist-checkbox {
+            background: var(--sage);
+            border-color: var(--sage);
+            color: white;
+        }
+
+        .checklist-item.checked .checklist-text {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        .accordion { margin: 2rem 0; }
+
+        .accordion-item {
+            background: var(--cream);
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover { background: var(--soft-peach); }
+
+        .accordion-icon { transition: transform 0.3s ease; }
+        .accordion-item.open .accordion-icon { transform: rotate(180deg); }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 1.5rem;
+        }
+
+        .accordion-item.open .accordion-content {
+            max-height: 1000px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .tabs-container { margin: 2rem 0; }
+
+        .tabs-header {
+            display: flex;
+            gap: 0.5rem;
+            border-bottom: 2px solid var(--soft-peach);
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--warm-gray);
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--deep-plum);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .tab-btn.active { color: var(--deep-plum); }
+        .tab-btn.active::after { transform: scaleX(1); }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeInUp 0.4s ease; }
+
+        .ferber-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--cream);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .ferber-table th,
+        .ferber-table td {
+            padding: 0.75rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(155, 142, 138, 0.2);
+            font-size: 0.9rem;
+        }
+
+        .ferber-table th {
+            background: var(--soft-peach);
+            font-weight: 600;
+            color: var(--deep-plum);
+        }
+
+        .ferber-table td:first-child {
+            text-align: left;
+            font-weight: 500;
+        }
+
+        .ferber-table tr:last-child th,
+        .ferber-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, var(--lavender) 0%, var(--soft-blue) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .quiz-section h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-question { font-weight: 500; margin-bottom: 1rem; }
+
+        .quiz-options { display: flex; flex-direction: column; gap: 0.75rem; }
+
+        .quiz-option {
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .quiz-option:hover { border-color: var(--deep-plum); }
+        .quiz-option.selected { border-color: var(--deep-plum); background: var(--cream); }
+        .quiz-option.correct { border-color: #4caf50; background: #e8f5e9; }
+        .quiz-option.incorrect { border-color: #f44336; background: #ffebee; }
+
+        .quiz-option-marker {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid var(--warm-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .quiz-option.selected .quiz-option-marker {
+            border-color: var(--deep-plum);
+            background: var(--deep-plum);
+            color: white;
+        }
+
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 12px;
+            display: none;
+        }
+
+        .quiz-feedback.show { display: block; animation: fadeInUp 0.3s ease; }
+        .quiz-feedback.correct { background: #e8f5e9; color: #2e7d32; }
+        .quiz-feedback.incorrect { background: #ffebee; color: #c62828; }
+
+        .check-answer-btn {
+            margin-top: 1rem;
+            padding: 0.75rem 2rem;
+            background: var(--deep-plum);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .check-answer-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 63, 85, 0.3);
+        }
+
+        .check-answer-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+        .completion-box {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, var(--soft-peach) 0%, var(--lavender) 100%);
+            border-radius: 20px;
+            border: 2px solid var(--moon-gold);
+        }
+
+        .completion-box h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--deep-plum);
+        }
+
+        .completion-box p {
+            font-size: 1.05rem;
+            color: #5a4a5a;
+            margin-bottom: 1.5rem;
+        }
+
+        .completion-emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .chapter-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--soft-peach);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--cream);
+            border: none;
+            border-radius: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--deep-plum);
+            text-decoration: none;
+        }
+
+        .nav-btn:hover { background: var(--soft-peach); }
+        .nav-btn.primary { background: var(--deep-plum); color: white; }
+        .nav-btn.primary:hover { background: #3a3045; }
+
+        .chapter-nav-center {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .chapter-nav-center a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--lavender);
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--deep-plum);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .chapter-nav-center a:hover {
+            background: var(--blush);
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 1rem 1.5rem; }
+            nav { display: none; }
+            .lesson-wrapper { padding: 1.5rem; border-radius: 24px; }
+            .chapter-nav { flex-direction: column; gap: 1rem; }
+            .nav-btn { width: 100%; justify-content: center; }
+            .chapter-nav-center { width: 100%; }
+            .chapter-nav-center a { width: 100%; justify-content: center; }
+            .pros-cons { grid-template-columns: 1fr; }
+            .step-item { flex-direction: column; align-items: center; text-align: center; }
+            .ferber-table th, .ferber-table td { padding: 0.5rem; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="stars-container" id="stars"></div>
+
+    <header>
+        <div class="logo">
+            <span>🌙</span>
+            Sonhos Doces
+        </div>
+        <nav>
+            <a href="index.html">Capítulos</a>
+            <a href="index.html">Início</a>
+        </nav>
+    </header>
+
+    <div class="lesson-container">
+        <div class="lesson-wrapper">
+            <div class="lesson-header">
+                <div class="lesson-module-label">Capítulo 9</div>
+                <h2>Sleep Training: Métodos e Práticas</h2>
+                <div class="lesson-progress">
+                    <span>Progresso:</span>
+                    <div class="lesson-progress-bar">
+                        <div class="lesson-progress-fill" style="width: 100%;"></div>
+                    </div>
+                    <span>9/9</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introdução ao Sleep Training</h3>
+                <p>
+                    Sleep training (treinamento do sono) é o processo de ensinar o bebê a adormecer e manter-se dormindo de forma independente, sem assistência constante dos pais. Muitos pais têm medo ou dúvidas sobre essa prática, principalmente porque há muitos mitos circulando. Neste capítulo, vamos explorar os principais métodos cientificamente respaldados e entender como cada um funciona.
+                </p>
+
+                <div class="info-card tip">
+                    <div class="info-card-header">❌ O Que Sleep Training NÃO É</div>
+                    <p><strong>Sleep training NÃO significa deixar o bebê chorando indefinidamente sem resposta.</strong> Não significa ignorar o choro ou negligenciar as necessidades do bebê. Os métodos modernos de sleep training são baseados em evidências científicas e respeitam o bem-estar emocional da criança. Existem métodos gentis, moderados e mais firmes — e você pode escolher aquele que se alinha com seus valores.</p>
+                </div>
+
+                <div class="info-card tip">
+                    <div class="info-card-header">✅ O Que Sleep Training É</div>
+                    <p><strong>Sleep training É o ensino gradual e consistente de habilidades de auto-acalmação.</strong> É permitir que o bebê aprenda a lidar com a transição para o sono e a alcançar o sono independentemente, com seu apoio e presença. Pesquisas mostram que sleep training bem implementado não causa danos emocionais e pode melhorar significativamente a qualidade do sono familiar.</p>
+                </div>
+
+                <h3>Quando Começar Sleep Training?</h3>
+                <p>
+                    A idade ideal para iniciar sleep training é a partir de <strong>4-6 meses de idade</strong>, quando o ritmo circadiano do bebê já está bem estabelecido. Antes dessa idade, os bebês ainda têm necessidades alimentares noturnas frequentes e seu relógio biológico está em desenvolvimento.
+                </p>
+                <p>
+                    Alguns bebês podem estar prontos mais cedo (4-5 meses), enquanto outros se beneficiam mais iniciando um pouco mais tarde (6-7 meses). O mais importante é observar se seu bebê consegue:
+                </p>
+                <ul>
+                    <li>Dormir em blocos de tempo de 4-5 horas à noite sem necessidade nutricional clara</li>
+                    <li>Ter um circadiano bem definido (acordar por volta da mesma hora, dormir por volta da mesma hora)</li>
+                    <li>Estar acima de 6kg (o que geralmente indica que pode ter necessidades nutricionais reduzidas à noite)</li>
+                </ul>
+
+                <div class="info-card warning">
+                    <div class="info-card-header">⚠️ Importante: Certificações Médicas</div>
+                    <p>Antes de iniciar qualquer programa de sleep training, consulte seu pediatra para certificar-se de que seu bebê está saudável e pronto. Bebês com cólicas, refluxo ativo, infecções de ouvido ou outros problemas médicos podem não ser bons candidatos no momento.</p>
+                </div>
+
+                <h3>Pesquisa Científica Sobre Sleep Training</h3>
+                <p>
+                    Muitos pais se preocupam com a segurança emocional do sleep training. A boa notícia é que <strong>pesquisas científicas de longa duração</strong> mostram que:
+                </p>
+                <ul>
+                    <li>Sleep training é eficaz e seguro quando implementado após os 4-6 meses</li>
+                    <li>NÃO causa problemas de apego ou danos emocionais a longo prazo</li>
+                    <li>Bebês que recebem sleep training dormem melhor e os pais têm menos depressão pós-parto</li>
+                    <li>Os benefícios continuam sendo observados em acompanhamentos de 6 anos ou mais</li>
+                </ul>
+
+                <div class="checklist">
+                    <h4>✓ Antes de Começar: Checklist Essencial</h4>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Obtive aprovação do pediatra</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Meu bebê tem pelo menos 4-6 meses de idade</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Ambos os pais concordam com o método escolhido</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">O quarto está escuro, fresco (18-21°C) e com ruído branco</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">O bebê tem uma rotina consistente de alimentação durante o dia</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Estou emocionalmente pronto para ser consistente</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Vou começar em um período em que tenho tempo e apoio</div>
+                    </div>
+                </div>
+
+                <h3>Método 1: Extinção Total (Cry It Out - CIO)</h3>
+                <div class="method-card">
+                    <h4>Extinção Total / Cry It Out</h4>
+                    <div class="method-subtitle">Desenvolvido por Dr. Marc Weissbluth</div>
+                    <span class="method-age">6+ meses</span>
+                    <span class="method-difficulty difficulty-firm">Intenso</span>
+
+                    <p>
+                        A extinção total é o método mais rápido de sleep training. Você coloca o bebê no berço acordado, deixa o quarto e não retorna até a manhã seguinte (ou até o próximo horário de alimentação agendado). O bebê pode chorar bastante nas primeiras noites, mas geralmente se acalma quando percebe que os pais não virão. Este método é <strong>simples em conceito, mas emocionalmente desafiador para os pais.</strong>
+                    </p>
+
+                    <div class="step-by-step">
+                        <h4>Passo a Passo: Extinção Total</h4>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Estabeleça uma Rotina de Bedtime</h5>
+                                <p>Crie uma sequência consistente de 30-60 minutos antes de dormir: banho, troca de fralda, pijama, história, música, abraço. Termine a rotina quando o bebê ainda está acordado e alerto.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Alimentação Final</h5>
+                                <p>Se seu bebê ainda alimenta à noite, faça a última alimentação ANTES da rotina de bedtime, não após.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Coloque o Bebê no Berço Acordado</h5>
+                                <p>Coloque o bebê no berço enquanto ainda está acordado. Você pode dar um beijo de boa noite e dizer "Te amo, vejo você de manhã".</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Saia do Quarto</h5>
+                                <p>Saia imediatamente e NÃO retorne, não importa o que aconteça. Feche a porta e mantenha-a fechada pela noite toda.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Aguarde até a Próxima Alimentação Agendada</h5>
+                                <p>Somente retorne ao quarto se o bebê acordar para uma alimentação que você cronometrou como necessária (por exemplo, após 6 horas de sono). Se for apenas choro, resista à tentação de entrar.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Alimente Rapidamente e Saia</h5>
+                                <p>Se o bebê acordar para alimentação, alimente-o rapidamente em penumbra e retorne-o imediatamente ao berço. Mantenha a interação mínima.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Seja Consistente</h5>
+                                <p>Aplique o mesmo método todas as noites. Geralmente leva 3-7 noites para funcionar completamente.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h5>✅ Vantagens</h5>
+                            <ul>
+                                <li>Funciona muito rapidamente (3-7 noites)</li>
+                                <li>Muito simples de implementar</li>
+                                <li>Sem ambiguidade — os pais sabem exatamente o que fazer</li>
+                                <li>Funciona bem com bebês maiores (6+ meses)</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h5>❌ Desafios</h5>
+                            <ul>
+                                <li>Choro intenso nas primeiras noites</li>
+                                <li>Requer muita força emocional dos pais</li>
+                                <li>Pode ser perturbador para irmãos mais velhos</li>
+                                <li>Pode não ser adequado para pais sensíveis ao choro</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="dica-pratica">
+                        <div class="dica-pratica-header">
+                            <div class="dica-pratica-icon">💪</div>
+                            <div class="dica-pratica-label">Como Preparar-se Emocionalmente</div>
+                        </div>
+                        <div class="dica-pratica-content">
+                            <p><strong>Antes de começar:</strong></p>
+                            <ol>
+                                <li><strong>Converse com seu parceiro.</strong> Certifique-se de que ambos estão 100% comprometidos. Um dos pais duvidoso pode arruinar tudo.</li>
+                                <li><strong>Entenda que o choro é comunicação, não trauma.</strong> O bebê está "dizendo" que quer você, mas isso não significa que ele está em perigo ou sofrimento prolongado.</li>
+                                <li><strong>Considere plugues de ouvido ou aplicativos de ruído rosa</strong> se o som do choro ficar muito perturbador.</li>
+                                <li><strong>Tenha uma saída.</strong> Alguns pais saem de casa nas primeiras noites para evitar a tentação de entrar.</li>
+                                <li><strong>Lembre-se do objetivo:</strong> Você está ensinando uma habilidade de vida que seu filho usará para sempre.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Método 2: Extinção Graduada (Método Ferber)</h3>
+                <div class="method-card">
+                    <h4>Extinção Graduada / Método Ferber</h4>
+                    <div class="method-subtitle">Desenvolvido por Dr. Richard Ferber</div>
+                    <span class="method-age">4-6+ meses</span>
+                    <span class="method-difficulty difficulty-moderate">Moderado</span>
+
+                    <p>
+                        O Método Ferber é uma abordagem mais gentil que a extinção total. Em vez de deixar o bebê chorando indefinidamente, você retorna em intervalos progressivamente maiores para verificar se está bem. O bebê aprende gradualmente que você voltará, e os intervalos de espera aumentam a cada noite. Este método equilibra acomodação com aprendizado independente.
+                    </p>
+
+                    <p style="margin-top: 1rem; font-weight: 600; color: var(--deep-plum);">
+                        Tabela de Intervalos do Método Ferber
+                    </p>
+                    <table class="ferber-table">
+                        <thead>
+                            <tr>
+                                <th>Noite</th>
+                                <th>1º Check-in</th>
+                                <th>2º Check-in</th>
+                                <th>3º Check-in</th>
+                                <th>Próximos Check-ins</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Noite 1</td>
+                                <td>3 min</td>
+                                <td>5 min</td>
+                                <td>10 min</td>
+                                <td>10 min</td>
+                            </tr>
+                            <tr>
+                                <td>Noite 2</td>
+                                <td>5 min</td>
+                                <td>10 min</td>
+                                <td>12 min</td>
+                                <td>12 min</td>
+                            </tr>
+                            <tr>
+                                <td>Noite 3</td>
+                                <td>10 min</td>
+                                <td>12 min</td>
+                                <td>15 min</td>
+                                <td>15 min</td>
+                            </tr>
+                            <tr>
+                                <td>Noite 4</td>
+                                <td>12 min</td>
+                                <td>15 min</td>
+                                <td>17 min</td>
+                                <td>17 min</td>
+                            </tr>
+                            <tr>
+                                <td>Noite 5</td>
+                                <td>15 min</td>
+                                <td>17 min</td>
+                                <td>20 min</td>
+                                <td>20 min</td>
+                            </tr>
+                            <tr>
+                                <td>Noite 6</td>
+                                <td>17 min</td>
+                                <td>20 min</td>
+                                <td>25 min</td>
+                                <td>25 min</td>
+                            </tr>
+                            <tr>
+                                <td>Noite 7</td>
+                                <td>20 min</td>
+                                <td>25 min</td>
+                                <td>30 min</td>
+                                <td>30 min</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="step-by-step">
+                        <h4>Passo a Passo: Método Ferber</h4>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Siga a Mesma Rotina de Bedtime</h5>
+                                <p>Assim como em outros métodos, estabeleça uma rotina consistente de 30-60 minutos e termine com o bebê acordado no berço.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Saia do Quarto</h5>
+                                <p>Saia imediatamente quando o bebê começar a chorar.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Espere o Intervalo Especificado</h5>
+                                <p>Mantenha um temporizador. Na Noite 1, espere 3 minutos antes do primeiro retorno, depois 5 minutos, depois 10 minutos.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Retorne e Verifique Rapidamente</h5>
+                                <p>Retorne brevemente apenas para verificar se o bebê está seguro. Não o pegue no colo. Diga suavemente: "Está tudo bem. Mãe está aqui. Você consegue dormir."</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Saia Novamente</h5>
+                                <p>Mesmo que o choro aumente, saia e mantenha o próximo intervalo. Sua presença brevemente pode fazer o bebê chorar mais inicialmente — isso é normal.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Continue os Intervalos</h5>
+                                <p>Continue seguindo os intervalos até que o bebê caia no sono. Alguns bebês adormecerão durante um dos check-ins; outros dormirão após sua saída.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Alimentação Noturna</h5>
+                                <p>Se o bebê acordar durante a noite para alimentação, alimente-o normalmente. Então retorne ao protocolo Ferber se o bebê chorar após a alimentação.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Incremente as Noites</h5>
+                                <p>A cada noite, use a próxima linha de intervalos conforme indicado na tabela. Continue até que o bebê durma a noite toda sem problemas.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h5>✅ Vantagens</h5>
+                            <ul>
+                                <li>Mais gentil que extinção total</li>
+                                <li>Oferece reasseguramento aos pais</li>
+                                <li>Reduz a ansiedade parental significativamente</li>
+                                <li>Ainda é bastante rápido (5-7 noites)</li>
+                                <li>Funciona em várias idades</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h5>❌ Desafios</h5>
+                            <ul>
+                                <li>Requer precisão com cronômetro</li>
+                                <li>O choro pode piorar temporariamente nos check-ins</li>
+                                <li>Exige paciência parental</li>
+                                <li>Mais complexo que extinção total</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="dica-pratica">
+                        <div class="dica-pratica-header">
+                            <div class="dica-pratica-icon">⏰</div>
+                            <div class="dica-pratica-label">O Que Fazer nos Check-ins</div>
+                        </div>
+                        <div class="dica-pratica-content">
+                            <p><strong>Durante cada check-in (duração: máximo 1 minuto):</strong></p>
+                            <ol>
+                                <li><strong>Mantenha o quarto escuro.</strong> Use uma lanterna de luz vermelha se necessário ver o bebê.</li>
+                                <li><strong>NÃO pegue o bebê.</strong> Apenas verifique se está seguro (roupa, temperatura, etc.)</li>
+                                <li><strong>Fale brevemente.</strong> Uma frase curta e reconfortante é suficiente: "Está tudo bem, vou voltar em 5 minutos."</li>
+                                <li><strong>Saia rapidamente.</strong> Qualquer contato prolongado pode confundir o bebê sobre as regras.</li>
+                                <li><strong>Resista ao impulso de confortar.</strong> Você já ofertou conforto de forma consistente — agora é hora de ele aprender a se auto-confortar.</li>
+                            </ol>
+                            <p style="margin-top: 1rem;"><strong>Importante:</strong> Se o bebê está de fraldas sujas ou em desconforto óbvio, corrija — este não é abandono!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Método 3: Pick Up / Put Down (PU/PD)</h3>
+                <div class="method-card">
+                    <h4>Pick Up / Put Down (PU/PD)</h4>
+                    <div class="method-subtitle">Popularizado por Tracy Hogg, "The Baby Whisperer"</div>
+                    <span class="method-age">4-8 meses</span>
+                    <span class="method-difficulty difficulty-gentle">Gentil</span>
+
+                    <p>
+                        Pick Up / Put Down é um método muito gentil onde você permanece presente com o bebê, mas gradualmente reduz sua assistência. Quando o bebê chora, você o pega no colo, acalma-o completamente até que fique relaxado, e coloca-o de volta no berço. Repete este ciclo quantas vezes for necessário. É fisicamente exigente, mas oferece máximo conforto ao bebê.
+                    </p>
+
+                    <div class="step-by-step">
+                        <h4>Passo a Passo: Pick Up / Put Down</h4>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Coloque o Bebê Acordado no Berço</h5>
+                                <p>Termine a rotina de bedtime e coloque o bebê no berço enquanto ainda está acordado.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Coloque Sua Mão no Peito do Bebê</h5>
+                                <p>Coloque a palma da mão no peito dele e mantenha pressão constante. Às vezes, isso é suficiente para acalmar.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Se Chorar, Pegue no Colo</h5>
+                                <p>Se o choro continuar ou aumentar após alguns segundos de toque, pegue o bebê no colo.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Acalme Completamente</h5>
+                                <p>Segure o bebê contra você, mantenha contato visual (ou próximo), use "shh-shh" e balanço leve. Mantenha o ambiente calmo. O objetivo é que ele fique relaxado.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Coloque de Volta APENAS Quando Calmo</h5>
+                                <p>Somente quando o bebê estiver notavelmente relaxado (respiração profunda, músculos soltos), coloque-o de volta no berço.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Repita o Processo</h5>
+                                <p>Se o bebê chorar novamente, repita: coloque a mão, pegue no colo se necessário, acalme, coloque de volta. Seja consistente e paciente.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Persista</h5>
+                                <p>No primeiro dia, pode levar 40-90 minutos. No segundo dia, geralmente reduz para 20-30 minutos. No terceiro ou quarto dia, muitos bebês adormecerão com apenas o toque da mão.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h5>✅ Vantagens</h5>
+                            <ul>
+                                <li>Muito gentil e reconfortante</li>
+                                <li>Pais permanecem presentes</li>
+                                <li>Reduz culpa e ansiedade parental</li>
+                                <li>Ótimo para pais sensíveis ao choro</li>
+                                <li>Oferece muito toque e contato seguro</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h5>❌ Desafios</h5>
+                            <ul>
+                                <li>Leva mais tempo (1-2 semanas)</li>
+                                <li>Muito exigente fisicamente para os pais</li>
+                                <li>Pode despertar o bebê durante as transições</li>
+                                <li>Alguns bebês choram mais com essa abordagem</li>
+                                <li>Requer muita paciência e calma</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="dica-pratica">
+                        <div class="dica-pratica-header">
+                            <div class="dica-pratica-icon">👶</div>
+                            <div class="dica-pratica-label">Como Fazer o PU/PD Corretamente</div>
+                        </div>
+                        <div class="dica-pratica-content">
+                            <p><strong>Dicas importantes para sucesso:</strong></p>
+                            <ul>
+                                <li><strong>Posição no colo:</strong> Segure o bebê próximo ao seu peito com uma mão apoiando o traseiro e a outra nas costas.</li>
+                                <li><strong>Movimento suave:</strong> Pequenos movimentos de balanceio — não um balanço grande. Pense em "balançar uma xícara de chá" em vez de "embalar".</li>
+                                <li><strong>Sons de acalmação:</strong> Use "shh-shh-shh" consistentemente. O som imita o útero e é muito calmante.</li>
+                                <li><strong>Temperatura do corpo:</strong> Seu calor corporal é reconfortante. Garanta que ele está aquecido contra você.</li>
+                                <li><strong>Contato visual:</strong> Após alguns dias, o bebê pode ficar calmo simplesmente ouvindo sua voz — você não precisa manter contato visual constante.</li>
+                                <li><strong>Aproximação gradual:</strong> Conforme os dias avançam, o bebê ficará calmo mais rapidamente.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Método 4: Fading / Desvanecimento Gradual</h3>
+                <div class="method-card">
+                    <h4>Fading / Desvanecimento Gradual</h4>
+                    <div class="method-subtitle">Abordagem Gentil com Redução Progressiva</div>
+                    <span class="method-age">4+ meses</span>
+                    <span class="method-difficulty difficulty-gentle">Gentil</span>
+
+                    <p>
+                        Fading é uma abordagem na qual você reduz gradualmente sua assistência ao longo de várias semanas. Existem dois tipos principais: <strong>Chair Method</strong> (você senta progressivamente mais longe do berço) e <strong>Fading de Intervenção</strong> (você reduz gradualmente o que faz para ajudar — de abraço para toque para presença).
+                    </p>
+
+                    <h4 style="font-size: 1.2rem; margin: 2rem 0 1rem; color: var(--deep-plum);">Chair Method (Método da Cadeira)</h4>
+                    <p>
+                        Você começa sentado ao lado do berço e se move gradualmente para longe a cada 3 noites. O bebê aprende que você ainda está lá, mas cada vez mais independente.
+                    </p>
+
+                    <div class="step-by-step">
+                        <h4>Fases do Chair Method</h4>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Fase 1 (Noites 1-3): Cadeira ao Lado do Berço</h5>
+                                <p>Sente em uma cadeira bem próxima do berço. Coloque o bebê acordado no berço. Se chorar, ofereça conforto de perto: toque na mão, fale suavemente. Mantenha contato visual se possível. Sua presença física próxima é reconfortante.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Fase 2 (Noites 4-6): Cadeira a 1-2 metros</h5>
+                                <p>Mova a cadeira alguns passos para trás. Você ainda está no quarto, mas não ao lado imediato do berço. O bebê pode ver você, mas não pode alcançá-lo facilmente.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Fase 3 (Noites 7-9): Cadeira Perto da Porta</h5>
+                                <p>Mova a cadeira para perto da porta do quarto. Você ainda está presente, mas distante. O bebê está aprendendo a dormir principalmente sozinho.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Fase 4 (Noites 10-12): Fora do Quarto</h5>
+                                <p>Deixe a porta aberta e sente-se do lado de fora. Você pode ouvir o bebê, e ele sabe que você está lá, mas você já não está no quarto.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Fase 5 (Semana 3+): Independência Completa</h5>
+                                <p>Feche a porta gradualmente. Seu bebê agora dorme sozinho e é independente. Ele aprendeu isso gradualmente e com sua presença reconfortante.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 style="font-size: 1.2rem; margin: 2rem 0 1rem; color: var(--deep-plum);">Fading de Intervenção</h4>
+                    <p>
+                        Em vez de mover fisicamente, você reduz o tipo de ajuda oferecida. Começa com muito contato (braços) e gradualmente passa para menos (toque, presença).
+                    </p>
+
+                    <div class="step-by-step">
+                        <h4>Progressão de Intervenção</h4>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Semana 1: Segurar no Colo</h5>
+                                <p>Siga a rotina de bedtime e segure o bebê no colo até que adormeça. Quando estiver profundamente adormecido, coloque-o no berço suavemente.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Semana 2: Colo com Redução</h5>
+                                <p>Segure por alguns minutos, mas coloque de volta quando o bebê estiver sonolento, NÃO profundamente adormecido. Continue tocando e falando enquanto ele dorme.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Semana 3: Toque no Peito</h5>
+                                <p>Sente ao lado do berço. Coloque sua mão no peito do bebê. Quando começar a dormir, mantenha apenas a mão no peito, reduzindo gradualmente a pressão.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Semana 4: Apenas Presença</h5>
+                                <p>Sente ao lado do berço, mas sem toque. Apenas sua presença é suficiente. Reduza gradualmente até que você possa sair sem acordar o bebê.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h5>✅ Vantagens</h5>
+                            <ul>
+                                <li>Muito gentil e gradual</li>
+                                <li>Mínimo choro</li>
+                                <li>Oferece segurança constante</li>
+                                <li>Sensação de progresso visível</li>
+                                <li>Baixa taxa de regressão</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h5>❌ Desafios</h5>
+                            <ul>
+                                <li>Muito mais longo (3-4 semanas)</li>
+                                <li>Exige paciência significativa</li>
+                                <li>Requer você estar presente todas as noites</li>
+                                <li>Pode criar hábito de sua presença</li>
+                                <li>Mais lento, mas seguro</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="dica-pratica">
+                        <div class="dica-pratica-header">
+                            <div class="dica-pratica-icon">📋</div>
+                            <div class="dica-pratica-label">Montando seu Plano de Fading</div>
+                        </div>
+                        <div class="dica-pratica-content">
+                            <p><strong>Para maximizar o sucesso:</strong></p>
+                            <ol>
+                                <li><strong>Escolha o método (Chair ou Intervenção):</strong> Chair Method é mais estruturado; Fading de Intervenção é mais flexível.</li>
+                                <li><strong>Cronometrar as mudanças:</strong> A cada 3 noites (ou semana para Intervenção), faça o próximo passo. Ser consistente é crucial.</li>
+                                <li><strong>Aceitar algum retrocesso:</strong> Se o bebê regride, simplesmente volte um passo por alguns dias.</li>
+                                <li><strong>Manter a rotina constante:</strong> Enquanto o espaço muda, a rotina de bedtime deve permanecer idêntica.</li>
+                                <li><strong>Paciência é a chave:</strong> Este método é lento, mas o resultado é uma criança muito segura.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Método 5: Espera Progressiva (Adaptação Brasileira)</h3>
+                <div class="method-card">
+                    <h4>Espera Progressiva</h4>
+                    <div class="method-subtitle">Método Híbrido Gentil a Moderado</div>
+                    <span class="method-age">4+ meses</span>
+                    <span class="method-difficulty difficulty-moderate">Gentil a Moderado</span>
+
+                    <p>
+                        A espera progressiva é uma adaptação brasileira que combina elementos de vários métodos. É especialmente popular porque oferece um equilíbrio entre ser gentil e ser eficaz. Você começa permitindo muito contato e ajuda, mas gradualmente aumenta os intervalos antes de responder ao choro. Este método foi explorado em detalhes no Capítulo 7, mas aqui oferecemos a implementação completa para sleep training formal.
+                    </p>
+
+                    <div class="step-by-step">
+                        <h4>Implementação: Espera Progressiva</h4>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Dia 1-2: Responda Imediatamente</h5>
+                                <p>Siga a rotina. Se o bebê chorar, responda imediatamente pegando-o no colo, acalmando-o completamente. Coloque de volta quando relaxado. Repita quantas vezes for necessário. O objetivo é criar segurança e consistência.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Dia 3-4: Espera de 30 Segundos</h5>
+                                <p>Quando o bebê começar a chorar, espere 30 segundos antes de responder. Use este tempo para observar se ele pode se acalmar sozinho. Após 30 segundos, responda normalmente (pegue no colo, acalme, coloque de volta).</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Dia 5-6: Espera de 1 Minuto</h5>
+                                <p>Aumente a espera para 1 minuto completo. O bebê está aprendendo que nem sempre você vem imediatamente, mas você sempre virá. Após 1 minuto, responda normalmente.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Dia 7-9: Espera de 2 Minutos</h5>
+                                <p>Continue aumentando. Espere 2 minutos completos antes de responder. Muitos bebês adormecem sozinhos neste intervalo.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Dia 10+: Espera de 3 Minutos</h5>
+                                <p>Quando o bebê chegar a 3 minutos consistentemente, você pode manter este tempo ou aumentar ainda mais conforme confortável. Muitos bebês estão dormindo sozinhos a este ponto.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h5>Adaptação Durante a Noite</h5>
+                                <p>Se o bebê acordar à noite (e não for alimentação), você pode usar o mesmo protocolo: espaçar suas intervenções conforme a semana progride.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h5>✅ Vantagens</h5>
+                            <ul>
+                                <li>Graduado e previsível</li>
+                                <li>Menos choro do que métodos mais firmes</li>
+                                <li>Pais ainda oferecem muito contato</li>
+                                <li>Funciona bem para bebês sensíveis</li>
+                                <li>Regressão mínima</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h5>❌ Desafios</h5>
+                            <ul>
+                                <li>Mais longo que Ferber (2-3 semanas)</li>
+                                <li>Exige muita precisão de cronometragem</li>
+                                <li>Pais precisam de autocontrole para não responder cedo</li>
+                                <li>Alguns bebês testam os limites</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="dica-pratica">
+                        <div class="dica-pratica-header">
+                            <div class="dica-pratica-icon">⏱️</div>
+                            <div class="dica-pratica-label">Cronometrar Corretamente</div>
+                        </div>
+                        <div class="dica-pratica-content">
+                            <p><strong>Dicas para sucesso com espera progressiva:</strong></p>
+                            <ul>
+                                <li><strong>Use um temporizador.</strong> Um aplicativo de celular é perfeito. Coloque-o onde você pode ouvir.</li>
+                                <li><strong>Comece cada espera quando o choro COMEÇAR, não quando você decidir responder.</strong> O cronometrismo é importante.</li>
+                                <li><strong>Se o choro ficar MUITO INTENSO, você pode responder mais cedo.</strong> Especialmente nos primeiros dias. Isto não é fracasso — é respondendo ao seu bebê.</li>
+                                <li><strong>Seja consistente.</strong> Faça os mesmos intervalos todas as noites do período especificado antes de aumentar.</li>
+                                <li><strong>A resposta deve ser COMPLETA.</strong> Quando você retorna, acalme o bebê plenamente antes de devolver ao berço.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Comparação dos Métodos</h3>
+                <p>
+                    Escolher o método certo é essencial para seu sucesso. Aqui está uma visão geral dos 5 métodos principais:
+                </p>
+
+                <div class="tabs-container">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" onclick="switchTab(event, 'tab-velocidade')">Velocidade</button>
+                        <button class="tab-btn" onclick="switchTab(event, 'tab-intensidade')">Intensidade</button>
+                        <button class="tab-btn" onclick="switchTab(event, 'tab-idade')">Idade Ideal</button>
+                        <button class="tab-btn" onclick="switchTab(event, 'tab-para-quem')">Para Quem É</button>
+                    </div>
+
+                    <div id="tab-velocidade" class="tab-content active">
+                        <table class="ferber-table">
+                            <thead>
+                                <tr>
+                                    <th>Método</th>
+                                    <th>Tempo até Sucesso</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Extinção Total</strong></td>
+                                    <td>3-7 noites (mais rápido)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Método Ferber</strong></td>
+                                    <td>5-7 noites</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Espera Progressiva</strong></td>
+                                    <td>2-3 semanas</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Pick Up/Put Down</strong></td>
+                                    <td>1-2 semanas</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Fading/Desvanecimento</strong></td>
+                                    <td>3-4 semanas (mais longo)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="tab-intensidade" class="tab-content">
+                        <table class="ferber-table">
+                            <thead>
+                                <tr>
+                                    <th>Método</th>
+                                    <th>Nível de Choro</th>
+                                    <th>Conforto Parental</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Extinção Total</strong></td>
+                                    <td>Muito Alto</td>
+                                    <td>Baixo</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Método Ferber</strong></td>
+                                    <td>Moderado-Alto</td>
+                                    <td>Moderado</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Espera Progressiva</strong></td>
+                                    <td>Baixo-Moderado</td>
+                                    <td>Alto</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Pick Up/Put Down</strong></td>
+                                    <td>Muito Baixo</td>
+                                    <td>Muito Alto</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Fading/Desvanecimento</strong></td>
+                                    <td>Quase Nenhum</td>
+                                    <td>Muito Alto</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="tab-idade" class="tab-content">
+                        <table class="ferber-table">
+                            <thead>
+                                <tr>
+                                    <th>Método</th>
+                                    <th>Melhor Idade</th>
+                                    <th>Pode Começar em</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Extinção Total</strong></td>
+                                    <td>6+ meses</td>
+                                    <td>5 meses</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Método Ferber</strong></td>
+                                    <td>5-7 meses</td>
+                                    <td>4 meses</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Espera Progressiva</strong></td>
+                                    <td>5+ meses</td>
+                                    <td>4 meses</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Pick Up/Put Down</strong></td>
+                                    <td>4-6 meses</td>
+                                    <td>4 meses</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Fading/Desvanecimento</strong></td>
+                                    <td>6+ meses</td>
+                                    <td>4 meses</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="tab-para-quem" class="tab-content">
+                        <p><strong>Extinção Total:</strong> Para pais decididos, bebês maiores (6+ meses), pais que podem tolerar choro intenso.</p>
+                        <p><strong>Método Ferber:</strong> Equilíbrio entre velocidade e gentileza. Pais que querem check-ins. Bebês que respondem bem a reasseguramento.</p>
+                        <p><strong>Espera Progressiva:</strong> Pais pacientes, bebés sensíveis, quem quer um método híbrido. Funciona bem em todas as idades (4+ meses).</p>
+                        <p><strong>Pick Up/Put Down:</strong> Pais muito gentis, bebés que precisam de muito contato, quem pode dedicar tempo significativo. Sensíveis ao choro.</p>
+                        <p><strong>Fading/Desvanecimento:</strong> Pais extremamente pacientes, bebés muito ansiosos, quem pode esperar semanas. O mais gentil de todos.</p>
+                    </div>
+                </div>
+
+                <h3>Quando o Sleep Training NÃO é Recomendado</h3>
+                <p>
+                    Há momentos em que o sleep training deve ser PAUSADO ou ADIADO. Reconhecer esses momentos ajuda você a ter sucesso quando eventualmente implementar.
+                </p>
+
+                <div class="info-card warning">
+                    <div class="info-card-header">⚠️ Pause o Sleep Training Se:</div>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>O Bebê Está Doente</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Se seu bebê tem febre, infecção de ouvido, gripe ou qualquer doença, pause completamente. Um bebê doente precisa de muito conforto e não pode aprender novas habilidades adequadamente. Retome após recuperação completa.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Vacinação Recente</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Nos 3-5 dias após vacinação, o bebê pode estar desconfortável ou ter febre. Aguarde até que o bebê esteja completamente recuperado e na baseline de normalidade.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Salto de Desenvolvimento Ativo</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Durante saltos de desenvolvimento (particularmente o 4º, 8º e 12º), o bebê está cognitivamente perturbado e aprender novas habilidades é muito difícil. Aguarde a conclusão do salto (geralmente 5-7 dias) e retome.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Mudanças Maiores na Vida</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Mudança de casa, chegada de irmão novo, volta ao trabalho, viagem, mudança de cuidador. Qualquer mudança significativa perturba o bebê. Espere 2-4 semanas após a mudança se estabilizar.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Ansiedade de Separação Intensa</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Se seu bebê está em pico de ansiedade de separação (geralmente 8-18 meses), o sleep training pode ser mais difícil. Você pode ainda tentar um método mais gentil, mas esperar um mês pode ser mais fácil.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Pais Emocionalmente Não Prontos</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Se você ou seu parceiro estão estressados, deprimidos ou não concordam 100%, aguarde. O sucesso do sleep training depende da consistência dos pais. Ambos devem estar 100% comprometidos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Dicas Gerais para Sucesso em Sleep Training</h3>
+
+                <div class="checklist">
+                    <h4>✓ Checklist de Preparação e Sucesso</h4>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Ambos os pais estão 100% comprometidos com o método escolhido</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Começe em um período em que tem pelo menos 5-7 dias contínuos sem interrupções</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">O quarto está completamente escuro (use blackout se necessário)</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Temperatura do quarto está entre 18-21°C (use termômetro)</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Ruído branco está funcionando consistentemente</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Estabeleceu uma rotina de bedtime consistente (mesma hora cada noite)</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Alimentação diurna bem estabelecida (não muito tarde no dia)</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Atividade física adequada durante o dia (nada perto do bedtime)</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Mantendo um sleep log para rastrear progresso</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Tem apoio (parceiro, família, amigo para conversar)</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Preparou-se emocionalmente — leu histórias de sucesso, entende a ciência</div>
+                    </div>
+                </div>
+
+                <h3>Quiz - Teste Seu Conhecimento</h3>
+                <div class="quiz-section">
+                    <h4>❓ Pergunta 1 de 2</h4>
+                    <div class="quiz-question">Qual é a idade mínima recomendada para iniciar sleep training?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectQuizOption(this, 1)">
+                            <div class="quiz-option-marker">A</div>
+                            <span>3 meses</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 2)">
+                            <div class="quiz-option-marker">B</div>
+                            <span>4-6 meses</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 3)">
+                            <div class="quiz-option-marker">C</div>
+                            <span>9-12 meses</span>
+                        </div>
+                    </div>
+                    <button class="check-answer-btn" onclick="checkAnswer('09-1', 2)" disabled>Verificar Resposta</button>
+                    <div class="quiz-feedback" id="quiz-feedback-09-1"></div>
+                </div>
+
+                <div class="quiz-section">
+                    <h4>❓ Pergunta 2 de 2</h4>
+                    <div class="quiz-question">Qual método é mais rápido, mas emocionalmente mais desafiador para os pais?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectQuizOption(this, 1)">
+                            <div class="quiz-option-marker">A</div>
+                            <span>Método Ferber</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 2)">
+                            <div class="quiz-option-marker">B</div>
+                            <span>Extinção Total</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 3)">
+                            <div class="quiz-option-marker">C</div>
+                            <span>Pick Up/Put Down</span>
+                        </div>
+                    </div>
+                    <button class="check-answer-btn" onclick="checkAnswer('09-2', 2)" disabled>Verificar Resposta</button>
+                    <div class="quiz-feedback" id="quiz-feedback-09-2"></div>
+                </div>
+
+                <div class="completion-box">
+                    <div class="completion-emoji">🎓</div>
+                    <h3>Parabéns!</h3>
+                    <p>Você completou <strong>Sonhos Doces</strong> e agora possui conhecimento abrangente sobre sleep training!</p>
+                    <p>Lembre-se: escolha o método que melhor se alinha com seus valores, comece com preparação adequada, seja consistente e tenha paciência. Cada bebê é único, e você é o especialista no seu pequeno. O sono melhor está ao seu alcance!</p>
+                </div>
+            </div>
+
+            <div class="chapter-nav">
+                <a href="capitulo-08.html" class="nav-btn">← Capítulo Anterior</a>
+                <div class="chapter-nav-center">
+                    <a href="index.html">Voltar aos Capítulos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating stars
+        function createStars() {
+            const container = document.getElementById('stars');
+            if (!container) return;
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.width = (Math.random() * 3 + 2) + 'px';
+                star.style.height = star.style.width;
+                container.appendChild(star);
+            }
+        }
+        createStars();
+
+        // Progress bar
+        window.addEventListener('scroll', () => {
+            const progressBar = document.getElementById('progressBar');
+            if (!progressBar) return;
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            progressBar.style.width = scrollPercent + '%';
+        });
+
+        // Tab switching
+        function switchTab(event, tabId) {
+            const container = event.target.closest('.tabs-container');
+            if (!container) return;
+            container.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            container.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            event.target.classList.add('active');
+            const tab = container.querySelector('#' + tabId);
+            if (tab) tab.classList.add('active');
+        }
+
+        // Accordion
+        function toggleAccordion(header) {
+            if (!header || !header.parentElement) return;
+            const item = header.parentElement;
+            const wasOpen = item.classList.contains('open');
+            const parent = item.parentElement;
+            if (parent) {
+                parent.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('open');
+                });
+            }
+            if (!wasOpen) {
+                item.classList.add('open');
+            }
+        }
+
+        // Checklist
+        function toggleChecklist(item) {
+            if (!item) return;
+            item.classList.toggle('checked');
+        }
+
+        // Quiz functionality
+        let selectedAnswers = {};
+
+        function selectQuizOption(option, value) {
+            if (!option) return;
+            const quizSection = option.closest('.quiz-section');
+            if (!quizSection) return;
+            const options = quizSection.querySelectorAll('.quiz-option');
+            const checkBtn = quizSection.querySelector('.check-answer-btn');
+
+            options.forEach(opt => opt.classList.remove('selected', 'correct', 'incorrect'));
+            option.classList.add('selected');
+
+            const feedback = quizSection.querySelector('.quiz-feedback');
+            if (feedback) {
+                const feedbackId = feedback.id;
+                selectedAnswers[feedbackId] = value;
+            }
+            if (checkBtn) checkBtn.disabled = false;
+            if (feedback) feedback.classList.remove('show');
+        }
+
+        function checkAnswer(quizId, correctAnswer) {
+            const feedback = document.getElementById('quiz-feedback-' + quizId);
+            if (!feedback) return;
+            const quizSection = feedback.closest('.quiz-section');
+            if (!quizSection) return;
+            const options = quizSection.querySelectorAll('.quiz-option');
+            const feedbackId = 'quiz-feedback-' + quizId;
+            const selectedValue = selectedAnswers[feedbackId];
+
+            options.forEach((opt, index) => {
+                if (index + 1 === selectedValue) {
+                    if (selectedValue === correctAnswer) {
+                        opt.classList.add('correct');
+                    } else {
+                        opt.classList.add('incorrect');
+                    }
+                }
+                if (index + 1 === correctAnswer) {
+                    opt.classList.add('correct');
+                }
+            });
+
+            if (selectedValue === correctAnswer) {
+                feedback.className = 'quiz-feedback show correct';
+                feedback.innerHTML = '✅ Correto! Parabéns!';
+            } else {
+                feedback.className = 'quiz-feedback show incorrect';
+                feedback.innerHTML = '❌ Não é bem isso. A resposta correta está destacada acima.';
+            }
+
+            const checkBtn = quizSection.querySelector('.check-answer-btn');
+            if (checkBtn) checkBtn.disabled = true;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createStars();
+        });
+    </script>
+</body>
+</html>

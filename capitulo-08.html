@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capítulo 8 — Desafios Comuns | Sonhos Doces</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FDF8F3;
+            --soft-peach: #FFEEE4;
+            --blush: #F5D5C8;
+            --lavender: #E8E0F0;
+            --soft-blue: #D4E5F7;
+            --sage: #D5E5D8;
+            --warm-gray: #9B8E8A;
+            --deep-plum: #4A3F55;
+            --moon-gold: #E8C87D;
+            --night-blue: #2C3E50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--deep-plum);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--moon-gold);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, var(--cream) 0%, transparent 100%);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--deep-plum);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--blush), var(--lavender), var(--soft-blue));
+            width: 0%;
+            z-index: 101;
+            transition: width 0.3s ease;
+        }
+
+        nav { display: flex; gap: 2rem; }
+
+        nav a {
+            text-decoration: none;
+            color: var(--warm-gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        nav a:hover { color: var(--deep-plum); }
+
+        .lesson-container {
+            background: linear-gradient(135deg, var(--soft-peach) 0%, var(--lavender) 50%, var(--soft-blue) 100%);
+            min-height: 100vh;
+            padding: 6rem 2rem;
+        }
+
+        .lesson-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            padding: 3rem;
+            box-shadow: 0 30px 60px rgba(74, 63, 85, 0.15);
+        }
+
+        .lesson-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--soft-peach);
+        }
+
+        .lesson-module-label {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--lavender);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .lesson-progress {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--warm-gray);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .lesson-progress-bar {
+            width: 150px;
+            height: 4px;
+            background: var(--soft-peach);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .lesson-progress-fill {
+            height: 100%;
+            background: var(--deep-plum);
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+
+        .lesson-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .lesson-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin: 2.5rem 0 1rem;
+            color: var(--deep-plum);
+        }
+
+        .lesson-content p {
+            margin-bottom: 1.5rem;
+            color: #5a4a5a;
+        }
+
+        .info-card {
+            background: var(--cream);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--moon-gold);
+        }
+
+        .info-card.tip {
+            border-left-color: var(--sage);
+            background: linear-gradient(135deg, #f0f7f1 0%, var(--cream) 100%);
+        }
+
+        .info-card.warning {
+            border-left-color: var(--blush);
+            background: linear-gradient(135deg, #fef5f2 0%, var(--cream) 100%);
+        }
+
+        .info-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .info-card p { margin: 0; font-size: 0.95rem; }
+
+        .checklist {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .checklist h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(155, 142, 138, 0.2);
+            cursor: pointer;
+        }
+
+        .checklist-item:last-child { border-bottom: none; }
+
+        .checklist-checkbox {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            border: 2px solid var(--warm-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            color: transparent;
+        }
+
+        .checklist-item.checked .checklist-checkbox {
+            background: var(--sage);
+            border-color: var(--sage);
+            color: white;
+        }
+
+        .checklist-item.checked .checklist-text {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        .accordion { margin: 2rem 0; }
+
+        .accordion-item {
+            background: var(--cream);
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover { background: var(--soft-peach); }
+
+        .accordion-icon { transition: transform 0.3s ease; }
+        .accordion-item.open .accordion-icon { transform: rotate(180deg); }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 1.5rem;
+        }
+
+        .accordion-item.open .accordion-content {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .tabs-container { margin: 2rem 0; }
+
+        .tabs-header {
+            display: flex;
+            gap: 0.5rem;
+            border-bottom: 2px solid var(--soft-peach);
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--warm-gray);
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--deep-plum);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .tab-btn.active { color: var(--deep-plum); }
+        .tab-btn.active::after { transform: scaleX(1); }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeInUp 0.4s ease; }
+
+        .quiz-section {
+            background: linear-gradient(135deg, var(--lavender) 0%, var(--soft-blue) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .quiz-section h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-question { font-weight: 500; margin-bottom: 1rem; }
+
+        .quiz-options { display: flex; flex-direction: column; gap: 0.75rem; }
+
+        .quiz-option {
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .quiz-option:hover { border-color: var(--deep-plum); }
+        .quiz-option.selected { border-color: var(--deep-plum); background: var(--cream); }
+        .quiz-option.correct { border-color: #4caf50; background: #e8f5e9; }
+        .quiz-option.incorrect { border-color: #f44336; background: #ffebee; }
+
+        .quiz-option-marker {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid var(--warm-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .quiz-option.selected .quiz-option-marker {
+            border-color: var(--deep-plum);
+            background: var(--deep-plum);
+            color: white;
+        }
+
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 12px;
+            display: none;
+        }
+
+        .quiz-feedback.show { display: block; animation: fadeInUp 0.3s ease; }
+        .quiz-feedback.correct { background: #e8f5e9; color: #2e7d32; }
+        .quiz-feedback.incorrect { background: #ffebee; color: #c62828; }
+
+        .check-answer-btn {
+            margin-top: 1rem;
+            padding: 0.75rem 2rem;
+            background: var(--deep-plum);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .check-answer-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 63, 85, 0.3);
+        }
+
+        .check-answer-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+        .completion-box {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, var(--soft-peach) 0%, var(--lavender) 100%);
+            border-radius: 20px;
+            border: 2px solid var(--moon-gold);
+        }
+
+        .completion-box h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--deep-plum);
+        }
+
+        .completion-box p {
+            font-size: 1.05rem;
+            color: #5a4a5a;
+            margin-bottom: 1.5rem;
+        }
+
+        .completion-emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .chapter-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--soft-peach);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--cream);
+            border: none;
+            border-radius: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--deep-plum);
+            text-decoration: none;
+        }
+
+        .nav-btn:hover { background: var(--soft-peach); }
+        .nav-btn.primary { background: var(--deep-plum); color: white; }
+        .nav-btn.primary:hover { background: #3a3045; }
+
+        .chapter-nav-center {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .chapter-nav-center a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--lavender);
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--deep-plum);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .chapter-nav-center a:hover {
+            background: var(--blush);
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Dica Prática - Elemento diferenciado */
+        .dica-pratica {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 50%, #f5f0ff 100%);
+            border-radius: 20px;
+            padding: 1.75rem;
+            margin: 2rem 0;
+            border: 2px dashed var(--moon-gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dica-pratica::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(232, 200, 125, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .dica-pratica-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .dica-pratica-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--moon-gold), #f0d78c);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .dica-pratica-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--deep-plum);
+        }
+
+        .dica-pratica-content {
+            color: #5a4a5a;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .dica-pratica-content p { margin-bottom: 0.75rem; }
+        .dica-pratica-content p:last-child { margin-bottom: 0; }
+        .dica-pratica-content ol, .dica-pratica-content ul { margin-left: 1.5rem; margin-bottom: 0.75rem; }
+        .dica-pratica-content li { margin-bottom: 0.5rem; }
+        .dica-pratica-content strong { color: var(--deep-plum); }
+
+        @media (max-width: 768px) {
+            header { padding: 1rem 1.5rem; }
+            nav { display: none; }
+            .lesson-wrapper { padding: 1.5rem; border-radius: 24px; }
+            .chapter-nav { flex-direction: column; gap: 1rem; }
+            .nav-btn { width: 100%; justify-content: center; }
+            .chapter-nav-center { width: 100%; }
+            .chapter-nav-center a { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="stars-container" id="stars"></div>
+
+    <header>
+        <div class="logo">
+            <span>🌙</span>
+            Sonhos Doces
+        </div>
+        <nav>
+            <a href="index.html">Capítulos</a>
+            <a href="index.html">Início</a>
+        </nav>
+    </header>
+
+    <div class="lesson-container">
+        <div class="lesson-wrapper">
+            <div class="lesson-header">
+                <div class="lesson-module-label">Capítulo 8</div>
+                <h2>Desafios Comuns</h2>
+                <div class="lesson-progress">
+                    <span>Progresso:</span>
+                    <div class="lesson-progress-bar">
+                        <div class="lesson-progress-fill" style="width: 88.8%;"></div>
+                    </div>
+                    <span>8/9</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Saltos de Desenvolvimento</h3>
+                <p>
+                    Os saltos de desenvolvimento (ou "developmental leaps") ocorrem quase mensalmente durante o primeiro ano de vida do bebê. Alguns saltos são mais intensos do que outros. O 4º salto (6-8 semanas) e o 8º salto (cerca de 64 semanas, com separação/ansiedade de separação) são particularmente desafiadores. Durante esses períodos, as sonecas são frequentemente afetadas em primeiro lugar.
+                </p>
+
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Como Agir Durante os Saltos: Sonecas</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Durante os saltos, as sonecas são o primeiro lugar onde problemas aparecem. Faça o que for necessário para que o bebê durma: no berço, nos seus braços, na cadeirinha de balanço, no sling/canguru. NÃO deixe as sonecas serem perdidas. Um bebê que não dorme o suficiente durante o dia terá um "efeito vulcânico" à noite — muito difícil de acalmar.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Como Agir Durante os Saltos: Se Já Dorme Sozinho</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Se seu bebê já consegue dormir no berço, tente primeiro colocá-lo no berço como de costume. Se falhar após alguns minutos, use a técnica de "Pick Up/Put Down" (pegar e colocar) para ajudá-lo a adormecer. Mantenha a consistência dentro desse método durante o salto.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Como Agir Durante os Saltos: Sono Noturno</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>NÃO adicione novas associações. Tente acalmar o bebê no berço primeiro com "shh-shh" e batidas suaves nas costas. Se isso não funcionar depois de alguns minutos, pegue o bebê no colo para acalmar e depois coloque novamente no berço quando estiver calmo.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Como Agir Durante os Saltos: Acordares na Madrugada</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>NÃO adicione alimentações extras. Mantenha o mesmo padrão de sono. Se o bebê acordar muito cedo de manhã, avance a alimentação em vez de tentar "lutar" contra o acordar. O salto é temporário — resista à tentação de criar novas associações que depois será difícil remover.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Terrible Two (Terrível dos Dois)</h3>
+                <p>
+                    O "Terrible Two" pode começar por volta dos 18 meses. Apesar do nome, isso não causa acordares noturnos frequentes, mas causa maior resistência na hora de dormir. A criança afirma sua vontade e sua independência. IMPORTANTE: A criança AINDA PRECISA da soneca — não elimine nessa fase por achar que é capricho.
+                </p>
+
+                <div class="checklist">
+                    <h4>Para Facilitar a Hora de Dormir</h4>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Rotina bem estabelecida e consistente</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Ritual da soneca indispensável (contos, músicas, contato)</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Avisar com antecedência: "Daqui a pouco é hora da soneca"</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Encher o "potinho de amor" — muito carinho ao longo do dia</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Se resistir, use espera progressiva com paciência</div>
+                    </div>
+                </div>
+
+                <div class="dica-pratica">
+                    <div class="dica-pratica-header">
+                        <div class="dica-pratica-icon">🧩</div>
+                        <div class="dica-pratica-label">Dica Prática: Reconhecendo Saltos vs Regressão</div>
+                    </div>
+                    <div class="dica-pratica-content">
+                        <p>Nem toda mudança no sono é igual. Veja como diferenciar:</p>
+                        <p><strong>Salto de desenvolvimento:</strong> Dura 1-2 semanas. O bebê mostra novas habilidades (rolar, sentar, balbuciar). Mantenha a rotina e NÃO adicione novas associações.</p>
+                        <p><strong>Regressão do sono (4 meses):</strong> É permanente — o padrão de sono do bebê está amadurecendo. Requer ajustes na rotina e possivelmente reeducação do sono.</p>
+                        <p><strong>Doença ou desconforto:</strong> Acompanhado de febre, congestão, diarreia ou outros sinais. Priorize o conforto e a saúde, retome a rotina quando recuperado.</p>
+                        <p><strong>Regra geral:</strong> Se o problema de sono durar mais de 2-3 semanas sem sinais de doença, provavelmente é hora de revisar a rotina e considerar técnicas de reeducação.</p>
+                    </div>
+                </div>
+
+                <div class="info-card tip">
+                    <div class="info-card-header">💡 Sabedoria Importante</div>
+                    <p>Quem ama, educa. Quem ama, impõe limites. E isso deve ser feito com muito amor e também com firmeza. Seu filho precisa entender que existem regras, mas dentro de um ambiente de amor e segurança.</p>
+                </div>
+
+                <h3>Como Retirar a Associação do Peito</h3>
+                <p>
+                    Se seu bebê usa o peito para adormecer e você quer remover essa associação, aqui está o passo a passo:
+                </p>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Passo 1: Amamente efetivamente</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Certifique-se de que o bebê está mamando nos dois peitos com efetividade — sucção forte, deglutição audível, ingestão adequada.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Passo 2: Identifique sucção não nutritiva</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Quando o bebê começar a fazer sucção não nutritiva (usando o peito como chupeta), retire o peito.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Passo 3: Quebre o vácuo</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Insira seu dedo na lateral da boca do bebê para quebrar o vácuo da sucção.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Passo 4: Segure com suavidade</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Segure o queixo do bebê suavemente enquanto tira o peito.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Passo 5: Acalme de outras formas</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Acalme o bebê com "shh-shh" e balanço leve. Use toque reconfortante e sua presença.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Passo 6 e 7: Persistência</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>O processo leva cerca de 5 dias. O pai pode ajudar (o bebê sente menos o cheiro do leite e pode aceitar melhor outras formas de conforto).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Como Retirar o Ninar e o Colo</h3>
+                <div class="tabs-container">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" onclick="switchTab(event, 'tab-rocking')">Retirar Ninar</button>
+                        <button class="tab-btn" onclick="switchTab(event, 'tab-pickup')">Retirar Colo (PU/PD)</button>
+                    </div>
+
+                    <div id="tab-rocking" class="tab-content active">
+                        <p><strong>Retirar o Embalo (Ninar):</strong></p>
+                        <p>Em vez de embalar o bebê para fazê-lo dormir, sente em uma cadeira com o bebê. Balance APENAS para acalmar, não para fazer dormir. Quando o bebê estiver calmo, sente-se normalmente (pare de balançar). Isso leva cerca de 3-4 dias para se consolidar.</p>
+                    </div>
+
+                    <div id="tab-pickup" class="tab-content">
+                        <p><strong>Pick Up/Put Down (PU/PD):</strong></p>
+                        <p>Coloque o bebê no berço. Se chorar, tente acalmar dentro do berço por 1 minuto (shh-shh, toques suaves). Se falhar, pegue o bebê no colo, acalme completamente, e coloque de novo no berço APENAS quando estiver calmo. Repita conforme necessário.</p>
+                        <p style="margin-top: 1rem;"><strong>Importante:</strong> O primeiro dia pode levar 40-90 minutos. Fica substancialmente mais rápido cada dia que passa. Paciência!</p>
+                    </div>
+                </div>
+
+                <h3>Objeto de Transição (Naninha)</h3>
+                <div class="checklist">
+                    <h4>Usando uma Naninha Efetivamente</h4>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Escolha um paninho ou babita simples e respirável</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Mantenha entre você e o bebê durante amamentação</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Use em todos os rituais de sono (soneca, noite)</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Garanta que seja seguro (sem peças pequenas destacáveis)</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Se rejeitar inicialmente, insista — a afeição vem com repetição</div>
+                    </div>
+                </div>
+
+                <h3>Como Retirar a Chupeta</h3>
+                <div class="tabs-container">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" onclick="switchTab(event, 'tab-abrupt')">Retirada Abrupta</button>
+                        <button class="tab-btn" onclick="switchTab(event, 'tab-gradual')">Retirada Gradual</button>
+                    </div>
+
+                    <div id="tab-abrupt" class="tab-content active">
+                        <p><strong>Retirada Abrupta (Recomendada):</strong></p>
+                        <p>Simplesmente pare de oferecer a chupeta. Use um mantra calmante: "Está tudo bem, meu filho. Você não precisa mais dela. Você é grande agora."</p>
+                        <p style="margin-top: 1rem;">Reduz o uso durante o dia primeiro, depois remova completamente. Leva cerca de 3-4 dias. Você pode oferecer outras formas de conforto (abraço, massagem suave, presença).</p>
+                    </div>
+
+                    <div id="tab-gradual" class="tab-content">
+                        <p><strong>Retirada Gradual:</strong></p>
+                        <p>Remove a chupeta quando o bebê fica sonolento, ou faz um pequeno furo nela para reduzir a sucção, ou mostra que está "suja" e que por isso precisa ser jogada. </p>
+                        <p style="margin-top: 1rem;">Este método é mais longo e pode ser mais cansativo para todos envolvidos. A retirada abrupta, embora pareça mais "dura", costuma ser mais rápida e menos prolongada.</p>
+                    </div>
+                </div>
+
+                <h3>Desmame</h3>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Desmame Diurno</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Organize as mamadas com horários. Remova uma mamada a cada 10 dias aproximadamente. Ordem sugerida: mamada da tarde → mamada da manhã → mamada antes de dormir (essa é a mais difícil).</p>
+                            <p style="margin-top: 0.75rem;">Distraia a criança quando ela pedir fora dos horários estipulados. Use alimentos, brinquedos, atividades.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Desmame Noturno</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>O bebê DEVE saber como dormir independentemente ANTES de remover alimentações noturnas. Começar após 9 meses de idade.</p>
+                            <p style="margin-top: 0.75rem;">Dois métodos principais:</p>
+                            <ul style="margin: 0.75rem 0 0 1.5rem;">
+                                <li>Remover todas as mamadas noturnas de uma vez</li>
+                                <li>Remover uma mamada por vez, usando técnica de espera progressiva</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Remover Mamadeira</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Simplesmente remova a mamadeira. NÃO dilua o leite aos poucos nem o substitua por água ou chá. Se você fizer isso, o bebê simplesmente continuará acordando por água/chá em vez de leite. É melhor remover completamente e oferecer em um copo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Quiz - Teste Seu Conhecimento</h3>
+                <div class="quiz-section">
+                    <h4>❓ Pergunta</h4>
+                    <div class="quiz-question">Qual é a melhor forma de retirar mamadeiras noturnas?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectQuizOption(this, 1)">
+                            <div class="quiz-option-marker">A</div>
+                            <span>Diluir o leite aos poucos</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 2)">
+                            <div class="quiz-option-marker">B</div>
+                            <span>Substituir por água ou chá</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 3)">
+                            <div class="quiz-option-marker">C</div>
+                            <span>Simplesmente retirar, oferecendo conforto</span>
+                        </div>
+                    </div>
+                    <button class="check-answer-btn" onclick="checkAnswer('08', 3)" disabled>Verificar Resposta</button>
+                    <div class="quiz-feedback" id="quiz-feedback-08"></div>
+                </div>
+
+            </div>
+
+            <div class="chapter-nav">
+                <a href="capitulo-07.html" class="nav-btn">← Capítulo Anterior</a>
+                <div class="chapter-nav-center">
+                    <a href="index.html">Capítulos</a>
+                    <a href="index.html">Início</a>
+                </div>
+                <a href="capitulo-09.html" class="nav-btn primary">Próximo Capítulo →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating stars
+        function createStars() {
+            const container = document.getElementById('stars');
+            if (!container) return;
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.width = (Math.random() * 3 + 2) + 'px';
+                star.style.height = star.style.width;
+                container.appendChild(star);
+            }
+        }
+        createStars();
+
+        // Progress bar
+        window.addEventListener('scroll', () => {
+            const progressBar = document.getElementById('progressBar');
+            if (!progressBar) return;
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            progressBar.style.width = scrollPercent + '%';
+        });
+
+        // Tab switching
+        function switchTab(event, tabId) {
+            const container = event.target.closest('.tabs-container');
+            if (!container) return;
+            container.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            container.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            event.target.classList.add('active');
+            const tab = container.querySelector('#' + tabId);
+            if (tab) tab.classList.add('active');
+        }
+
+        // Accordion
+        function toggleAccordion(header) {
+            if (!header || !header.parentElement) return;
+            const item = header.parentElement;
+            const wasOpen = item.classList.contains('open');
+            const parent = item.parentElement;
+            if (parent) {
+                parent.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('open');
+                });
+            }
+            if (!wasOpen) {
+                item.classList.add('open');
+            }
+        }
+
+        // Checklist
+        function toggleChecklist(item) {
+            if (!item) return;
+            item.classList.toggle('checked');
+        }
+
+        // Quiz functionality
+        let selectedAnswers = {};
+
+        function selectQuizOption(option, value) {
+            if (!option) return;
+            const quizSection = option.closest('.quiz-section');
+            if (!quizSection) return;
+            const options = quizSection.querySelectorAll('.quiz-option');
+            const checkBtn = quizSection.querySelector('.check-answer-btn');
+
+            options.forEach(opt => opt.classList.remove('selected', 'correct', 'incorrect'));
+            option.classList.add('selected');
+
+            const feedback = quizSection.querySelector('.quiz-feedback');
+            if (feedback) {
+                const quizId = feedback.id.split('-')[2];
+                selectedAnswers[quizId] = value;
+            }
+            if (checkBtn) checkBtn.disabled = false;
+            if (feedback) feedback.classList.remove('show');
+        }
+
+        function checkAnswer(quizId, correctAnswer) {
+            const feedback = document.getElementById('quiz-feedback-' + quizId);
+            if (!feedback) return;
+            const quizSection = feedback.closest('.quiz-section');
+            if (!quizSection) return;
+            const options = quizSection.querySelectorAll('.quiz-option');
+            const selectedValue = selectedAnswers[quizId];
+
+            options.forEach((opt, index) => {
+                if (index + 1 === selectedValue) {
+                    if (selectedValue === correctAnswer) {
+                        opt.classList.add('correct');
+                    } else {
+                        opt.classList.add('incorrect');
+                    }
+                }
+                if (index + 1 === correctAnswer) {
+                    opt.classList.add('correct');
+                }
+            });
+
+            if (selectedValue === correctAnswer) {
+                feedback.className = 'quiz-feedback show correct';
+                feedback.innerHTML = '✅ Correto! Parabéns!';
+            } else {
+                feedback.className = 'quiz-feedback show incorrect';
+                feedback.innerHTML = '❌ Não é bem isso. A resposta correta está destacada acima.';
+            }
+
+            const checkBtn = quizSection.querySelector('.check-answer-btn');
+            if (checkBtn) checkBtn.disabled = true;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createStars();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Dreams — Baby Sleep Course (0-12 months)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FDF8F3;
+            --soft-peach: #FFEEE4;
+            --blush: #F5D5C8;
+            --lavender: #E8E0F0;
+            --soft-blue: #D4E5F7;
+            --sage: #D5E5D8;
+            --warm-gray: #9B8E8A;
+            --deep-plum: #4A3F55;
+            --moon-gold: #E8C87D;
+            --night-blue: #2C3E50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--deep-plum);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--moon-gold);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, var(--cream) 0%, transparent 100%);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--deep-plum);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--blush), var(--lavender), var(--soft-blue));
+            width: 0%;
+            z-index: 101;
+            transition: width 0.3s ease;
+        }
+
+        nav { display: flex; gap: 2rem; }
+
+        nav a {
+            text-decoration: none;
+            color: var(--warm-gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        nav a:hover { color: var(--deep-plum); }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+            background: radial-gradient(ellipse at 50% 0%, var(--soft-peach) 0%, var(--cream) 60%);
+        }
+
+        .hero-content {
+            max-width: 700px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 span {
+            font-style: italic;
+            color: var(--warm-gray);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--warm-gray);
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: var(--deep-plum);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.4s both;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(74, 63, 85, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .overview {
+            padding: 6rem 2rem;
+            background: white;
+            position: relative;
+        }
+
+        .overview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to bottom, var(--cream) 0%, white 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: var(--lavender);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            color: var(--deep-plum);
+        }
+
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 400;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .module-card {
+            background: var(--cream);
+            border-radius: 24px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--blush);
+            box-shadow: 0 20px 40px rgba(74, 63, 85, 0.1);
+        }
+
+        .module-number {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            opacity: 0.1;
+            color: var(--deep-plum);
+        }
+
+        .module-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .module-card:nth-child(1) .module-icon { background: var(--soft-peach); }
+        .module-card:nth-child(2) .module-icon { background: var(--lavender); }
+        .module-card:nth-child(3) .module-icon { background: var(--soft-blue); }
+        .module-card:nth-child(4) .module-icon { background: var(--sage); }
+        .module-card:nth-child(5) .module-icon { background: var(--blush); }
+        .module-card:nth-child(6) .module-icon { background: var(--moon-gold); }
+
+        .module-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .module-card p {
+            font-size: 0.95rem;
+            color: var(--warm-gray);
+            margin-bottom: 1rem;
+        }
+
+        .module-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--warm-gray);
+        }
+
+        .lesson-container {
+            background: linear-gradient(135deg, var(--soft-peach) 0%, var(--lavender) 50%, var(--soft-blue) 100%);
+            min-height: 100vh;
+            padding: 6rem 2rem;
+        }
+
+        .lesson-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            padding: 3rem;
+            box-shadow: 0 30px 60px rgba(74, 63, 85, 0.15);
+        }
+
+        .lesson-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--soft-peach);
+        }
+
+        .lesson-module-label {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--lavender);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .lesson-progress {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--warm-gray);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .lesson-progress-bar {
+            width: 150px;
+            height: 4px;
+            background: var(--soft-peach);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .lesson-progress-fill {
+            height: 100%;
+            background: var(--deep-plum);
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+
+        .lesson-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .lesson-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin: 2.5rem 0 1rem;
+            color: var(--deep-plum);
+        }
+
+        .lesson-content p {
+            margin-bottom: 1.5rem;
+            color: #5a4a5a;
+        }
+
+        .info-card {
+            background: var(--cream);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--moon-gold);
+        }
+
+        .info-card.tip {
+            border-left-color: var(--sage);
+            background: linear-gradient(135deg, #f0f7f1 0%, var(--cream) 100%);
+        }
+
+        .info-card.warning {
+            border-left-color: var(--blush);
+            background: linear-gradient(135deg, #fef5f2 0%, var(--cream) 100%);
+        }
+
+        .info-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .info-card p { margin: 0; font-size: 0.95rem; }
+
+        .sleep-chart {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .sleep-chart h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .chart-row {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .chart-label { font-size: 0.9rem; font-weight: 500; }
+
+        .chart-bar-container {
+            background: white;
+            border-radius: 8px;
+            height: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-bar {
+            height: 100%;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 1rem;
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: width 1s ease;
+        }
+
+        .chart-bar.night { background: linear-gradient(90deg, var(--night-blue), #4a6fa5); }
+        .chart-bar.day { background: linear-gradient(90deg, var(--moon-gold), #f0d78c); color: var(--deep-plum); }
+
+        .quiz-section {
+            background: linear-gradient(135deg, var(--lavender) 0%, var(--soft-blue) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .quiz-section h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-question { font-weight: 500; margin-bottom: 1rem; }
+
+        .quiz-options { display: flex; flex-direction: column; gap: 0.75rem; }
+
+        .quiz-option {
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .quiz-option:hover { border-color: var(--deep-plum); }
+        .quiz-option.selected { border-color: var(--deep-plum); background: var(--cream); }
+        .quiz-option.correct { border-color: #4caf50; background: #e8f5e9; }
+        .quiz-option.incorrect { border-color: #f44336; background: #ffebee; }
+
+        .quiz-option-marker {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid var(--warm-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .quiz-option.selected .quiz-option-marker {
+            border-color: var(--deep-plum);
+            background: var(--deep-plum);
+            color: white;
+        }
+
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 12px;
+            display: none;
+        }
+
+        .quiz-feedback.show { display: block; animation: fadeInUp 0.3s ease; }
+        .quiz-feedback.correct { background: #e8f5e9; color: #2e7d32; }
+        .quiz-feedback.incorrect { background: #ffebee; color: #c62828; }
+
+        .check-answer-btn {
+            margin-top: 1rem;
+            padding: 0.75rem 2rem;
+            background: var(--deep-plum);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .check-answer-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 63, 85, 0.3);
+        }
+
+        .check-answer-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+        .checklist {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .checklist h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(155, 142, 138, 0.2);
+            cursor: pointer;
+        }
+
+        .checklist-item:last-child { border-bottom: none; }
+
+        .checklist-checkbox {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            border: 2px solid var(--warm-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            color: transparent;
+        }
+
+        .checklist-item.checked .checklist-checkbox {
+            background: var(--sage);
+            border-color: var(--sage);
+            color: white;
+        }
+
+        .checklist-item.checked .checklist-text {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        .lesson-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--soft-peach);
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--cream);
+            border: none;
+            border-radius: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--deep-plum);
+        }
+
+        .nav-btn:hover { background: var(--soft-peach); }
+        .nav-btn.primary { background: var(--deep-plum); color: white; }
+        .nav-btn.primary:hover { background: #3a3045; }
+        .nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+        .accordion { margin: 2rem 0; }
+
+        .accordion-item {
+            background: var(--cream);
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover { background: var(--soft-peach); }
+
+        .accordion-icon { transition: transform 0.3s ease; }
+        .accordion-item.open .accordion-icon { transform: rotate(180deg); }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 1.5rem;
+        }
+
+        .accordion-item.open .accordion-content {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .tabs-container { margin: 2rem 0; }
+
+        .tabs-header {
+            display: flex;
+            gap: 0.5rem;
+            border-bottom: 2px solid var(--soft-peach);
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--warm-gray);
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--deep-plum);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .tab-btn.active { color: var(--deep-plum); }
+        .tab-btn.active::after { transform: scaleX(1); }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeInUp 0.4s ease; }
+
+        .age-selector {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+
+        .age-btn {
+            padding: 0.6rem 1.2rem;
+            border: 2px solid var(--soft-peach);
+            background: white;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .age-btn:hover { border-color: var(--blush); }
+        .age-btn.active {
+            background: var(--deep-plum);
+            border-color: var(--deep-plum);
+            color: white;
+        }
+
+        .age-specific-content { display: none; animation: fadeInUp 0.4s ease; }
+        .age-specific-content.active { display: block; }
+
+        .sleep-needs-display {
+            background: linear-gradient(135deg, var(--soft-blue) 0%, var(--lavender) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .sleep-hours {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 600;
+            color: var(--deep-plum);
+        }
+
+        .sleep-hours span { font-size: 1.5rem; font-weight: 400; }
+
+        .sleep-breakdown {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .sleep-breakdown-item { text-align: center; }
+        .sleep-breakdown-value { font-weight: 600; font-size: 1.2rem; }
+        .sleep-breakdown-label { font-size: 0.85rem; color: var(--warm-gray); }
+
+        footer {
+            background: var(--deep-plum);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        footer .logo { color: white; justify-content: center; margin-bottom: 1.5rem; }
+        footer p { opacity: 0.7; font-size: 0.9rem; }
+
+        .hidden { display: none !important; }
+
+        .completion-box {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--soft-peach) 0%, var(--lavender) 100%);
+            border-radius: 20px;
+        }
+
+        .completion-box h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 1rem 1.5rem; }
+            nav { display: none; }
+            .modules-grid { grid-template-columns: 1fr; }
+            .lesson-wrapper { padding: 1.5rem; border-radius: 24px; }
+            .chart-row { grid-template-columns: 1fr; gap: 0.5rem; }
+            .lesson-nav { flex-direction: column; gap: 1rem; }
+            .nav-btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="stars-container" id="stars"></div>
+
+    <header>
+        <div class="logo">
+            <span>🌙</span>
+            Sweet Dreams
+        </div>
+        <nav>
+            <a onclick="showSection('overview')">Modules</a>
+            <a onclick="showSection('overview')">Home</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>Sweet Dreams<br><span>Baby Sleep Guide</span></h1>
+            <p>A gentle, evidence-based course to help you understand and nurture your baby's sleep from 0-12 months.</p>
+            <button class="cta-btn" onclick="showSection('overview')">
+                Begin Your Journey →
+            </button>
+        </div>
+    </section>
+
+    <!-- Course Overview -->
+    <section class="overview" id="overview">
+        <div class="section-header">
+            <span class="section-label">Course Curriculum</span>
+            <h2>Your Learning Path</h2>
+        </div>
+        
+        <div class="modules-grid">
+            <div class="module-card" onclick="openModule(1)">
+                <span class="module-number">01</span>
+                <div class="module-icon">🧒</div>
+                <h3>Understanding Baby Sleep</h3>
+                <p>Learn how infant sleep differs from adults and what to realistically expect.</p>
+                <div class="module-meta">
+                    <span>📚 5 lessons</span>
+                    <span>⏱️ 15 min</span>
+                </div>
+            </div>
+
+            <div class="module-card" onclick="openModule(2)">
+                <span class="module-number">02</span>
+                <div class="module-icon">👶</div>
+                <h3>Newborn Sleep (0-3 mo)</h3>
+                <p>Navigate the fourth trimester with confidence and realistic expectations.</p>
+                <div class="module-meta">
+                    <span>📚 6 lessons</span>
+                    <span>⏱️ 20 min</span>
+                </div>
+            </div>
+
+            <div class="module-card" onclick="openModule(3)">
+                <span class="module-number">03</span>
+                <div class="module-icon">🌱</div>
+                <h3>Emerging Patterns (3-6 mo)</h3>
+                <p>Discover wake windows, sleepy cues, and the magic of bedtime routines.</p>
+                <div class="module-meta">
+                    <span>📚 5 lessons</span>
+                    <span>⏱️ 18 min</span>
+                </div>
+            </div>
+
+            <div class="module-card" onclick="openModule(4)">
+                <span class="module-number">04</span>
+                <div class="module-icon">🌿</div>
+                <h3>Sleep Foundations (6-9 mo)</h3>
+                <p>Build healthy habits and navigate the first major sleep regression.</p>
+                <div class="module-meta">
+                    <span>📚 6 lessons</span>
+                    <span>⏱️ 22 min</span>
+                </div>
+            </div>
+
+            <div class="module-card" onclick="openModule(5)">
+                <span class="module-number">05</span>
+                <div class="module-icon">🌟</div>
+                <h3>Independent Sleep (9-12 mo)</h3>
+                <p>Support your baby through separation anxiety and new milestones.</p>
+                <div class="module-meta">
+                    <span>📚 5 lessons</span>
+                    <span>⏱️ 18 min</span>
+                </div>
+            </div>
+
+            <div class="module-card" onclick="openModule(6)">
+                <span class="module-number">06</span>
+                <div class="module-icon">🔧</div>
+                <h3>Common Challenges</h3>
+                <p>Troubleshoot regressions, night wakings, and nap struggles.</p>
+                <div class="module-meta">
+                    <span>📚 7 lessons</span>
+                    <span>⏱️ 25 min</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Module 1 -->
+    <section class="lesson-container hidden" id="module1">
+        <div class="lesson-wrapper">
+            <div class="lesson-header">
+                <span class="lesson-module-label">Module 1</span>
+                <h2>Understanding Baby Sleep Basics</h2>
+                <div class="lesson-progress">
+                    <span>Progress</span>
+                    <div class="lesson-progress-bar">
+                        <div class="lesson-progress-fill" style="width: 20%"></div>
+                    </div>
+                    <span>1/6</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>How Baby Sleep Differs from Adults</h3>
+                <p>If you've ever wondered why your baby wakes so frequently, you're not alone. Baby sleep is fundamentally different from adult sleep, and understanding these differences is the first step toward realistic expectations.</p>
+
+                <div class="info-card">
+                    <div class="info-card-header">💡 Key Insight</div>
+                    <p>Babies aren't "bad sleepers" — their brains are simply wired differently. Frequent waking is biologically normal and serves important developmental purposes.</p>
+                </div>
+
+                <h3>Sleep Cycles: Baby vs. Adult</h3>
+                <p>Adults cycle through sleep stages approximately every 90-120 minutes. Babies, however, have much shorter cycles — only 45-60 minutes. This means they experience more transitions between sleep stages.</p>
+
+                <div class="tabs-container">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" onclick="switchTab(event, 'tab-adult')">Adult Sleep</button>
+                        <button class="tab-btn" onclick="switchTab(event, 'tab-baby')">Baby Sleep</button>
+                    </div>
+                    <div class="tab-content active" id="tab-adult">
+                        <p><strong>Adult sleep cycles (90-120 min):</strong></p>
+                        <p>Light sleep → Deep sleep → REM sleep → Brief awakening → Repeat</p>
+                        <p>Adults typically don't remember brief awakenings and fall back asleep automatically.</p>
+                    </div>
+                    <div class="tab-content" id="tab-baby">
+                        <p><strong>Baby sleep cycles (45-60 min):</strong></p>
+                        <p>Active (REM) sleep → Quiet sleep → Brief awakening → Often needs help returning to sleep</p>
+                        <p>Babies spend 50% of sleep in active/REM sleep (vs. 20% for adults), which is crucial for brain development.</p>
+                    </div>
+                </div>
+
+                <h3>Sleep Needs by Age</h3>
+                <p>Select your baby's age to see their typical sleep needs:</p>
+
+                <div class="age-selector">
+                    <button class="age-btn active" onclick="selectAge(this, 'newborn')">0-3 months</button>
+                    <button class="age-btn" onclick="selectAge(this, 'infant1')">3-6 months</button>
+                    <button class="age-btn" onclick="selectAge(this, 'infant2')">6-9 months</button>
+                    <button class="age-btn" onclick="selectAge(this, 'infant3')">9-12 months</button>
+                </div>
+
+                <div class="age-specific-content active" id="age-newborn">
+                    <div class="sleep-needs-display">
+                        <div class="sleep-hours">14-17<span> hrs</span></div>
+                        <p>Total sleep in 24 hours</p>
+                        <div class="sleep-breakdown">
+                            <div class="sleep-breakdown-item">
+                                <div class="sleep-breakdown-value">8-9 hrs</div>
+                                <div class="sleep-breakdown-label">Nighttime</div>
+                            </div>
+                            <div class="sleep-breakdown-item">
+                                <div class="sleep-breakdown-value">6-8 hrs</div>
+                                <div class="sleep-breakdown-label">Daytime naps</div>
+                            </div>
+                            <div class="sleep-breakdown-item">
+                                <div class="sleep-breakdown-value">4-6</div>
+                                <div class="sleep-breakdown-label">Naps/day</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="age-specific-content" id="age-infant1">
+                    <div class="sleep-needs-display">
+                        <div class="sleep-hours">14-16<span> hrs</span></div>
+                        <p>Total sleep in 24 hours</p>
+                        <div class="sleep-breakdown">
+                            <div class="sleep-breakdown-item">
+                                <div class="sleep-breakdown-value">9-11 hrs</div>
+                                <div class="sleep-breakdown-label">Nighttime</div>
+                            </div>
+                            <div class="sleep-breakdown-item">
+                                <div class="sleep-breakdown-value">4-5 hrs</div>
+                                <div class="sleep-breakdown-label">Daytime naps</div>
+                            </div>
+                            <div class="sleep-breakdown-item">
+                                <div class="sleep-breakdown-value">3-4</div>
+                                <div class="sleep-breakdown-label">Naps/day</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="age-specific-content" id="age-infant2">
+                    <div class="sleep-needs-display">
+                        <div class="sleep-hours">13-15<span> hrs</span></div>
+                        <p>Total sleep in 24 hours</p>
+                        <div class="sleep-breakdown">
+                            <div class="sleep-breakdown-item">
+                                <div class="sleep-breakdown-value">10-11 hrs</div>
+                                <div class="sleep-breakdown-label">Nighttime</div>
+                            </div>
+                            <div class="sleep-breakdown-item">
+                                <div class="sleep-breakdown-value">3-4 hrs</div>
+                                <div class="sleep-breakdown-label">Daytime naps</div>
+                            </div>
+                            <div class="sleep-breakdown-item">
+                                <div class="sleep-breakdown-value">2-3</div>
+                                <div class="sleep-breakdown-label">Naps/day</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="age-specific-content" id="age-infant3">
+                    <div class="sleep-needs-display">
+                        <div class="sleep-hours">12-14<span> hrs</span></div>
+                        <p>Total sleep in 24 hours</p>
+                        <div class="sleep-breakdown">
+                            <div class="sleep-breakdown-item">
+                                <div class="sleep-breakdown-value">10-12 hrs</div>
+                                <div class="sleep-breakdown-label">Nighttime</div>
+                            </div>
+                            <div class="sleep-breakdown-item">
+                                <div class="sleep-breakdown-value">2-3 hrs</div>
+                                <div class="sleep-breakdown-label">Daytime naps</div>
+                            </div>
+                            <div class="sleep-breakdown-item">
+                                <div class="sleep-breakdown-value">2</div>
+                                <div class="sleep-breakdown-label">Naps/day</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Why Do Babies Wake at Night?</h3>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>🍼 Hunger</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Babies have tiny stomachs and need frequent feeding, especially in the early months. Night feeds are normal and expected until at least 6 months.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>🧠 Brain Development</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>During REM sleep, babies' brains are processing everything they've learned. All that activity can lead to wakings — it's a sign of healthy development!</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>🔄 Sleep Cycle Transitions</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>With short 45-60 minute sleep cycles, babies have many more opportunities to wake than adults. They often need help transitioning between cycles.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>😊 Comfort & Connection</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Babies are biologically programmed to seek proximity to caregivers. Waking to ensure you're nearby is an evolutionary survival mechanism.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-section">
+                    <h4>🎯 Check Your Understanding</h4>
+                    <p class="quiz-question">How long is a typical baby sleep cycle?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectQuizOption(this, 1)">
+                            <span class="quiz-option-marker">A</span>
+                            <span>90-120 minutes</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 2)">
+                            <span class="quiz-option-marker">B</span>
+                            <span>45-60 minutes</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 3)">
+                            <span class="quiz-option-marker">C</span>
+                            <span>2-3 hours</span>
+                        </div>
+                    </div>
+                    <div class="quiz-feedback" id="quiz-feedback-1"></div>
+                    <button class="check-answer-btn" onclick="checkAnswer(1, 2)" disabled>Check Answer</button>
+                </div>
+            </div>
+
+            <div class="lesson-nav">
+                <button class="nav-btn" onclick="showSection('overview')">← Back to Modules</button>
+                <button class="nav-btn primary" onclick="openModule(2)">Next Module →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Module 2 -->
+    <section class="lesson-container hidden" id="module2">
+        <div class="lesson-wrapper">
+            <div class="lesson-header">
+                <span class="lesson-module-label">Module 2</span>
+                <h2>Newborn Sleep (0-3 months)</h2>
+                <div class="lesson-progress">
+                    <span>Progress</span>
+                    <div class="lesson-progress-bar">
+                        <div class="lesson-progress-fill" style="width: 33%"></div>
+                    </div>
+                    <span>2/6</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>The Fourth Trimester</h3>
+                <p>The first three months after birth are often called the "fourth trimester." Your baby has just transitioned from a warm, dark, constantly-held environment to a bright, open world.</p>
+
+                <div class="info-card">
+                    <div class="info-card-header">💡 Key Insight</div>
+                    <p>In the womb, your baby was rocked constantly, heard your heartbeat 24/7, and never felt hunger. This is a massive adjustment!</p>
+                </div>
+
+                <h3>Safe Sleep Guidelines (ABCs)</h3>
+                <div class="info-card warning">
+                    <div class="info-card-header">⚠️ Safe Sleep ABCs</div>
+                    <p><strong>A = Alone:</strong> Baby should sleep alone (no pillows, blankets, bumpers, or toys)<br><br>
+                    <strong>B = Back:</strong> Always place baby on their back to sleep<br><br>
+                    <strong>C = Crib:</strong> Use a firm, flat surface designed for infant sleep</p>
+                </div>
+
+                <h3>Fixing Day/Night Confusion</h3>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>☀️ During the Day</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>• Keep curtains open and let natural light in<br>
+                            • Go about normal household activities<br>
+                            • Engage with baby during awake time<br>
+                            • Keep daytime naps in well-lit areas</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>🌙 At Night</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>• Keep lights dim or use red/amber night lights<br>
+                            • Keep nighttime feeds calm and quiet<br>
+                            • Minimize stimulation — no playing<br>
+                            • Put baby back down drowsy but awake when possible</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>The 5 S's for Soothing</h3>
+                <div class="sleep-chart">
+                    <h4>Dr. Harvey Karp's Soothing Method</h4>
+                    <div class="chart-row">
+                        <span class="chart-label">🤱 Swaddle</span>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar night" style="width: 100%">Snug wrapping mimics the womb</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <span class="chart-label">🤲 Side/Stomach</span>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar day" style="width: 100%">Hold (not sleep) in this position</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <span class="chart-label">🔊 Shush</span>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar night" style="width: 100%">White noise mimics blood flow</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <span class="chart-label">🪑 Swing</span>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar day" style="width: 100%">Gentle rhythmic motion</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <span class="chart-label">🍼 Suck</span>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar night" style="width: 100%">Pacifier or feeding for comfort</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-section">
+                    <h4>🎯 Check Your Understanding</h4>
+                    <p class="quiz-question">What does the "B" in the ABCs of safe sleep stand for?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectQuizOption(this, 1)">
+                            <span class="quiz-option-marker">A</span>
+                            <span>Blanket</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 2)">
+                            <span class="quiz-option-marker">B</span>
+                            <span>Back</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 3)">
+                            <span class="quiz-option-marker">C</span>
+                            <span>Bassinet</span>
+                        </div>
+                    </div>
+                    <div class="quiz-feedback" id="quiz-feedback-2"></div>
+                    <button class="check-answer-btn" onclick="checkAnswer(2, 2)" disabled>Check Answer</button>
+                </div>
+            </div>
+
+            <div class="lesson-nav">
+                <button class="nav-btn" onclick="openModule(1)">← Previous Module</button>
+                <button class="nav-btn primary" onclick="openModule(3)">Next Module →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Module 3 -->
+    <section class="lesson-container hidden" id="module3">
+        <div class="lesson-wrapper">
+            <div class="lesson-header">
+                <span class="lesson-module-label">Module 3</span>
+                <h2>Emerging Patterns (3-6 months)</h2>
+                <div class="lesson-progress">
+                    <span>Progress</span>
+                    <div class="lesson-progress-bar">
+                        <div class="lesson-progress-fill" style="width: 50%"></div>
+                    </div>
+                    <span>3/6</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>The Magic of Wake Windows</h3>
+                <p>Wake windows are the periods of time your baby can comfortably stay awake between sleep periods. Catching the "sweet spot" before overtiredness sets in makes all the difference.</p>
+
+                <div class="sleep-chart">
+                    <h4>Typical Wake Windows</h4>
+                    <div class="chart-row">
+                        <span class="chart-label">0-4 weeks</span>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar night" style="width: 35%">35-60 min</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <span class="chart-label">4-8 weeks</span>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar day" style="width: 45%">45-75 min</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <span class="chart-label">2-3 months</span>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar night" style="width: 55%">1-1.5 hours</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <span class="chart-label">3-4 months</span>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar day" style="width: 65%">1.5-2 hours</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <span class="chart-label">5-6 months</span>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar night" style="width: 80%">2-2.5 hours</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Recognizing Sleepy Cues</h3>
+                <div class="tabs-container">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" onclick="switchTab(event, 'tab-early')">Early Cues</button>
+                        <button class="tab-btn" onclick="switchTab(event, 'tab-late')">Late Cues</button>
+                        <button class="tab-btn" onclick="switchTab(event, 'tab-overtired')">Overtired</button>
+                    </div>
+                    <div class="tab-content active" id="tab-early">
+                        <p><strong>🟢 Start preparing for sleep:</strong></p>
+                        <p>• Staring off into space / "zoning out"<br>
+                        • Slower movements<br>
+                        • Less engaged<br>
+                        • First yawn</p>
+                    </div>
+                    <div class="tab-content" id="tab-late">
+                        <p><strong>🟡 Act quickly:</strong></p>
+                        <p>• Rubbing eyes or pulling ears<br>
+                        • Fussiness and whining<br>
+                        • Multiple yawns<br>
+                        • Turning away from stimulation</p>
+                    </div>
+                    <div class="tab-content" id="tab-overtired">
+                        <p><strong>🔴 Harder to settle:</strong></p>
+                        <p>• Inconsolable crying<br>
+                        • Arching back<br>
+                        • Hyper alertness ("second wind")<br>
+                        • Fighting sleep intensely</p>
+                    </div>
+                </div>
+
+                <h3>Building a Bedtime Routine</h3>
+                <div class="checklist">
+                    <h4>✓ Sample Routine (20-30 min)</h4>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Warm bath (optional)</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Gentle massage with lotion</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Put on pajamas and sleep sack</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Dim lights, turn on white noise</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Final feed</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Read a book or sing a lullaby</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Cuddles and goodnight</div>
+                    </div>
+                </div>
+
+                <div class="quiz-section">
+                    <h4>🎯 Check Your Understanding</h4>
+                    <p class="quiz-question">Which is an EARLY sleepy cue?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectQuizOption(this, 1)">
+                            <span class="quiz-option-marker">A</span>
+                            <span>Inconsolable crying</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 2)">
+                            <span class="quiz-option-marker">B</span>
+                            <span>Staring off into space</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 3)">
+                            <span class="quiz-option-marker">C</span>
+                            <span>Arching back</span>
+                        </div>
+                    </div>
+                    <div class="quiz-feedback" id="quiz-feedback-3"></div>
+                    <button class="check-answer-btn" onclick="checkAnswer(3, 2)" disabled>Check Answer</button>
+                </div>
+            </div>
+
+            <div class="lesson-nav">
+                <button class="nav-btn" onclick="openModule(2)">← Previous Module</button>
+                <button class="nav-btn primary" onclick="openModule(4)">Next Module →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Module 4 -->
+    <section class="lesson-container hidden" id="module4">
+        <div class="lesson-wrapper">
+            <div class="lesson-header">
+                <span class="lesson-module-label">Module 4</span>
+                <h2>Sleep Foundations (6-9 months)</h2>
+                <div class="lesson-progress">
+                    <span>Progress</span>
+                    <div class="lesson-progress-bar">
+                        <div class="lesson-progress-fill" style="width: 66%"></div>
+                    </div>
+                    <span>4/6</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Sleep Associations</h3>
+                <p>A sleep association is anything your baby links with falling asleep. Some are helpful, while others can create challenges.</p>
+
+                <div class="tabs-container">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" onclick="switchTab(event, 'tab-helpful')">Helpful</button>
+                        <button class="tab-btn" onclick="switchTab(event, 'tab-limiting')">Limiting</button>
+                    </div>
+                    <div class="tab-content active" id="tab-helpful">
+                        <p><strong>Present all night without your help:</strong></p>
+                        <p>✅ White noise machine<br>
+                        ✅ Dark room<br>
+                        ✅ Sleep sack<br>
+                        ✅ Pacifier (many babies can reinsert)</p>
+                    </div>
+                    <div class="tab-content" id="tab-limiting">
+                        <p><strong>Require your presence to recreate:</strong></p>
+                        <p>⚠️ Feeding to sleep<br>
+                        ⚠️ Rocking to sleep<br>
+                        ⚠️ Holding until fully asleep<br>
+                        <em>Note: Only problematic if causing you stress</em></p>
+                    </div>
+                </div>
+
+                <h3>The 6-Month Sleep Regression</h3>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>🧠 Why It Happens</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>• Major cognitive development<br>
+                            • Physical milestones (sitting, crawling)<br>
+                            • Increased awareness<br>
+                            • Possible teething</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>✨ How to Navigate</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>• Stay consistent with routines<br>
+                            • Practice new skills during the day<br>
+                            • Offer comfort without new associations<br>
+                            • This usually passes in 2-6 weeks</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Transitioning from 3 to 2 Naps</h3>
+                <div class="checklist">
+                    <h4>✓ Signs Baby is Ready</h4>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Third nap consistently refused or very short</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Can handle 2.5-3 hour wake windows</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Bedtime pushed too late due to third nap</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Baby is at least 6 months old</div>
+                    </div>
+                </div>
+
+                <div class="quiz-section">
+                    <h4>🎯 Check Your Understanding</h4>
+                    <p class="quiz-question">Which is a "helpful" sleep association?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectQuizOption(this, 1)">
+                            <span class="quiz-option-marker">A</span>
+                            <span>Rocking to sleep</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 2)">
+                            <span class="quiz-option-marker">B</span>
+                            <span>Feeding to sleep</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 3)">
+                            <span class="quiz-option-marker">C</span>
+                            <span>White noise machine</span>
+                        </div>
+                    </div>
+                    <div class="quiz-feedback" id="quiz-feedback-4"></div>
+                    <button class="check-answer-btn" onclick="checkAnswer(4, 3)" disabled>Check Answer</button>
+                </div>
+            </div>
+
+            <div class="lesson-nav">
+                <button class="nav-btn" onclick="openModule(3)">← Previous Module</button>
+                <button class="nav-btn primary" onclick="openModule(5)">Next Module →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Module 5 -->
+    <section class="lesson-container hidden" id="module5">
+        <div class="lesson-wrapper">
+            <div class="lesson-header">
+                <span class="lesson-module-label">Module 5</span>
+                <h2>Independent Sleep (9-12 months)</h2>
+                <div class="lesson-progress">
+                    <span>Progress</span>
+                    <div class="lesson-progress-bar">
+                        <div class="lesson-progress-fill" style="width: 83%"></div>
+                    </div>
+                    <span>5/6</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Understanding Separation Anxiety</h3>
+                <p>Between 8-10 months, most babies develop separation anxiety. This is a sign of healthy attachment — your baby now understands object permanence.</p>
+
+                <div class="info-card">
+                    <div class="info-card-header">💡 Key Insight</div>
+                    <p>Separation anxiety peaks around 10-18 months. It's a normal developmental phase that shows healthy attachment.</p>
+                </div>
+
+                <h3>Managing Sleep Through This Phase</h3>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>🎮 Practice During the Day</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>• Play peek-a-boo games<br>
+                            • Practice brief separations<br>
+                            • Say goodbye and hello cheerfully<br>
+                            • Avoid sneaking away</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>🌙 At Bedtime</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>• Keep goodbyes short and sweet<br>
+                            • Be calm and confident<br>
+                            • Consider "graduated leaving"<br>
+                            • If you return, keep it brief</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>When Baby Stands in the Crib</h3>
+                <div class="checklist">
+                    <h4>✓ How to Handle Standing</h4>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Practice sitting down during the day</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Lower the crib mattress</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Lay baby down once or twice, then let them figure it out</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text">Be patient — resolves in 1-2 weeks</div>
+                    </div>
+                </div>
+
+                <div class="quiz-section">
+                    <h4>🎯 Check Your Understanding</h4>
+                    <p class="quiz-question">Separation anxiety is a sign of what?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectQuizOption(this, 1)">
+                            <span class="quiz-option-marker">A</span>
+                            <span>A sleep problem</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 2)">
+                            <span class="quiz-option-marker">B</span>
+                            <span>Healthy attachment and development</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 3)">
+                            <span class="quiz-option-marker">C</span>
+                            <span>That you've spoiled your baby</span>
+                        </div>
+                    </div>
+                    <div class="quiz-feedback" id="quiz-feedback-5"></div>
+                    <button class="check-answer-btn" onclick="checkAnswer(5, 2)" disabled>Check Answer</button>
+                </div>
+            </div>
+
+            <div class="lesson-nav">
+                <button class="nav-btn" onclick="openModule(4)">← Previous Module</button>
+                <button class="nav-btn primary" onclick="openModule(6)">Next Module →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Module 6 -->
+    <section class="lesson-container hidden" id="module6">
+        <div class="lesson-wrapper">
+            <div class="lesson-header">
+                <span class="lesson-module-label">Module 6</span>
+                <h2>Common Sleep Challenges</h2>
+                <div class="lesson-progress">
+                    <span>Progress</span>
+                    <div class="lesson-progress-bar">
+                        <div class="lesson-progress-fill" style="width: 100%"></div>
+                    </div>
+                    <span>6/6</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Troubleshooting Guide</h3>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>🌅 Early Morning Wake-Ups</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Causes:</strong> Bedtime too late, too much daytime sleep, light creeping in<br><br>
+                            <strong>Solutions:</strong> Use blackout curtains, try earlier bedtime, cap daytime sleep</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>😴 Short Naps</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Why:</strong> Baby wakes after one sleep cycle<br><br>
+                            <strong>Solutions:</strong> Check wake windows, optimize sleep environment, be patient — naps often consolidate by 6 months</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>🌙 Frequent Night Wakings</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Consider:</strong> Hunger? Habit? Sleep associations? Regression?<br><br>
+                            <strong>Approaches:</strong> Rule out hunger/discomfort, work on independent sleep skills, stay consistent</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>⏰ Bedtime Battles</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Causes:</strong> Overtired, undertired, separation anxiety<br><br>
+                            <strong>Solutions:</strong> Find the sweet spot wake window, keep routine calm, consider earlier bedtime</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>When to Seek Help</h3>
+                <div class="info-card warning">
+                    <div class="info-card-header">⚠️ Contact Your Pediatrician If:</div>
+                    <p>• Baby is not gaining weight appropriately<br>
+                    • You notice pauses in breathing during sleep<br>
+                    • Loud, persistent snoring<br>
+                    • Sleep issues significantly impact your mental health</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-header">💜 Remember</div>
+                    <p>Every baby is unique. Trust your instincts, respond to your baby's needs, and know that difficult phases do pass. You're doing an amazing job!</p>
+                </div>
+
+                <div class="quiz-section">
+                    <h4>🎯 Final Check</h4>
+                    <p class="quiz-question">What's the most important factor in healthy sleep habits?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectQuizOption(this, 1)">
+                            <span class="quiz-option-marker">A</span>
+                            <span>Expensive sleep products</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 2)">
+                            <span class="quiz-option-marker">B</span>
+                            <span>Strict schedule from day one</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 3)">
+                            <span class="quiz-option-marker">C</span>
+                            <span>Consistency and responding to baby's cues</span>
+                        </div>
+                    </div>
+                    <div class="quiz-feedback" id="quiz-feedback-6"></div>
+                    <button class="check-answer-btn" onclick="checkAnswer(6, 3)" disabled>Check Answer</button>
+                </div>
+
+                <div class="completion-box">
+                    <h3>🎉 Congratulations!</h3>
+                    <p>You've completed the Sweet Dreams Baby Sleep Course. Remember, every baby is different, and you're the expert on your little one. Trust yourself!</p>
+                    <button class="cta-btn" onclick="showSection('overview')" style="margin-top: 1.5rem;">
+                        Review All Modules
+                    </button>
+                </div>
+            </div>
+
+            <div class="lesson-nav">
+                <button class="nav-btn" onclick="openModule(5)">← Previous Module</button>
+                <button class="nav-btn primary" onclick="showSection('overview')">Back to Home</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo">
+            <span>🌙</span>
+            Sweet Dreams
+        </div>
+        <p>Evidence-based baby sleep guidance for exhausted parents.</p>
+        <p style="margin-top: 1rem; opacity: 0.5;">Created with 💜 for better nights</p>
+    </footer>
+
+    <script>
+        // Create floating stars
+        function createStars() {
+            const container = document.getElementById('stars');
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.width = (Math.random() * 3 + 2) + 'px';
+                star.style.height = star.style.width;
+                container.appendChild(star);
+            }
+        }
+        createStars();
+
+        // Progress bar
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.getElementById('progressBar').style.width = scrollPercent + '%';
+        });
+
+        // Section navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            const target = document.getElementById(sectionId);
+            if (target) {
+                target.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            
+            if (sectionId === 'overview') {
+                document.getElementById('hero').classList.remove('hidden');
+            }
+        }
+
+        // Module navigation
+        function openModule(moduleNum) {
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            const module = document.getElementById('module' + moduleNum);
+            if (module) {
+                module.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Tab switching
+        function switchTab(event, tabId) {
+            const container = event.target.closest('.tabs-container');
+            container.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            container.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            event.target.classList.add('active');
+            container.querySelector('#' + tabId).classList.add('active');
+        }
+
+        // Age selector
+        function selectAge(btn, ageId) {
+            btn.parentElement.querySelectorAll('.age-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.age-specific-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById('age-' + ageId).classList.add('active');
+        }
+
+        // Accordion
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            const wasOpen = item.classList.contains('open');
+            item.parentElement.querySelectorAll('.accordion-item').forEach(i => {
+                i.classList.remove('open');
+            });
+            if (!wasOpen) {
+                item.classList.add('open');
+            }
+        }
+
+        // Checklist
+        function toggleChecklist(item) {
+            item.classList.toggle('checked');
+        }
+
+        // Quiz functionality
+        let selectedAnswers = {};
+
+        function selectQuizOption(option, value) {
+            const quizSection = option.closest('.quiz-section');
+            const options = quizSection.querySelectorAll('.quiz-option');
+            const checkBtn = quizSection.querySelector('.check-answer-btn');
+            
+            options.forEach(opt => opt.classList.remove('selected', 'correct', 'incorrect'));
+            option.classList.add('selected');
+            
+            const quizId = quizSection.querySelector('.quiz-feedback').id.split('-')[2];
+            selectedAnswers[quizId] = value;
+            checkBtn.disabled = false;
+            quizSection.querySelector('.quiz-feedback').classList.remove('show');
+        }
+
+        function checkAnswer(quizId, correctAnswer) {
+            const feedback = document.getElementById('quiz-feedback-' + quizId);
+            const quizSection = feedback.closest('.quiz-section');
+            const options = quizSection.querySelectorAll('.quiz-option');
+            const selectedValue = selectedAnswers[quizId];
+            
+            options.forEach((opt, index) => {
+                if (index + 1 === selectedValue) {
+                    if (selectedValue === correctAnswer) {
+                        opt.classList.add('correct');
+                    } else {
+                        opt.classList.add('incorrect');
+                    }
+                }
+                if (index + 1 === correctAnswer) {
+                    opt.classList.add('correct');
+                }
+            });
+            
+            if (selectedValue === correctAnswer) {
+                feedback.className = 'quiz-feedback show correct';
+                feedback.innerHTML = '✅ Correct! Great job!';
+            } else {
+                feedback.className = 'quiz-feedback show incorrect';
+                feedback.innerHTML = '❌ Not quite. The correct answer is highlighted above.';
+            }
+            
+            quizSection.querySelector('.check-answer-btn').disabled = true;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('overview');
+            document.getElementById('hero').classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
