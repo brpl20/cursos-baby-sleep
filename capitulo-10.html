@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capítulo Bônus — O Sono do Bebê ao Redor do Mundo | Sonhos Doces</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FDF8F3;
+            --soft-peach: #FFEEE4;
+            --blush: #F5D5C8;
+            --lavender: #E8E0F0;
+            --soft-blue: #D4E5F7;
+            --sage: #D5E5D8;
+            --warm-gray: #9B8E8A;
+            --deep-plum: #4A3F55;
+            --moon-gold: #E8C87D;
+            --night-blue: #2C3E50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--deep-plum);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--moon-gold);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, var(--cream) 0%, transparent 100%);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--deep-plum);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--blush), var(--lavender), var(--soft-blue));
+            width: 0%;
+            z-index: 101;
+            transition: width 0.3s ease;
+        }
+
+        nav { display: flex; gap: 2rem; }
+
+        nav a {
+            text-decoration: none;
+            color: var(--warm-gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        nav a:hover { color: var(--deep-plum); }
+
+        .lesson-container {
+            background: linear-gradient(135deg, var(--soft-peach) 0%, var(--lavender) 50%, var(--soft-blue) 100%);
+            min-height: 100vh;
+            padding: 6rem 2rem;
+        }
+
+        .lesson-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            padding: 3rem;
+            box-shadow: 0 30px 60px rgba(74, 63, 85, 0.15);
+        }
+
+        .lesson-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--soft-peach);
+        }
+
+        .lesson-module-label {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--lavender);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .lesson-progress {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--warm-gray);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .lesson-progress-bar {
+            width: 150px;
+            height: 4px;
+            background: var(--soft-peach);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .lesson-progress-fill {
+            height: 100%;
+            background: var(--deep-plum);
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+
+        .lesson-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .lesson-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin: 2.5rem 0 1rem;
+            color: var(--deep-plum);
+        }
+
+        .lesson-content p {
+            margin-bottom: 1.5rem;
+            color: #5a4a5a;
+        }
+
+        .lesson-content ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .lesson-content li {
+            margin-bottom: 0.5rem;
+            color: #5a4a5a;
+        }
+
+        .info-card {
+            background: var(--cream);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--moon-gold);
+        }
+
+        .info-card.tip {
+            border-left-color: var(--sage);
+            background: linear-gradient(135deg, #f0f7f1 0%, var(--cream) 100%);
+        }
+
+        .info-card.warning {
+            border-left-color: var(--blush);
+            background: linear-gradient(135deg, #fef5f2 0%, var(--cream) 100%);
+        }
+
+        .info-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .info-card p { margin: 0; font-size: 0.95rem; }
+
+        .dica-pratica {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 50%, #f5f0ff 100%);
+            border-radius: 20px;
+            padding: 1.75rem;
+            margin: 2rem 0;
+            border: 2px dashed var(--moon-gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dica-pratica::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(232, 200, 125, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .dica-pratica-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .dica-pratica-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--moon-gold), #f0d78c);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .dica-pratica-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--deep-plum);
+        }
+
+        .dica-pratica-content {
+            color: #5a4a5a;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .dica-pratica-content p { margin-bottom: 0.75rem; }
+        .dica-pratica-content p:last-child { margin-bottom: 0; }
+
+        .dica-pratica-content ol,
+        .dica-pratica-content ul {
+            margin-left: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .dica-pratica-content li { margin-bottom: 0.5rem; }
+
+        .dica-pratica-content strong { color: var(--deep-plum); }
+
+        .timeline {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .timeline h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(155, 142, 138, 0.2);
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .timeline-marker {
+            min-width: 80px;
+            font-weight: 600;
+            color: var(--deep-plum);
+            background: var(--soft-peach);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .timeline-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #5a4a5a;
+        }
+
+        .tabs-container { margin: 2rem 0; }
+
+        .tabs-header {
+            display: flex;
+            gap: 0.5rem;
+            border-bottom: 2px solid var(--soft-peach);
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--warm-gray);
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--deep-plum);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .tab-btn.active { color: var(--deep-plum); }
+        .tab-btn.active::after { transform: scaleX(1); }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeInUp 0.4s ease; }
+
+        .accordion { margin: 2rem 0; }
+
+        .accordion-item {
+            background: white;
+            border: 1px solid var(--soft-peach);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 1.25rem 1.5rem;
+            background: var(--cream);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+            font-weight: 500;
+        }
+
+        .accordion-header:hover { background: var(--soft-peach); }
+
+        .accordion-icon { transition: transform 0.3s ease; }
+        .accordion-item.open .accordion-icon { transform: rotate(180deg); }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-item.open .accordion-content {
+            max-height: 1000px;
+            padding: 0 1.5rem 1.5rem;
+            color: #5a4a5a;
+            font-size: 0.95rem;
+        }
+
+        .checklist {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .checklist h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(155, 142, 138, 0.15);
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .checklist-item:last-child { border-bottom: none; }
+
+        .checklist-checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--warm-gray);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+            margin-top: 0.2rem;
+        }
+
+        .checklist-item.checked .checklist-checkbox {
+            background: var(--deep-plum);
+            border-color: var(--deep-plum);
+            color: white;
+        }
+
+        .checklist-item.checked .checklist-text {
+            opacity: 0.6;
+            text-decoration: line-through;
+        }
+
+        .checklist-text {
+            color: #5a4a5a;
+            font-size: 0.95rem;
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, var(--lavender) 0%, var(--soft-blue) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .quiz-section h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-question { font-weight: 500; margin-bottom: 1rem; }
+
+        .quiz-options { display: flex; flex-direction: column; gap: 0.75rem; }
+
+        .quiz-option {
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .quiz-option:hover { border-color: var(--deep-plum); }
+        .quiz-option.selected { border-color: var(--deep-plum); background: var(--cream); }
+        .quiz-option.correct { border-color: #4caf50; background: #e8f5e9; }
+        .quiz-option.incorrect { border-color: #f44336; background: #ffebee; }
+
+        .quiz-option-marker {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid var(--warm-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .quiz-option.selected .quiz-option-marker {
+            border-color: var(--deep-plum);
+            background: var(--deep-plum);
+            color: white;
+        }
+
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 12px;
+            display: none;
+        }
+
+        .quiz-feedback.show { display: block; animation: fadeInUp 0.3s ease; }
+        .quiz-feedback.correct { background: #e8f5e9; color: #2e7d32; }
+        .quiz-feedback.incorrect { background: #ffebee; color: #c62828; }
+
+        .check-answer-btn {
+            margin-top: 1rem;
+            padding: 0.75rem 2rem;
+            background: var(--deep-plum);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .check-answer-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(74, 63, 85, 0.25);
+        }
+
+        .check-answer-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .chapter-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--soft-peach);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--cream);
+            border: none;
+            border-radius: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--deep-plum);
+            text-decoration: none;
+        }
+
+        .nav-btn:hover { background: var(--soft-peach); }
+
+        .chapter-nav-center {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .chapter-nav-center a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--lavender);
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--deep-plum);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .chapter-nav-center a:hover {
+            background: var(--blush);
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 1rem 1.5rem; }
+            nav { display: none; }
+            .lesson-wrapper { padding: 1.5rem; border-radius: 24px; }
+            .chapter-nav { flex-direction: column; gap: 1rem; }
+            .nav-btn { width: 100%; justify-content: center; }
+            .chapter-nav-center { width: 100%; }
+            .chapter-nav-center a { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="stars-container" id="stars"></div>
+
+    <header>
+        <div class="logo">
+            <span>🌙</span>
+            Sonhos Doces
+        </div>
+        <nav>
+            <a href="index.html">Capítulos</a>
+            <a href="index.html">Início</a>
+        </nav>
+    </header>
+
+    <div class="lesson-container">
+        <div class="lesson-wrapper">
+            <div class="lesson-header">
+                <div class="lesson-module-label">Capítulo Bônus</div>
+                <h2>O Sono do Bebê ao Redor do Mundo</h2>
+                <div class="lesson-progress">
+                    <span>Progresso:</span>
+                    <div class="lesson-progress-bar">
+                        <div class="lesson-progress-fill" style="width: 100%;"></div>
+                    </div>
+                    <span>Bônus</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introdução</h3>
+                <p>
+                    O sono é uma necessidade universal para os bebês, mas a forma como os pais abordam e orientam o sono de seus filhos varia significativamente entre culturas e regiões do mundo. Enquanto a ciência moderna ocidental enfatiza a importância do sono independente e da autodormição, outras culturas priorizaram práticas como o co-sleeping (dormir junto) e a resposta imediata ao choro. Neste capítulo bônus, exploraremos perspectivas globais sobre o sono infantil e descobriremos que não existe uma única forma "correta" de fazer isso — existem múltiplas abordagens válidas, cada uma com seus próprios benefícios.
+                </p>
+
+                <h3>Perspectiva Científica: EUA e Reino Unido</h3>
+                <p>
+                    A perspectiva científica ocidental moderna é baseada em pesquisa sobre o desenvolvimento circadiano dos bebês. Esses achados nos ajudam a entender quando o corpo do bebê está biologicamente pronto para dormir de forma mais estruturada.
+                </p>
+
+                <div class="timeline">
+                    <h4>Desenvolvimento do Ritmo Circadiano</h4>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">8 semanas</div>
+                        <div class="timeline-content">
+                            <p><strong>Cortisol começa a ser produzido</strong> — hormônio que promove vigília e energia pela manhã.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">9 semanas</div>
+                        <div class="timeline-content">
+                            <p><strong>Melatonina passa a ser produzida</strong> — hormônio do sono. Antes disso, o bebê depende da melatonina do leite materno.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">11 semanas</div>
+                        <div class="timeline-content">
+                            <p><strong>Flutuações de temperatura começam</strong> — o corpo começa a regular melhor a temperatura para o sono.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">16 semanas</div>
+                        <div class="timeline-content">
+                            <p><strong>Sincronização circadiana de 24 horas</strong> — o relógio biológico se alinha com o ciclo dia-noite.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">18-24 meses</div>
+                        <div class="timeline-content">
+                            <p><strong>Sistema completamente estabelecido</strong> — ritmo circadiano totalmente maduro e previsível.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card tip">
+                    <div class="info-card-header">💡 O Papel do Leite Materno</div>
+                    <p>
+                        Antes de 3 meses, os bebês praticamente não produzem melatonina. Então, <strong>como eles dormem?</strong> A resposta é: dependem da melatonina presente no leite materno. Pesquisas mostram que o leite noturno tem concentrações de melatonina até <strong>10 vezes maior</strong> do que o leite diurno! Isso significa que oferecer o peito ou mamadeira à noite fornece ao bebê o hormônio do sono que seu corpo ainda não consegue produzir. Este é um dos motivos pelos quais bebês alimentados com fórmula podem ter padrões de sono ligeiramente diferentes — a fórmula não contém melatonina.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-header">🔊 Ruído Branco: Evidências Científicas</div>
+                    <p>
+                        Estudos demonstram que aproximadamente <strong>80% dos recém-nascidos conseguem adormecer em 5 minutos com ruído branco</strong>, enquanto apenas 25% conseguem sem ele. A Academia Americana de Pediatria (AAP) reconhece o ruído branco como uma ferramenta segura. No entanto, é importante estar atento à segurança:
+                    </p>
+                    <ul style="margin: 0.75rem 0 0 1.5rem; color: #5a4a5a; font-size: 0.95rem;">
+                        <li>Mantenha a máquina a pelo menos <strong>2 metros de distância</strong> do berço</li>
+                        <li>Máximo de <strong>50dB</strong> é seguro</li>
+                        <li>⚠️ Aviso: muitas máquinas comerciais podem atingir até <strong>91dB no volume máximo</strong> — isto é perigoso!</li>
+                    </ul>
+                </div>
+
+                <div class="info-card warning">
+                    <div class="info-card-header">✅ Sleep Training é Seguro</div>
+                    <p>
+                        Preocupações sobre sleep training causar danos ao apego? A pesquisa é tranquilizadora. Estudos científicos rigorosos mostram que sleep training bem implementado <strong>não prejudica o apego seguro</strong> entre pais e filhos. Na verdade, métodos suaves de sleep training são igualmente efetivos aos métodos mais firmes, oferecendo opções para pais que preferem abordagens mais responsivas.
+                    </p>
+                </div>
+
+                <h3>Japão: O Modelo da Interdependência</h3>
+                <p>
+                    No Japão, a abordagem ao sono infantil é fundamentalmente diferente. Em vez de enfatizar a independência, a filosofia tradicional prioriza a proximidade e a interdependência familiar.
+                </p>
+
+                <div class="info-card">
+                    <div class="info-card-header">🛏️ Kawanoji: A Posição do Rio (川の字)</div>
+                    <p>
+                        Aproximadamente <strong>71% das famílias japonesas praticam co-sleeping</strong>, utilizando uma formação específica chamada "Kawanoji" ou "posição do rio" — onde o bebê/criança dorme no meio, entre os pais. Esta prática persiste até os 7-9 anos, quando as crianças naturalmente transitam para dormir sozinhas (cerca de 36% das crianças).
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        O surpreendente: <strong>A taxa de SIDS no Japão é de 0,2-0,3 por 1.000 nascidos vivos</strong>, significativamente mais baixa do que nos EUA (0,5 por 1.000). Como é possível? O segredo não é o co-sleeping em si, mas a <strong>superfície firme</strong> (futons e tatames) e a <strong>ausência de objetos macios</strong> no ambiente de dormir. As recomendações de segurança são mais flexíveis com a superfície adequada.
+                    </p>
+                </div>
+
+                <div class="info-card tip">
+                    <div class="info-card-header">🚶 O Método RIKEN 5+8 Minutos</div>
+                    <p>
+                        O instituto de pesquisa RIKEN no Japão estudou uma técnica simples e eficaz: <strong>caminhe com o bebê chorando por 5 minutos, depois sente por 8 minutos</strong>. Os resultados? <strong>100% dos bebês pararam de chorar</strong> durante este período, e aproximadamente <strong>50% adormeceram</strong>. É um método responsivo e não envolve deixar o bebê solitário.
+                    </p>
+                </div>
+
+                <div class="dica-pratica">
+                    <div class="dica-pratica-header">
+                        <div class="dica-pratica-icon">🏡</div>
+                        <div class="dica-pratica-label">Como Aplicar o Método 5+8 Minutos em Casa</div>
+                    </div>
+                    <div class="dica-pratica-content">
+                        <ol>
+                            <li><strong>Fase de caminhada (5 minutos):</strong> Quando o bebê começar a ficar sonolento ou irritado, pegue-o no colo e caminhe pela casa. Você pode mudar de ambiente, ir para o corredor ou até a cozinha. O movimento e a mudança de cenário ajudam.</li>
+                            <li><strong>Fase de repouso (8 minutos):</strong> Depois de 5 minutos de caminhada, sente-se em um local confortável (sofá, cadeira de amamentação, ou até o chão). Mantenha o bebê no colo. Se ele estiver adormecido, perfeito. Se estiver quieto mas acordado, continue sentado até os 8 minutos passarem.</li>
+                            <li><strong>Repita conforme necessário:</strong> Se após os 8 minutos o bebê ainda não dormiu, você pode repetir o ciclo.</li>
+                            <li><strong>Consistência é chave:</strong> Use este método regularmente em horários de soneca ou noturno para que o bebê reconheça o padrão.</li>
+                        </ol>
+                        <p style="margin-top: 1rem;"><strong>Dica:</strong> Muitos pais ocidentais ficam surpresos com a simplicidade, mas a ciência confirma: é o ritmo, o movimento e a mudança de ambiente que tranquilizam o bebê — não necessariamente técnicas complexas.</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-header">🌙 Yonaki: O Choro Noturno Visto como Normal</div>
+                    <p>
+                        No Japão, o termo "Yonaki" (夜泣き) descreve o choro noturno dos bebês, visto como <strong>uma fase normal e desenvolvimentista</strong> típica dos 6 meses aos 2 anos. Em vez de tentar "resolver" ou "corrigir" o yonaki com sleep training, os pais japoneses usam uma <strong>abordagem responsiva</strong> — reconhecem o choro, reconfortam o bebê e confiam que essa fase passará naturalmente com o tempo.
+                    </p>
+                </div>
+
+                <div class="info-card tip">
+                    <div class="info-card-header">✨ Ritual Oyasumi Tour</div>
+                    <p>
+                        Uma prática encantadora de pais japoneses é o "Oyasumi Tour" — levar o bebê pela casa antes de dormir, dizendo "Oyasumi" (boa noite) para cada cômodo, seus brinquedos e até a geladeira. Combina-se isso com um banho morno para sinalizar o final do dia. Essa rotina estruturada, sem pressão, marca a transição para o sono.
+                    </p>
+                </div>
+
+                <h3>Finlândia: Sonecas ao Ar Livre e Saúde Pública</h3>
+                <p>
+                    A Finlândia oferece uma perspectiva única ao combinar cuidados estruturados com a natureza, resultando em algumas das menores taxas de SIDS do mundo.
+                </p>
+
+                <div class="info-card">
+                    <div class="info-card-header">📦 O Baby Box: De 1949 até Hoje</div>
+                    <p>
+                        Desde <strong>1949</strong>, toda mulher grávida na Finlândia recebe uma "Baby Box" — uma caixa de papelão que serve como crib, contém roupas essenciais, fraldas e artigos de higiene. O programa é tão efetivo que <strong>mais de 60 países ao redor do mundo</strong> adotaram versões semelhantes. A taxa de SIDS na Finlândia é surpreendentemente baixa: <strong>0,09-0,15 por 1.000</strong> — entre as mais baixas do mundo.
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        <strong>Importante:</strong> O sucesso não é apenas a caixa, mas o <strong>sistema de saúde integrado</strong> que acompanha as famílias desde o pré-natal, fornecendo educação em sono, apoio lactação e cuidados contínuos.
+                    </p>
+                </div>
+
+                <div class="info-card tip">
+                    <div class="info-card-header">🌲 Sonecas ao Ar Livre: A Prática Nórdica</div>
+                    <p>
+                        <strong>95% das famílias finlandesas praticam sonecas ao ar livre</strong> — os bebês dormem em carrinhos na varanda, parque ou até na rua durante horas, independentemente do frio. Os dados são impressionantes:
+                    </p>
+                    <ul style="margin: 1rem 0 0 1.5rem; color: #5a4a5a; font-size: 0.95rem;">
+                        <li>Bebês dormem em média <strong>92 minutos MAIS</strong> ao ar livre comparado a ambientes internos</li>
+                        <li><strong>88% dos pais relatam</strong> que seus filhos "claramente desfrutam" dormir ao ar livre</li>
+                        <li>Limites de temperatura: Sonecas ao ar livre são práticas até <strong>-15°C</strong></li>
+                        <li>Ar puro, luz natural e frio promovem sono profundo</li>
+                    </ul>
+                </div>
+
+                <div class="dica-pratica">
+                    <div class="dica-pratica-header">
+                        <div class="dica-pratica-icon">🌤️</div>
+                        <div class="dica-pratica-label">Adaptando Sonecas ao Ar Livre no Brasil</div>
+                    </div>
+                    <div class="dica-pratica-content">
+                        <p>Embora o Brasil tenha clima tropical, você pode adaptar os princípios nórdicos:</p>
+                        <ol>
+                            <li><strong>Escolha horários estratégicos:</strong> Manhã cedo (6-8h) ou final da tarde (16-18h) quando o calor é menos intenso.</li>
+                            <li><strong>Use sombra:</strong> Varanda coberta, área sob árvores, ou mesmo a sombra de um prédio vizinho oferece proteção enquanto mantém ar fresco.</li>
+                            <li><strong>Proteção solar:</strong> Aplique protetor solar (acima de 6 meses), use roupas leves de manga longa ou coloque um tecido fino sobre o carrinho.</li>
+                            <li><strong>Hidratação:</strong> Ofereça água ou leite materno/fórmula antes da soneca ao ar livre.</li>
+                            <li><strong>Ventilação:</strong> O carinho aberto (não completamente coberto) permite ventilação enquanto protege de insetos.</li>
+                            <li><strong>Conforto:</strong> Roupas naturais e frescas (algodão). Bebês brasileiros podem estar acostumados ao calor, mas o ar fresco ainda promove sono mais profundo.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-header">🏥 O Sistema Neuvola e Educação em Sono</div>
+                    <p>
+                        A Finlândia tem uma história de <strong>100+ anos de clínicas de saúde pública (Neuvola)</strong> que trabalham especificamente com famílias e bebês. Esses centros oferecem:
+                    </p>
+                    <ul style="margin: 1rem 0 0 1.5rem; color: #5a4a5a; font-size: 0.95rem;">
+                        <li>"Escolas de sono para bebês" — educação preventiva em pais</li>
+                        <li>Acesso a consultores de lactação e educadores de sono</li>
+                        <li><strong>320 dias de licença parental</strong> (a mais generosa do mundo)</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">
+                        Resultado: pais bem preparados, bem descansados e bem apoiados dormir melhor junto com seus bebês.
+                    </p>
+                </div>
+
+                <div class="info-card tip">
+                    <div class="info-card-header">❄️ O Método Nórdico: Temperatura e Higge</div>
+                    <p>
+                        Recomenda-se manter quartos a <strong>16-20°C</strong> — mais frio do que a maioria dos pais está acostumada. Pais dinamarqueses tendem a ter as menores taxas de cólica, possivelmente porque o frio leve promove sono mais profundo. Conceito do "hygge" (conforto aconchegante) combina com ambiente frio: cobertores de qualidade, uma luz morna e tédio intencional (sem estimulação excessiva).
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        <strong>Nota:</strong> Pesquisas mostram que <strong>nenhuma mãe nórdica entrevistada endossa "cry it out"</strong> — preferem abordagens responsivas mesmo em culturas que favorecem independência.
+                    </p>
+                </div>
+
+                <h3>China: Medicina Tradicional e Família Expandida</h3>
+                <p>
+                    Na China, o modelo de sono familiar é radicalmente diferente do ocidental — envolvendo práticas tradicionais milenares e estrutura familiar estendida.
+                </p>
+
+                <div class="info-card">
+                    <div class="info-card-header">👨‍👩‍👧‍👦 O Co-Sleeping Chinês</div>
+                    <p>
+                        <strong>85,6% dos bebês chineses praticam co-sleeping</strong>. Mais surpreendente ainda: <strong>30,6% têm avós como cuidadores primários durante a noite</strong>, e <strong>79% dos pré-escolares dormem com avós e/ou pais</strong>. A estrutura familiar estendida é a norma.
+                    </p>
+                </div>
+
+                <div class="info-card tip">
+                    <div class="info-card-header">🌸 Zuoyuezi: O Mês de Repouso Pós-Parto</div>
+                    <p>
+                        Uma tradição com <strong>mais de 2.000 anos</strong>, o Zuoyuezi (坐月子 — literalmente "sentar o mês") é um período de <strong>30-100 dias pós-parto</strong> onde a mãe repousa completamente. A família, especialmente a mãe da mãe (avó), cuida de tudo: cozinha, limpeza, cuidados do bebê durante o dia. A mãe repousa, recupera-se e constrói seu suprimento de leite. Quando os avós estão presentes para dormir à noite, a mãe pode descansar melhor — beneficiando todo o sistema familiar.
+                    </p>
+                </div>
+
+                <div class="tabs-container">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" onclick="switchTab(event, 'tui-na-tab')">Tui Na (推拿)</button>
+                        <button class="tab-btn" onclick="switchTab(event, 'acupressure-tab')">Acupressão</button>
+                        <button class="tab-btn" onclick="switchTab(event, 'herbs-tab')">Ervas Calmantes</button>
+                    </div>
+
+                    <div id="tui-na-tab" class="tab-content active">
+                        <h4 style="margin-bottom: 1rem; color: var(--deep-plum);">Tui Na: Massagem Pediátrica Tradicional</h4>
+                        <p>
+                            Tui Na é uma forma de massagem e manipulação de pontos específicos do corpo usada há séculos na Medicina Tradicional Chinesa. Para bebês, é especialmente usada para:
+                        </p>
+                        <ul style="margin: 1rem 0; margin-left: 1.5rem; color: #5a4a5a; font-size: 0.95rem;">
+                            <li>Aliviar cólicas e desconforto digestivo</li>
+                            <li>Promover relaxamento e sono mais profundo</li>
+                            <li>Estimular o sistema imunológico</li>
+                            <li>Melhorar circulação</li>
+                        </ul>
+                        <p>
+                            <strong>Segurança:</strong> Tui Na é considerada segura a partir dos <strong>4-6 meses</strong>. A técnica estimula a produção de endorfinas (hormônios do bem-estar e alívio da dor). Uma técnica muito usada é a massagem Nieji — mover os dedos suavemente pela coluna vertebral do bebê, estimulando pontos ao longo da espinha.
+                        </p>
+                        <p style="margin-top: 1rem; font-style: italic; color: var(--warm-gray);">
+                            ⚠️ Procure sempre um praticante certificado em Tui Na pediátrico — não todas as técnicas de adultos são apropriadas para bebês.
+                        </p>
+                    </div>
+
+                    <div id="acupressure-tab" class="tab-content">
+                        <h4 style="margin-bottom: 1rem; color: var(--deep-plum);">Acupressão: Sem Agulhas, Apenas Dedos</h4>
+                        <p>
+                            A acupressão é a arte de estimular pontos de acupuntura usando pressão dos dedos em vez de agulhas. Para bebês, é particularmente atrativa porque é não-invasiva e segura.
+                        </p>
+                        <p style="margin-top: 1rem;">
+                            <strong>Ponto popular para sono:</strong> O ponto entre as sobrancelhas (Yintang/印堂). Pressione delicadamente este ponto com o dedo indicador por <strong>10-20 segundos</strong>, fazendo movimentos circulares leves. Muitos pais relatam que bebês ficam visualmente mais relaxados após alguns segundos.
+                        </p>
+                        <p style="margin-top: 1rem;">
+                            <strong>Quando usar:</strong> Durante o banho, antes de dormir, ou quando o bebê está choramingando mas não desesperado. A chave é suavidade e consistência.
+                        </p>
+                    </div>
+
+                    <div id="herbs-tab" class="tab-content">
+                        <h4 style="margin-bottom: 1rem; color: var(--deep-plum);">Ervas Calmantes Tradicionais</h4>
+                        <p>
+                            A MTC usa vários ingredientes botânicos para promover sono e digestão saudável:
+                        </p>
+                        <ul style="margin: 1rem 0; margin-left: 1.5rem; color: #5a4a5a; font-size: 0.95rem;">
+                            <li><strong>Bai He (白合) — Bulbo de Lírio:</strong> Descrito como "acalmante" e "refrescante", frequentemente usado em bebês irritáveis ou que dormem pouco.</li>
+                            <li><strong>Hong Zao (红枣) — Tâmara Vermelha:</strong> Nutridor do sangue e do espírito, promove calma. Seguro e até saboroso para bebês.</li>
+                            <li><strong>Long Yan (龙眼) — Fruta do Dragão/Olho do Dragão:</strong> Aquecedor suave, usado especialmente para bebês com padrão de frio (diarréia, friozinho ao toque).</li>
+                            <li><strong>Lian Zi (莲子) — Sementes de Lótus:</strong> Calmante tradicional, frequentemente incluída em sopas para bebês maiores.</li>
+                        </ul>
+                        <div class="info-card warning" style="margin-top: 1.5rem;">
+                            <div class="info-card-header">⚠️ Consulte Sempre um Profissional</div>
+                            <p>
+                                <strong>NUNCA use ervas sem orientação profissional qualificado.</strong> Um praticante de MTC pediátrica pode avaliar o padrão específico do seu bebê (quente vs. frio, excessivamente ativo vs. letárgico) e recomendar ervas apropriadas. Doses incorretas ou ervas inadequadas podem ser prejudiciais.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-header">🌙 Yetai (夜啼): Choro Noturno na Perspectiva da MTC</div>
+                    <p>
+                        Enquanto a medicina ocidental vê o choro noturno como um comportamento normal de desenvolvimento, a MTC o diagnostica como "Yetai" — uma síndrome com causas específicas. A causa mais comum identificada pela MTC é a <strong>indigestão por superalimentação</strong>. Outros padrões incluem:
+                    </p>
+                    <ul style="margin: 1rem 0 0 1.5rem; color: #5a4a5a; font-size: 0.95rem;">
+                        <li><strong>Padrão de Calor:</strong> Bebê suado, rosto vermelho, choro persistente — responde bem a ervas refrescantes</li>
+                        <li><strong>Padrão de Frio:</strong> Bebê quieto durante o dia mas chora à noite, preferência por calor — responde bem a aquecedores suaves como gengibre</li>
+                        <li><strong>Deficiência de Sangue/Yin:</strong> Bebê aparenta esgotado, choro fraco — apoia-se em tonificadores como tâmaras vermelhas</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">
+                        <strong>Insight:</strong> Em vez de apenas "deixar chorar" ou "responder imediatamente sem investigar", a MTC incentiva os pais a observarem padrões — quando chora? Como parece? Qual é a causa raiz?
+                    </p>
+                </div>
+
+                <h3>O Que Podemos Aprender</h3>
+                <p>
+                    Analisando essas perspectivas globais, diversos temas emergem:
+                </p>
+
+                <div class="checklist">
+                    <h4>Lições Globais sobre o Sono Infantil</h4>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text"><strong>Múltiplos modelos válidos existem.</strong> Co-sleeping, dormir sozinho, dormir com avós, dormir ao ar livre — tudo pode resultar em bebês bem descansados quando feito com segurança e intenção.</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text"><strong>Resposta imediata ao choro não cria dependência.</strong> A pesquisa japonesa sobre yonaki e a prática nórdica de reatividade mostram que bebês que recebem resposta consistente e gentil ao choro desenvolvem segurança, não dependência.</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text"><strong>Natureza e ar livre melhoram qualidade de sono.</strong> Os dados finlandeses são claros: bebês dormem 92 minutos a mais ao ar livre. Exposição à luz natural, ar fresco e mudança de ambiente promovem sono profundo.</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text"><strong>Digestão pode ser uma causa negligenciada de sono pobre.</strong> A perspectiva chinesa de superalimentação como causa de yetai é uma lembrança de que nem todo choro noturno é "comportamental" — investigar a causa raiz é importante.</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text"><strong>O sistema hormonal do bebê amadurece gradualmente.</strong> Compreender que a melatonina não é produzida até ~3 meses muda como apoiamos bebês nessa idade. Esperar que recém-nascidos durmam como adultos é biologicamente irreal.</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text"><strong>Ruído branco funciona, mas com segurança.</strong> Não é mágico, mas 80% de efetividade é real. Contanto que seja usado a volume seguro (≤50dB, 2m+ de distância), pode ser uma ferramenta valiosa.</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text"><strong>Consistência em rotina é universal.</strong> Sejam japoneses com o Oyasumi Tour, finlandeses com sonecas ao ar livre ou americanos com banho + história, as crianças prosperam com estrutura e previsibilidade.</div>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox">✓</div>
+                        <div class="checklist-text"><strong>O sono deve ser visto no contexto familiar.</strong> O sucesso é mais fácil quando toda a família é apoiada — licença parental adequada (Finlândia), avós disponíveis (China), sistemas de saúde robustos (Finlândia, Japão). Isolamento parental prejudica o sono.</div>
+                    </div>
+                </div>
+
+                <h3>Quiz: Teste Seu Conhecimento</h3>
+                <div class="quiz-section">
+                    <h4>Quando os bebês começam a produzir melatonina endógena (seu próprio hormônio do sono)?</h4>
+                    <div class="quiz-question">
+                        Escolha a alternativa correta:
+                    </div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectQuizOption(this, 1)">
+                            <div class="quiz-option-marker">A</div>
+                            <span>Ao nascer (0-2 semanas)</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 2)">
+                            <div class="quiz-option-marker">B</div>
+                            <span>Por volta de 9 semanas (aproximadamente 2 meses)</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, 3)">
+                            <div class="quiz-option-marker">C</div>
+                            <span>Aos 6 meses</span>
+                        </div>
+                    </div>
+                    <button class="check-answer-btn" onclick="checkAnswer('10-1', 2)" disabled>Verificar Resposta</button>
+                    <div class="quiz-feedback" id="quiz-feedback-10-1"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, var(--soft-peach) 0%, var(--lavender) 100%); border-radius: 20px; border: 2px solid var(--moon-gold);">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🌍</div>
+                    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 1rem; color: var(--deep-plum);">Você Explorou o Mundo do Sono Infantil!</h3>
+                    <p style="font-size: 1.05rem; color: #5a4a5a; margin-bottom: 1rem;">
+                        Ao explorar perspectivas globais, você descobriu que não existe uma forma única e "correta" de apoiar o sono infantil. O que funciona é baseado em seus valores familiares, sua situação específica e o temperamento do seu bebê. Algumas famílias prosperam com co-sleeping, outras com independência. Alguns bebês dormem melhor ao ar livre, outros em quartos escuros. Alguns pais se beneficiam de métodos estruturados, outros de abordagens mais fluidas.
+                    </p>
+                    <p style="font-size: 1.05rem; color: #5a4a5a;">
+                        <strong>O que todos os bebês do mundo precisam é amor, consistência, segurança e pais que entendem suas necessidades únicas.</strong> Você agora tem ferramentas, conhecimento e perspectiva para fazer escolhas informadas. Confiamos em você! 🌙
+                    </p>
+                </div>
+            </div>
+
+            <div class="chapter-nav">
+                <a href="capitulo-09.html" class="nav-btn">← Capítulo 9</a>
+                <div class="chapter-nav-center">
+                    <a href="index.html">Voltar aos Capítulos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating stars
+        function createStars() {
+            const container = document.getElementById('stars');
+            if (!container) return;
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.width = (Math.random() * 3 + 2) + 'px';
+                star.style.height = star.style.width;
+                container.appendChild(star);
+            }
+        }
+        createStars();
+
+        // Progress bar
+        window.addEventListener('scroll', () => {
+            const progressBar = document.getElementById('progressBar');
+            if (!progressBar) return;
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            progressBar.style.width = scrollPercent + '%';
+        });
+
+        // Tab switching
+        function switchTab(event, tabId) {
+            const container = event.target.closest('.tabs-container');
+            if (!container) return;
+            container.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            container.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            event.target.classList.add('active');
+            const tab = container.querySelector('#' + tabId);
+            if (tab) tab.classList.add('active');
+        }
+
+        // Accordion
+        function toggleAccordion(header) {
+            if (!header || !header.parentElement) return;
+            const item = header.parentElement;
+            const wasOpen = item.classList.contains('open');
+            const parent = item.parentElement;
+            if (parent) {
+                parent.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('open');
+                });
+            }
+            if (!wasOpen) {
+                item.classList.add('open');
+            }
+        }
+
+        // Checklist
+        function toggleChecklist(item) {
+            if (!item) return;
+            item.classList.toggle('checked');
+        }
+
+        // Quiz functionality
+        let selectedAnswers = {};
+
+        function selectQuizOption(option, value) {
+            if (!option) return;
+            const quizSection = option.closest('.quiz-section');
+            if (!quizSection) return;
+            const options = quizSection.querySelectorAll('.quiz-option');
+            const checkBtn = quizSection.querySelector('.check-answer-btn');
+
+            options.forEach(opt => opt.classList.remove('selected', 'correct', 'incorrect'));
+            option.classList.add('selected');
+
+            const feedback = quizSection.querySelector('.quiz-feedback');
+            if (feedback) {
+                const feedbackId = feedback.id;
+                selectedAnswers[feedbackId] = value;
+            }
+            if (checkBtn) checkBtn.disabled = false;
+            if (feedback) feedback.classList.remove('show');
+        }
+
+        function checkAnswer(quizId, correctAnswer) {
+            const feedback = document.getElementById('quiz-feedback-' + quizId);
+            if (!feedback) return;
+            const quizSection = feedback.closest('.quiz-section');
+            if (!quizSection) return;
+            const options = quizSection.querySelectorAll('.quiz-option');
+            const feedbackId = 'quiz-feedback-' + quizId;
+            const selectedValue = selectedAnswers[feedbackId];
+
+            options.forEach((opt, index) => {
+                if (index + 1 === selectedValue) {
+                    if (selectedValue === correctAnswer) {
+                        opt.classList.add('correct');
+                    } else {
+                        opt.classList.add('incorrect');
+                    }
+                }
+                if (index + 1 === correctAnswer) {
+                    opt.classList.add('correct');
+                }
+            });
+
+            if (selectedValue === correctAnswer) {
+                feedback.className = 'quiz-feedback show correct';
+                feedback.innerHTML = '✅ Correto! Parabéns!';
+            } else {
+                feedback.className = 'quiz-feedback show incorrect';
+                feedback.innerHTML = '❌ Não é bem isso. A resposta correta está destacada acima.';
+            }
+
+            const checkBtn = quizSection.querySelector('.check-answer-btn');
+            if (checkBtn) checkBtn.disabled = true;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createStars();
+        });
+    </script>
+</body>
+
+</html>
